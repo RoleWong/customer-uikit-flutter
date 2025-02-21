@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/drag_widget.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/drag_widget.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class TextInputBottomSheet {
@@ -90,7 +91,7 @@ class TextInputBottomSheet {
                               }
                             },
                             child: Text(
-                              TIM_t("取消"),
+                              TDesk_t("取消"),
                               style: TextStyle(color: theme.darkTextColor),
                             )),
                       )),
@@ -111,7 +112,7 @@ class TextInputBottomSheet {
                           Navigator.pop(context);
                         }
                       },
-                      child: Text(TIM_t("保存"))),
+                      child: Text(TDesk_t("保存"))),
                 ),
               ],
             ),
@@ -140,7 +141,7 @@ class TextInputBottomSheet {
                           }
                         },
                         child: Text(
-                          TIM_t("取消"),
+                          TDesk_t("取消"),
                           style: TextStyle(color: theme.darkTextColor),
                         )),
                   )),
@@ -161,7 +162,7 @@ class TextInputBottomSheet {
                           Navigator.pop(context);
                         }
                       },
-                      child: Text(TIM_t("确定"))),
+                      child: Text(TDesk_t("确定"))),
                 )),
               ],
             ),

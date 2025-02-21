@@ -1,4 +1,4 @@
-import 'package:tencent_cloud_customer/import_proxy/general.dart'
+import 'package:tencentcloud_ai_desk_customer/import_proxy/general.dart'
 // ignore: uri_does_not_exist
     if (dart.library.html) 'platform/web_import.dart'
 // ignore: uri_does_not_exist

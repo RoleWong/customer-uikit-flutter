@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 class DeskColumnMenuItem {
   String label;

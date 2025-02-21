@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-show.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-show.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';

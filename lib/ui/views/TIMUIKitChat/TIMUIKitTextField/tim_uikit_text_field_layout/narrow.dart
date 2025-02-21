@@ -5,20 +5,20 @@ import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_setting_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/optimize_utils.dart';
-import 'package:tencent_cloud_customer/ui/utils/permission.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/emoji_text.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_send_sound_message.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_setting_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/optimize_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/permission.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/emoji_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_send_sound_message.dart';
 import 'package:tencent_keyboard_visibility/tencent_keyboard_visibility.dart';
 
 GlobalKey<_TIMUIKitTextFieldLayoutNarrowState> narrowTextFieldKey = GlobalKey();
@@ -446,7 +446,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                           },
                           child: SvgPicture.asset(
                             showSendSoundText ? 'images/keyboard.svg' : 'images/voice.svg',
-                            package: 'tencent_cloud_customer',
+                            package: 'tencentcloud_ai_desk_customer',
                             // color: const Color.fromRGBO(68, 68, 68, 1),
                             height: 35,
                             width: 35,
@@ -549,7 +549,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                           )
                               : SvgPicture.asset(
                             showEmojiPanel ? 'images/keyboard.svg' : 'images/face.svg',
-                            package: 'tencent_cloud_customer',
+                            package: 'tencentcloud_ai_desk_customer',
                             // color: const Color.fromRGBO(68, 68, 68, 1),
                             height: 35,
                             width: 35,
@@ -569,7 +569,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                               ? Icon(Icons.add_circle_outline_outlined, color: hexToColor("5c6168"), size: 32)
                               : SvgPicture.asset(
                                   'images/add.svg',
-                                  package: 'tencent_cloud_customer',
+                                  package: 'tencentcloud_ai_desk_customer',
                                   // color: const Color.fromRGBO(68, 68, 68, 1),
                                   height: 35,
                                   width: 35,
@@ -590,7 +590,7 @@ class _TIMUIKitTextFieldLayoutNarrowState extends TIMUIKitState<TIMUIKitTextFiel
                                 });
                               }
                             },
-                            child: Text(TIM_t("发送")),
+                            child: Text(TDesk_t("发送")),
                           ),
                         ),
                     ],

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-formSave/formSave-branch.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-formSave/formSave-input.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-formSave/formSave-branch.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-formSave/formSave-input.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class MessageFormSave extends StatefulWidget {

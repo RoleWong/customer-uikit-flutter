@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_class.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_class.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 typedef MessageFunction = Future<V2TimMessage?> Function(V2TimMessage message);
@@ -72,7 +73,7 @@ abstract class DefaultLifeCycle {
 
   static Future<void> defaultPopBackRemind() async {
     // You have to implement the exact life cycle hook in this case.
-    TIMUIKitClass.onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("请传入离开群组生命周期函数，提供返回首页或其他页面的导航方法。"), infoCode: 6661402));
+    TIMUIKitClass.onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("请传入离开群组生命周期函数，提供返回首页或其他页面的导航方法。"), infoCode: 6661402));
     return;
   }
 }

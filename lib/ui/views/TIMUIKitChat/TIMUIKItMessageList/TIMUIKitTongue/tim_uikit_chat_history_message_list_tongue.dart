@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_tongue_item.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_tongue_item.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 enum MessageListTongueType {
   none,

@@ -40,7 +40,7 @@ class _MessageOrderCardState extends TIMState<MessageOrderCard> {
                           image: AssetImage(
                             "lib/customer_service/assets/fail.png",
                             package:
-                                "tencent_cloud_customer",
+                                "tencentcloud_ai_desk_customer",
                           ),
                           height: 88,
                           width: 88.0),

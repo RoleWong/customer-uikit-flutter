@@ -1,16 +1,16 @@
 import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:cross_file/cross_file.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/widgets/wide_popup.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
 import 'package:path/path.dart' as path;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -56,7 +56,7 @@ sendFileWithConfirmation(
 
   if (!isCanSend) {
     TUIKitWidePopup.showSecondaryConfirmDialog(
-        text: TIM_t("无法发送，包含文件夹"),
+        text: TDesk_t("无法发送，包含文件夹"),
         onConfirm: () {},
         operationKey: TUIKitWideModalOperationKey.unableToSendDueToFolders,
         context: context,
@@ -65,14 +65,14 @@ sendFileWithConfirmation(
   }
 
   final option1 = conversation.showName ??
-      (conversationType == ConvType.group ? TIM_t("群聊") : TIM_t("对方"));
+      (conversationType == ConvType.group ? TDesk_t("群聊") : TDesk_t("对方"));
   TUIKitWidePopup.showPopupWindow(
       operationKey: TUIKitWideModalOperationKey.beforeSendScreenShot,
       context: context,
       isDarkBackground: false,
       width: 600,
       height: files.length < 4 ? 300 : 500,
-      title: TIM_t_para("发送给{{option1}}", "发送给$option1")(option1: option1),
+      title: TDesk_t_para("发送给{{option1}}", "发送给$option1")(option1: option1),
       child: (closeFunc) => Container(
             padding: const EdgeInsets.only(bottom: 16),
             child: Column(
@@ -139,7 +139,7 @@ sendFileWithConfirmation(
                           onPressed: () {
                             closeFunc();
                           },
-                          child: Text(TIM_t("取消"))),
+                          child: Text(TDesk_t("取消"))),
                       const SizedBox(
                         width: 20,
                       ),
@@ -149,7 +149,7 @@ sendFileWithConfirmation(
                                 conversationType, context);
                             closeFunc();
                           },
-                          child: Text(TIM_t("发送")))
+                          child: Text(TDesk_t("发送")))
                     ],
                   ),
                 )
@@ -188,7 +188,7 @@ class TIMUIKitSendFile extends TIMUIKitStatelessWidget {
     final theme = value.theme;
     final conversationType = conversation.type;
     final option1 = conversation.showName ??
-        (conversationType == 2 ? TIM_t("群聊") : TIM_t("会话"));
+        (conversationType == 2 ? TDesk_t("群聊") : TDesk_t("会话"));
 
     return Row(
       mainAxisSize: MainAxisSize.max,
@@ -221,7 +221,7 @@ class TIMUIKitSendFile extends TIMUIKitStatelessWidget {
                         height: 40,
                       ),
                       Text(
-                        TIM_t_para("发送给{{option1}}", "发送给$option1")(
+                        TDesk_t_para("发送给{{option1}}", "发送给$option1")(
                             option1: option1),
                         style: TextStyle(
                             fontSize: 16,

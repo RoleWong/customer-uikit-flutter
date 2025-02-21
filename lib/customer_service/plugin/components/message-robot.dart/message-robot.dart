@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/common/utils.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-robot.dart/robot-card.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-robot.dart/robot-text.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-robot.dart/robot-card.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-robot.dart/robot-text.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class MessageRobot extends StatefulWidget {

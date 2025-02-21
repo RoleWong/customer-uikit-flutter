@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/recent_conversation_list.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/recent_conversation_list.dart';
 
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 GlobalKey<_ForwardMessageScreenState> forwardMessageScreenKey = GlobalKey();
 
@@ -47,9 +47,9 @@ class _ForwardMessageScreenState extends TIMUIKitState<ForwardMessageScreen> {
           ? _selfInfoViewModel.loginInfo?.nickName
           : _selfInfoViewModel.loginInfo?.userID;
       // Chat History for xx
-      return TIM_t_para("{{option1}}的聊天记录", "$option1的聊天记录")(option1: option1);
+      return TDesk_t_para("{{option1}}的聊天记录", "$option1的聊天记录")(option1: option1);
     } else {
-      return TIM_t("群聊的聊天记录");
+      return TDesk_t("群聊的聊天记录");
     }
   }
 
@@ -94,16 +94,16 @@ class _ForwardMessageScreenState extends TIMUIKitState<ForwardMessageScreen> {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Text(TIM_t("您确定进行转发吗？")),
+          title: Text(TDesk_t("您确定进行转发吗？")),
           actions: [
             CupertinoDialogAction(
-              child: Text(TIM_t("确定")),
+              child: Text(TDesk_t("确定")),
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
             ),
             CupertinoDialogAction(
-              child: Text(TIM_t("取消")),
+              child: Text(TDesk_t("取消")),
               isDestructiveAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
@@ -143,7 +143,7 @@ class _ForwardMessageScreenState extends TIMUIKitState<ForwardMessageScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          isMultiSelect ? TIM_t("选择多个会话") : TIM_t("选择一个会话"),
+          isMultiSelect ? TDesk_t("选择多个会话") : TDesk_t("选择一个会话"),
           style: TextStyle(
             color: theme.appbarTextColor,
             fontSize: 17,
@@ -169,7 +169,7 @@ class _ForwardMessageScreenState extends TIMUIKitState<ForwardMessageScreen> {
             }
           },
           child: Text(
-            TIM_t("取消"),
+            TDesk_t("取消"),
             style: TextStyle(
               color: theme.appbarTextColor,
               fontSize: 14,
@@ -188,7 +188,7 @@ class _ForwardMessageScreenState extends TIMUIKitState<ForwardMessageScreen> {
               }
             },
             child: Text(
-              !isMultiSelect ? TIM_t("多选") : TIM_t("完成"),
+              !isMultiSelect ? TDesk_t("多选") : TDesk_t("完成"),
               style: TextStyle(
                 color: theme.appbarTextColor,
                 fontSize: 14,

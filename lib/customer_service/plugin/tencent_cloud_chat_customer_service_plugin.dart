@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/utils/tencent_cloud_customer_toast.dart';
 
 
 class TencentCloudChatCustomerServicePlugin {
@@ -198,13 +199,14 @@ class TencentCloudChatCustomerServicePlugin {
     }
   }
 
-  static void sendCustomerServiceStartMessage(Function sendMessage) async {
+  static void sendCustomerServiceStartMessage(Function sendMessage, String language) async {
     final res = await TencentImSDKPlugin.v2TIMManager
         .getMessageManager()
         .createCustomMessage(
             data: json.encode({
           'src': CUSTOM_MESSAGE_SRC.MINI_APP_AUTO,
           'customerServicePlugin': 0,
+          "triggeredContent": {"language": language}
         }));
     if (res.code == 0) {
       final messageResult = res.data;

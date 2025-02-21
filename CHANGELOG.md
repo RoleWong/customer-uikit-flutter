@@ -1,3 +1,18 @@
+## 1.2.0 & 1.2.0+1
+
+## Breaking Changes
+
+- Renamed package from `tencent_cloud_customer` to `tencentcloud_ai_desk_customer`.
+- Renamed class from `TencentCloudCustomer` to `TencentCloudAIDeskCustomer`.
+
+## Added
+
+- Added support for the Indonesian language.
+- Introduced a `language` option in `TencentCloudCustomerConfig` for explicit language selection.
+
+## Fixed
+
+- Fixed a bug in streamed messages causing inconsistent real-time output.
 
 # 1.1.0
 

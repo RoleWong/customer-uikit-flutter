@@ -4,8 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 /// 球脉冲Header
 class CustomizeBallPulseHeader extends Header {

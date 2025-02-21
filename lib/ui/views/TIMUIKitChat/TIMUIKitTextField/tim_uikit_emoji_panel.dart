@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 
 class EmojiPanel extends TIMUIKitStatelessWidget {
   final void Function(int unicode) onTapEmoji;
@@ -23,7 +24,7 @@ class EmojiPanel extends TIMUIKitStatelessWidget {
   @override
   Widget tuiBuild(BuildContext context, TUIKitBuildValue value) {
     // ignore: avoid_print
-    outputLogger.i(TIM_t(
+    outputLogger.i(TDesk_t(
         "暂未安装表情包插件，如需使用表情相关功能，请根据本文档安装：https://cloud.tencent.com/document/product/269/70746"));
     return SingleChildScrollView(
         child: Column(
@@ -35,7 +36,7 @@ class EmojiPanel extends TIMUIKitStatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(TIM_t("暂无表情包")),
+              Text(TDesk_t("暂无表情包")),
             ],
           ),
         ),
@@ -50,7 +51,7 @@ class EmojiPanel extends TIMUIKitStatelessWidget {
                         margin: const EdgeInsets.only(right: 25),
                         // height: MediaQuery.of(context).padding.bottom,
                         child: ElevatedButton(
-                            child: Text(TIM_t("发送")),
+                            child: Text(TDesk_t("发送")),
                             style: ElevatedButton.styleFrom(),
                             onPressed: () {
                               onSubmitted();

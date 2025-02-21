@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class MessageRobotWelcome extends StatefulWidget {
@@ -125,7 +126,7 @@ class _MessageRobotWelcomeState extends TIMState<MessageRobotWelcome> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          TIM_t("换一换"),
+                          TDesk_t("换一换"),
                           style: const TextStyle(
                             color: Color(0xFF006EFF),
                             fontSize: 13,

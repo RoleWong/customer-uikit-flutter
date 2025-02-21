@@ -41,7 +41,7 @@ class _LoadingState extends State<Loading> with TickerProviderStateMixin {
       turns: Tween(begin: .0, end: .9).animate(_animationController),
       child: Image.asset(
         "images/message_sending.png",
-        package: 'tencent_cloud_customer',
+        package: 'tencentcloud_ai_desk_customer',
         height: widget.width,
         width: widget.height,
       ),

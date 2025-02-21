@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class TIMUIKitGroupTipsElem extends StatefulWidget {
   final V2TimGroupTipsElem groupTipsElem;

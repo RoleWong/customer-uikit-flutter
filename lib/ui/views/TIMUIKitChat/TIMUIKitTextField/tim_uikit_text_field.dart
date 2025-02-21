@@ -7,22 +7,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_conversation_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_setting_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/emoji_text.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_at_text.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_layout/narrow.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_layout/wide.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_conversation_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_setting_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/emoji_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_at_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_layout/narrow.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_layout/wide.dart';
+import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
 
 enum MuteStatus { none, me, all }
 
@@ -611,7 +612,7 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
 
         keyword ??= "";
         if (canAtAll && showAtMemberList.isNotEmpty && keyword!.isEmpty) {
-          showAtMemberList = [V2TimGroupMemberFullInfo(userID: "__kImSDK_MesssageAtALL__", nickName: TIM_t("所有人")), ...showAtMemberList];
+          showAtMemberList = [V2TimGroupMemberFullInfo(userID: "__kImSDK_MesssageAtALL__", nickName: TDesk_t("所有人")), ...showAtMemberList];
         }
 
         model.activeAtIndex = 0;
@@ -736,8 +737,8 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
     if (widget.controller != null) {
       widget.controller?.addListener(controllerHandler);
     }
-    final AppLocale appLocale = I18nUtils.findDeviceLocale(null);
-    languageType = (appLocale == AppLocale.zhHans || appLocale == AppLocale.zhHant) ? 'zh' : 'en';
+    final TDeskAppLocale appLocale = TDeskI18nUtils.findDeviceLocale(null);
+    languageType = (appLocale == TDeskAppLocale.zhHans || appLocale == TDeskAppLocale.zhHant) ? 'zh' : 'en';
     textEditingController.addListener(() {
       _isComposingText = textEditingController.value.composing.start != -1;
     });

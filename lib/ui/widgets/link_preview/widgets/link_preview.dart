@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/common/utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/models/link_preview_content.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/models/link_preview_content.dart';
 
 class LinkPreviewWidget extends TIMStatelessWidget {
   final LocalCustomDataModel linkPreview;

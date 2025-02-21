@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/customer_service/utils/tencent_cloud_customer_logger.dart';
-import 'package:tencent_cloud_customer/customer_service/utils/tencent_cloud_customer_toast.dart';
-import 'package:tencent_cloud_customer/customer_service/widgets/tencent_cloud_customer_message_container.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/data/tencent_cloud_customer_data.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/utils/tencent_cloud_customer_logger.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/utils/tencent_cloud_customer_toast.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/widgets/tencent_cloud_customer_message_container.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 typedef TencentCloudCustomerInit = Future<V2TimCallback> Function(
     {TencentCloudCustomerConfig? config, required int sdkAppID, required String userID, required String userSig});
@@ -12,9 +14,9 @@ typedef TencentCloudCustomerNavigate = V2TimCallback Function(
 typedef TencentCloudCustomerDispose = Future<V2TimCallback> Function();
 
 class TencentCloudCustomerManagerImpl {
-  final TCustomerCoreServicesImpl _timCoreInstance = TencentCloudCustomer.getIMUIKitInstance();
+  final TCustomerCoreServicesImpl _timCoreInstance = TencentCloudAIDeskCustomer.getIMUIKitInstance();
+  late TencentCloudCustomerData _tencentCloudCustomerData;
 
-  TencentCloudCustomerConfig _globalConfig = TencentCloudCustomerConfig();
   V2TimCallback? _initializedFailedRes;
 
   Future<V2TimCallback> init({
@@ -25,10 +27,19 @@ class TencentCloudCustomerManagerImpl {
   }) async {
     setupIMServiceLocator();
     TencentCloudCustomerLogger().init();
+
+    _tencentCloudCustomerData = serviceLocator<TencentCloudCustomerData>();
+
+    if (sdkAppID.toString().startsWith('1400') || sdkAppID.toString().startsWith('160')) {
+      _tencentCloudCustomerData.tDeskDataCenter = TDeskDataCenter.mainlandChina;
+    }else{
+      _tencentCloudCustomerData.tDeskDataCenter = TDeskDataCenter.international;
+    }
     final initRes = await _timCoreInstance.init(
       sdkAppID: sdkAppID,
       loglevel: LogLevelEnum.V2TIM_LOG_DEBUG,
       listener: V2TimSDKListener(),
+      language: config?.language,
       onTUIKitCallbackListener: (TIMCallback callbackValue) {
         switch (callbackValue.type) {
           case TIMCallbackType.INFO:
@@ -62,7 +73,7 @@ class TencentCloudCustomerManagerImpl {
         userSig: userSig,
       );
       if (loginRes.code == 0) {
-        _globalConfig = config ?? _globalConfig;
+        _tencentCloudCustomerData.globalConfig = config ?? _tencentCloudCustomerData.globalConfig;
         _initializedFailedRes = null;
         TencentCloudCustomerLogger().reportLogin(
           sdkAppId: sdkAppID,
@@ -91,7 +102,10 @@ class TencentCloudCustomerManagerImpl {
       return _initializedFailedRes!;
     }
     TencentCloudCustomerToast.init(context);
-    final targetConfig = _globalConfig.mergeWith(config);
+    final targetConfig = _tencentCloudCustomerData.globalConfig.mergeWith(config);
+    if(config?.language != null){
+      TDeskI18nUtils(null, languageLocaleToString[config?.language]);
+    }
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -108,6 +122,7 @@ class TencentCloudCustomerManagerImpl {
   }
 
   Future<V2TimCallback> dispose()  {
+    _initializedFailedRes = null;
     return _timCoreInstance.logout();
   }
 }

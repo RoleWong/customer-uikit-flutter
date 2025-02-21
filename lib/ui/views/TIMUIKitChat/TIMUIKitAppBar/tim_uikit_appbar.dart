@@ -2,17 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/friendShip/friendship_services.dart';
-import 'package:tencent_cloud_customer/data_services/group/group_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitAppBar/tim_uikit_appbar_title.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/friendShip/friendship_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitAppBar/tim_uikit_appbar_title.dart';
 import 'package:tuple/tuple.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class TIMUIKitAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// Appbar config
@@ -216,7 +216,7 @@ class _TIMUIKitAppBarState extends TIMUIKitState<TIMUIKitAppBar> {
                       chatVM.updateMultiSelectStatus(false);
                     },
                     child: Text(
-                      TIM_t('取消'),
+                      TDesk_t('取消'),
                       style: TextStyle(
                         color: theme.appbarTextColor ?? hexToColor("010000"),
                         fontSize: 16,

@@ -7,10 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 
 
 class PermissionRequestInfo extends StatefulWidget {
@@ -58,29 +59,29 @@ class _PermissionRequestInfo extends TIMUIKitState<PermissionRequestInfo>
 
     final permission = {
       1: {
-        "name": TIM_t("相机"),
+        "name": TDesk_t("相机"),
         "icon": "images/chat_permission_icon_camera.png",
-        "text": TIM_t("为方便您将所拍摄的照片或视频发送给朋友，以及进行视频通话，请允许我们访问摄像头进行拍摄照片和视频。")
+        "text": TDesk_t("为方便您将所拍摄的照片或视频发送给朋友，以及进行视频通话，请允许我们访问摄像头进行拍摄照片和视频。")
       },
       7: {
-        "name": TIM_t("麦克风"),
+        "name": TDesk_t("麦克风"),
         "icon": "images/chat_permission_icon_mic.png",
-        "text": TIM_t("为方便您发送语音消息、拍摄视频以及音视频通话，请允许我们使用麦克风进行录音。")
+        "text": TDesk_t("为方便您发送语音消息、拍摄视频以及音视频通话，请允许我们使用麦克风进行录音。")
       },
       9: {
-        "name": TIM_t("相册"),
+        "name": TDesk_t("相册"),
         "icon": "images/chat_permission_icon_file.png",
-        "text": TIM_t("为方便您查看和选择相册里的图片视频发送给朋友，以及保存内容到设备，请允许我们访问您设备上的照片、媒体内容。")
+        "text": TDesk_t("为方便您查看和选择相册里的图片视频发送给朋友，以及保存内容到设备，请允许我们访问您设备上的照片、媒体内容。")
       },
       15: {
-        "name": TIM_t("存储"),
+        "name": TDesk_t("存储"),
         "icon": "images/chat_permission_icon_file.png",
-        "text": TIM_t("为方便您查看和选择相册里的图片视频发送给朋友，以及保存内容到设备，请允许我们访问您设备上的照片、媒体内容。")
+        "text": TDesk_t("为方便您查看和选择相册里的图片视频发送给朋友，以及保存内容到设备，请允许我们访问您设备上的照片、媒体内容。")
       },
       32: {
-        "name": TIM_t("相册"),
+        "name": TDesk_t("相册"),
         "icon": "images/chat_permission_icon_file.png",
-        "text": TIM_t("为方便您查看和选择相册里的图片视频发送给朋友，以及保存内容到设备，请允许我们访问您设备上的照片、媒体内容。")
+        "text": TDesk_t("为方便您查看和选择相册里的图片视频发送给朋友，以及保存内容到设备，请允许我们访问您设备上的照片、媒体内容。")
       },
     }[widget.permissionType];
     final option2 = permission?["name"] ?? "";
@@ -104,17 +105,17 @@ class _PermissionRequestInfo extends TIMUIKitState<PermissionRequestInfo>
                       width: 50,
                       child: Image.asset(
                         permission?["icon"] ?? "",
-                        package: "tencent_cloud_customer",
+                        package: "tencentcloud_ai_desk_customer",
                       ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     Text(
-                      TIM_t(widget.appName) +
-                          TIM_t_para(" 申请获取{{option2}}", " 申请获取$option2")(
+                      TDesk_t(widget.appName) +
+                          TDesk_t_para(" 申请获取{{option2}}", " 申请获取$option2")(
                               option2: option2) +
-                          TIM_t("权限"),
+                          TDesk_t("权限"),
                       style: TextStyle(color: theme.white, fontSize: 18),
                     ),
                     const SizedBox(
@@ -145,22 +146,22 @@ class Permissions {
 
   static List<String> _names(BuildContext context) {
     return <String>[
-      TIM_t("日历"),
-      TIM_t("相机"),
-      TIM_t("联系人"),
-      TIM_t("位置"),
+      TDesk_t("日历"),
+      TDesk_t("相机"),
+      TDesk_t("联系人"),
+      TDesk_t("位置"),
       'locationAlways',
       'locationWhenInUse',
       'mediaLibrary',
-      TIM_t("麦克风"),
+      TDesk_t("麦克风"),
       'phone',
-      TIM_t("照片"),
-      TIM_t("相册写入"),
+      TDesk_t("照片"),
+      TDesk_t("相册写入"),
       'reminders',
       'sensors',
       'sms',
       'speech',
-      TIM_t("文件"),
+      TDesk_t("文件"),
       'ignoreBatteryOptimizations',
       'notification',
       'access_media_location',
@@ -177,7 +178,7 @@ class Permissions {
       'bluetoothAdvertise',
       'bluetoothConnect',
       'nearbyWifiDevices',
-      TIM_t("视频"),
+      TDesk_t("视频"),
       'audio',
       'scheduleExactAlarm'
     ];
@@ -185,24 +186,24 @@ class Permissions {
 
   static String _permissionText(
       BuildContext context, String appName, int value) {
-    final _prefix = TIM_t("需要授予");
+    final _prefix = TDesk_t("需要授予");
     final _postfixList = <String>[
-      TIM_t("日历"),
-      TIM_t(" 相机权限，以正常使用拍摄图片视频、视频通话等功能。"),
-      TIM_t("联系人"),
-      TIM_t("位置"),
+      TDesk_t("日历"),
+      TDesk_t(" 相机权限，以正常使用拍摄图片视频、视频通话等功能。"),
+      TDesk_t("联系人"),
+      TDesk_t("位置"),
       'locationAlways',
       'locationWhenInUse',
       'mediaLibrary',
-      TIM_t(" 麦克风权限，以正常使用发送语音消息、拍摄视频、音视频通话等功能。"),
+      TDesk_t(" 麦克风权限，以正常使用发送语音消息、拍摄视频、音视频通话等功能。"),
       'phone',
-      TIM_t(" 访问照片权限，以正常使用发送图片、视频等功能。"),
-      TIM_t(" 访问相册写入权限，以正常使用存储图片、视频等功能。"),
+      TDesk_t(" 访问照片权限，以正常使用发送图片、视频等功能。"),
+      TDesk_t(" 访问相册写入权限，以正常使用存储图片、视频等功能。"),
       'reminders',
       'sensors',
       'sms',
       'speech',
-      TIM_t(" 文件读写权限，以正常使用在聊天功能中的图片查看、选择能力和发送文件的能力。"),
+      TDesk_t(" 文件读写权限，以正常使用在聊天功能中的图片查看、选择能力和发送文件的能力。"),
       'ignoreBatteryOptimizations',
       'notification',
       'access_media_location',
@@ -219,7 +220,7 @@ class Permissions {
       'bluetoothAdvertise',
       'bluetoothConnect',
       'nearbyWifiDevices',
-      TIM_t(" 访问相册中视频权限，以正常使用发送视频等功能。"),
+      TDesk_t(" 访问相册中视频权限，以正常使用发送视频等功能。"),
       'audio',
       'scheduleExactAlarm'
     ];
@@ -313,16 +314,16 @@ class Permissions {
         return platformUtils.isIOS
             ? CupertinoAlertDialog(
           title: Text("“$appName”" +
-              TIM_t_para(" 想访问您的{{option2}}", " 想访问您的$option2")(
+              TDesk_t_para(" 想访问您的{{option2}}", " 想访问您的$option2")(
                   option2: option2)),
           content: Text(permissionText),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: Text(TIM_t("以后再说")),
+              child: Text(TDesk_t("以后再说")),
               onPressed: closeDialog, // 关闭对话框
             ),
             CupertinoDialogAction(
-              child: Text(TIM_t("去开启")),
+              child: Text(TDesk_t("去开启")),
               onPressed: getPermission,
             ),
           ],
@@ -338,7 +339,7 @@ class Permissions {
                 children: [
                   Expanded(
                     child: TextButton(
-                      child: Text(TIM_t("以后再说"),
+                      child: Text(TDesk_t("以后再说"),
                           style: TextStyle(
                             color: theme?.black ?? Colors.black,
                           )),
@@ -348,7 +349,7 @@ class Permissions {
                   const VerticalDivider(),
                   Expanded(
                     child: TextButton(
-                      child: Text(TIM_t("去开启"),
+                      child: Text(TDesk_t("去开启"),
                           style: TextStyle(
                             color: theme?.black ?? Colors.black,
                           )),

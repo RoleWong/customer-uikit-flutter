@@ -3,7 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class RatingStar extends StatefulWidget {
@@ -101,13 +102,13 @@ class _RatingStarState extends TIMState<RatingStar> {
                         ? const Image(
                             image: AssetImage(
                               "lib/customer_service/assets/starLine.png",
-                              package: "tencent_cloud_customer",
+                              package: "tencentcloud_ai_desk_customer",
                             ),
                             width: 24.0)
                         : const Image(
                             image: AssetImage(
                               "lib/customer_service/assets/star.png",
-                              package: "tencent_cloud_customer",
+                              package: "tencentcloud_ai_desk_customer",
                             ),
                             width: 24.0),
                     onTap: () {
@@ -125,7 +126,7 @@ class _RatingStarState extends TIMState<RatingStar> {
                       backgroundColor: WidgetStateProperty.all(Colors.grey),
                     )
                   : null,
-              child: Text(TIM_t("确认")),
+              child: Text(TDesk_t("确认")),
               onPressed: () {
                 if (hasReply || isExpired) {
                   return;

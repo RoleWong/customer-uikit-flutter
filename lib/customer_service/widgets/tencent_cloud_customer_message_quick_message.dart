@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/customer_service/model/tencent_cloud_customer_qucik_message.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/model/tencent_cloud_customer_qucik_message.dart';
 
 class TencentCloudCustomerMessageQuickMessage extends StatelessWidget {
   final TencentCloudCustomerQuickMessage quickMessage;

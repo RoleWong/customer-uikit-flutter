@@ -2,7 +2,7 @@
 
 import 'package:extended_text_field/extended_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/http_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/http_text.dart';
 import 'package:tim_ui_kit_sticker_plugin/utils/tim_custom_face_data.dart';
 
 import 'emoji_text.dart';

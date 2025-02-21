@@ -1,6 +1,6 @@
-import 'package:tencent_cloud_customer/data_services/conversation/conversation_services.dart';
-import 'package:tencent_cloud_customer/data_services/core/core_services_implements.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/conversation/conversation_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class TCustomerConversationServicesImpl extends TCustomerConversationService {

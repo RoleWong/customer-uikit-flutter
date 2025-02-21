@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/common/utils.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-branch.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-branchMessage.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-form/message-form.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-formSave/message-formSave.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-productCard.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-rating/message-rating.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-richText.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-robot-welcome.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-stream.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-orderCard.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-branch.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-branchMessage.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-form/message-form.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-formSave/message-formSave.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-productCard.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-rating/message-rating.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-richText.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-robot-welcome.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-stream.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-orderCard.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class MessageCustomerService extends StatefulWidget {

@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   archive: 3.6.1
-  tencent_cloud_customer:
+  tencentcloud_ai_desk_customer:
     path: ../
 
 

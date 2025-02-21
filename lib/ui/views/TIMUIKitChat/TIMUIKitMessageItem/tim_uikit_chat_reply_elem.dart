@@ -3,27 +3,28 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_model_tools.dart';
-import 'package:tencent_cloud_customer/ui/utils/common_utils.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_model_tools.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
 import 'package:extended_text/extended_text.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_show_panel.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/main.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_face_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/tim_uikit_cloud_custom_data.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/link_preview_entry.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/models/link_preview_content.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/widgets/link_preview.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_show_panel.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/main.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_face_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_cloud_custom_data.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/link_preview_entry.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/models/link_preview_content.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/widgets/link_preview.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 import 'package:tim_ui_kit_sticker_plugin/utils/tim_custom_face_data.dart';
 
 class TIMUIKitReplyElem extends StatefulWidget {
@@ -136,9 +137,9 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
       if (TencentDeskUtils.checkString(repliedMessageAbstract.summary) != null) {
         return _defaultRawMessageText(repliedMessageAbstract.summary!, theme);
       }
-      return _defaultRawMessageText(repliedMessage?.messageAbstract ?? TIM_t("[未知消息]"), theme);
+      return _defaultRawMessageText(repliedMessage?.messageAbstract ?? TDesk_t("[未知消息]"), theme);
     } catch (e) {
-      return _defaultRawMessageText(repliedMessage?.messageAbstract ?? TIM_t("[未知消息]"), theme);
+      return _defaultRawMessageText(repliedMessage?.messageAbstract ?? TDesk_t("[未知消息]"), theme);
     }
   }
 
@@ -173,7 +174,7 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
     final isAdminRevoke = revokeStatus.$2;
 
     if (isRevokedMsg) {
-      return _defaultRawMessageText(isAdminRevoke ? TIM_t("[消息被管理员撤回]") : TIM_t("[消息被撤回]"), theme);
+      return _defaultRawMessageText(isAdminRevoke ? TDesk_t("[消息被管理员撤回]") : TDesk_t("[消息被撤回]"), theme);
     }
 
     final messageType = message.elemType;
@@ -188,9 +189,9 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
     }
     switch (messageType) {
       case MessageElemType.V2TIM_ELEM_TYPE_CUSTOM:
-        return _defaultRawMessageText(TIM_t("[自定义]"), theme);
+        return _defaultRawMessageText(TDesk_t("[自定义]"), theme);
       case MessageElemType.V2TIM_ELEM_TYPE_SOUND:
-        return _defaultRawMessageText(TIM_t("[语音消息]"), theme);
+        return _defaultRawMessageText(TDesk_t("[语音消息]"), theme);
       case MessageElemType.V2TIM_ELEM_TYPE_TEXT:
         return _defaultRawMessageText(message.textElem?.text ?? "", theme);
       case MessageElemType.V2TIM_ELEM_TYPE_FACE:
@@ -216,7 +217,7 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
       case MessageElemType.V2TIM_ELEM_TYPE_VIDEO:
         return TIMUIKitVideoElem(message, chatModel: widget.chatModel, isFrom: "reply", isShowMessageReaction: false);
       case MessageElemType.V2TIM_ELEM_TYPE_LOCATION:
-        return _defaultRawMessageText(TIM_t("[位置]"), theme);
+        return _defaultRawMessageText(TDesk_t("[位置]"), theme);
       case MessageElemType.V2TIM_ELEM_TYPE_MERGER:
         return TIMUIKitMergerElem(
             model: widget.chatModel,
@@ -273,7 +274,7 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
     if (rawMessage?.status != MessageStatus.V2TIM_MSG_STATUS_LOCAL_REVOKED && rawMessage?.timestamp != null) {
       widget.scrollToIndex(rawMessage);
     } else {
-      onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("无法定位到原消息")));
+      onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("无法定位到原消息")));
     }
   }
 

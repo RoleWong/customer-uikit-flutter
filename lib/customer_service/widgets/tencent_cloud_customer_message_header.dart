@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/widgets/avatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
 
 class TencentCloudCustomerMessageHeader extends StatelessWidget {
   final V2TimConversation? conversation;
@@ -12,7 +12,7 @@ class TencentCloudCustomerMessageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final option1 = TencentDeskUtils.checkString(conversation?.showName) ??
         TencentDeskUtils.checkString(conversation?.userID) ??
-        TIM_t("智能客服");
+        TDesk_t("智能客服");
     return Container(
       padding: EdgeInsets.only(
         top: MediaQuery.paddingOf(context).top + 8,
@@ -38,7 +38,7 @@ class TencentCloudCustomerMessageHeader extends StatelessWidget {
                 ),
                 child: Image.asset(
                   "images/arrow_back.png",
-                  package: "tencent_cloud_customer",
+                  package: "tencentcloud_ai_desk_customer",
                   width: 24,
                   height: 24,
                 ),
@@ -57,11 +57,11 @@ class TencentCloudCustomerMessageHeader extends StatelessWidget {
                 faceUrl: conversation!.faceUrl!,
                 showName: TencentDeskUtils.checkString(conversation?.showName) ??
                     TencentDeskUtils.checkString(conversation?.userID) ??
-                    TIM_t("智能客服"),
+                    TDesk_t("智能客服"),
               ),
             ),
           Text(
-            TencentDeskUtils.checkString(headerLabel) ?? TIM_t_para("Hi，我是{{option1}}", "Hi，我是$option1")(option1: option1),
+            TencentDeskUtils.checkString(headerLabel) ?? TDesk_t_para("Hi，我是{{option1}}", "Hi，我是$option1")(option1: option1),
             style: const TextStyle(
               fontSize: 16,
               color: Colors.black87,

@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/tim_uikit_cloud_custom_data.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_cloud_custom_data.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/core_services_implements.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 
 class TCustomerChatModelTools {
   final TCustomerChatGlobalModel globalModel = serviceLocator<TCustomerChatGlobalModel>();
@@ -41,34 +42,34 @@ class TCustomerChatModelTools {
     String messageSummary = "";
     switch (message.elemType) {
       case MessageElemType.V2TIM_ELEM_TYPE_CUSTOM:
-        messageSummary = TIM_t("自定义消息");
+        messageSummary = TDesk_t("自定义消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_FACE:
-        messageSummary = TIM_t("表情消息");
+        messageSummary = TDesk_t("表情消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_FILE:
-        messageSummary = TIM_t("文件消息");
+        messageSummary = TDesk_t("文件消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_GROUP_TIPS:
-        messageSummary = TIM_t("群提示消息");
+        messageSummary = TDesk_t("群提示消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_IMAGE:
-        messageSummary = TIM_t("图片消息");
+        messageSummary = TDesk_t("图片消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_LOCATION:
-        messageSummary = TIM_t("位置消息");
+        messageSummary = TDesk_t("位置消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_MERGER:
-        messageSummary = TIM_t("合并转发消息");
+        messageSummary = TDesk_t("合并转发消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_SOUND:
-        messageSummary = TIM_t("语音消息");
+        messageSummary = TDesk_t("语音消息");
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_TEXT:
         messageSummary = message.textElem!.text!;
         break;
       case MessageElemType.V2TIM_ELEM_TYPE_VIDEO:
-        messageSummary = TIM_t("视频消息");
+        messageSummary = TDesk_t("视频消息");
         break;
     }
 
@@ -147,7 +148,7 @@ class TCustomerChatModelTools {
   String getMessageAbstract(V2TimMessage message,
       String? Function(V2TimMessage message)? abstractMessageBuilder) {
     final messageAbstract = RepliedMessageAbstract(
-        summary: TIM_t(getMessageSummary(message, abstractMessageBuilder)),
+        summary: TDesk_t(getMessageSummary(message, abstractMessageBuilder)),
         elemType: message.elemType,
         msgID: message.msgID,
         timestamp: message.timestamp,

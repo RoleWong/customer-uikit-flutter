@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/data_services/group/group_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
-import 'package:tencent_cloud_customer/ui/widgets/group_member_list.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/group_member_list.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class SelectCallInviter extends StatefulWidget {
   final String? groupID;
@@ -143,7 +143,7 @@ class _SelectCallInviterState extends TIMUIKitState<SelectCallInviter> {
               Navigator.pop(context);
             },
             child: Text(
-              TIM_t("取消"),
+              TDesk_t("取消"),
               style: TextStyle(
                 color: theme.appbarTextColor,
                 fontSize: 14,
@@ -158,7 +158,7 @@ class _SelectCallInviterState extends TIMUIKitState<SelectCallInviter> {
                 }
               },
               child: Text(
-                TIM_t("完成"),
+                TDesk_t("完成"),
                 style: TextStyle(
                   color: theme.appbarTextColor,
                   fontSize: 14,
@@ -169,7 +169,7 @@ class _SelectCallInviterState extends TIMUIKitState<SelectCallInviter> {
           centerTitle: true,
           leadingWidth: 80,
           title: Text(
-            TIM_t("发起呼叫"),
+            TDesk_t("发起呼叫"),
             style: TextStyle(
               color: theme.appbarTextColor,
               fontSize: 17,

@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 
-import 'package:tencent_cloud_customer/ui/widgets/forward_message_screen.dart';
-import 'package:tencent_cloud_customer/ui/widgets/wide_popup.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/forward_message_screen.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class MultiSelectPanel extends TIMUIKitStatelessWidget {
   final int forwardMsgNumLimit = 30;
@@ -28,7 +29,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
     if (model.getSelectedMessageList().isEmpty) {
       onTIMCallback(TIMCallback(
           type: TIMCallbackType.INFO,
-          infoRecommendText: TIM_t("请选择要操作的消息！")));
+          infoRecommendText: TDesk_t("请选择要操作的消息！")));
       return;
     }
 
@@ -37,7 +38,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
       if (v2TimMessage.status == MessageStatus.V2TIM_MSG_STATUS_SEND_FAIL) {
         onTIMCallback(TIMCallback(
             type: TIMCallbackType.INFO,
-            infoRecommendText: TIM_t("发送失败消息不支持转发！")));
+            infoRecommendText: TDesk_t("发送失败消息不支持转发！")));
         return;
       }
 
@@ -45,7 +46,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
       if (model.isVoteMessage(v2TimMessage)) {
         onTIMCallback(TIMCallback(
           type: TIMCallbackType.INFO,
-          infoRecommendText: TIM_t("投票消息不支持转发！")));
+          infoRecommendText: TDesk_t("投票消息不支持转发！")));
         return;
       }
     }
@@ -72,16 +73,16 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Text(TIM_t("转发消息过多，暂不支持逐条转发")),
+          title: Text(TDesk_t("转发消息过多，暂不支持逐条转发")),
           actions: [
             CupertinoDialogAction(
-              child: Text(TIM_t("确定")),
+              child: Text(TDesk_t("确定")),
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
             ),
             CupertinoDialogAction(
-              child: Text(TIM_t("取消")),
+              child: Text(TDesk_t("取消")),
               isDestructiveAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
@@ -99,8 +100,8 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
         operationKey: TUIKitWideModalOperationKey.forward,
         context: context,
         isDarkBackground: false,
-        title: TIM_t("转发"),
-        submitWidget: Text(TIM_t("发送")),
+        title: TDesk_t("转发"),
+        submitWidget: Text(TDesk_t("发送")),
         width: MediaQuery.of(context).size.width * 0.5,
         height: MediaQuery.of(context).size.height * 0.8,
         onSubmit: (){
@@ -151,14 +152,14 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                   children: [
                     IconButton(
                       icon: Image.asset('images/forward.png',
-                          package: 'tencent_cloud_customer',
+                          package: 'tencentcloud_ai_desk_customer',
                           color: theme.selectPanelTextIconColor),
                       iconSize: 30,
                       onPressed: () {
                         _handleForwardMessageWide(context, false, model);
                       },
                     ),
-                    Text(TIM_t("逐条转发"),
+                    Text(TDesk_t("逐条转发"),
                         style: TextStyle(
                             color: hexToColor("646a73"), fontSize: 12))
                   ],
@@ -167,7 +168,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                   children: [
                     IconButton(
                       icon: Image.asset('images/merge_forward.png',
-                          package: 'tencent_cloud_customer',
+                          package: 'tencentcloud_ai_desk_customer',
                           color: theme.selectPanelTextIconColor),
                       iconSize: 30,
                       onPressed: () {
@@ -175,7 +176,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                       },
                     ),
                     Text(
-                      TIM_t("合并转发"),
+                      TDesk_t("合并转发"),
                       style:
                           TextStyle(color: theme.selectPanelTextIconColor, fontSize: 12),
                     )
@@ -185,14 +186,14 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                   children: [
                     IconButton(
                       icon: Image.asset('images/delete.png',
-                          package: 'tencent_cloud_customer',
+                          package: 'tencentcloud_ai_desk_customer',
                           color: theme.selectPanelTextIconColor),
                       iconSize: 30,
                       onPressed: () {
                         TUIKitWidePopup.showSecondaryConfirmDialog(
                             operationKey: TUIKitWideModalOperationKey.confirmDeleteMessages,
                             context: context,
-                            text: TIM_t("确定删除已选消息"),
+                            text: TDesk_t("确定删除已选消息"),
                             theme: theme,
                             onCancel: () {},
                             onConfirm: () async {
@@ -201,7 +202,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                             });
                       },
                     ),
-                    Text(TIM_t("删除"),
+                    Text(TDesk_t("删除"),
                         style: TextStyle(
                             color: theme.selectPanelTextIconColor, fontSize: 12))
                   ],
@@ -233,13 +234,13 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
               children: [
                 IconButton(
                   icon: Image.asset('images/forward.png',
-                      package: 'tencent_cloud_customer', color: theme.selectPanelTextIconColor),
+                      package: 'tencentcloud_ai_desk_customer', color: theme.selectPanelTextIconColor),
                   iconSize: 40,
                   onPressed: () {
                     _handleForwardMessage(context, false, model);
                   },
                 ),
-                Text(TIM_t("逐条转发"),
+                Text(TDesk_t("逐条转发"),
                     style: TextStyle(color: theme.selectPanelTextIconColor, fontSize: 12))
               ],
             ),
@@ -247,14 +248,14 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
               children: [
                 IconButton(
                   icon: Image.asset('images/merge_forward.png',
-                      package: 'tencent_cloud_customer', color: theme.selectPanelTextIconColor),
+                      package: 'tencentcloud_ai_desk_customer', color: theme.selectPanelTextIconColor),
                   iconSize: 40,
                   onPressed: () {
                     _handleForwardMessage(context, true, model);
                   },
                 ),
                 Text(
-                  TIM_t("合并转发"),
+                  TDesk_t("合并转发"),
                   style: TextStyle(color: theme.selectPanelTextIconColor, fontSize: 12),
                 )
               ],
@@ -263,14 +264,14 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
               children: [
                 IconButton(
                   icon: Image.asset('images/delete.png',
-                      package: 'tencent_cloud_customer', color: theme.selectPanelTextIconColor),
+                      package: 'tencentcloud_ai_desk_customer', color: theme.selectPanelTextIconColor),
                   iconSize: 40,
                   onPressed: () {
                     showCupertinoModalPopup<String>(
                       context: context,
                       builder: (BuildContext context) {
                         return CupertinoActionSheet(
-                          title: Text(TIM_t("确定删除已选消息")),
+                          title: Text(TDesk_t("确定删除已选消息")),
                           cancelButton: CupertinoActionSheetAction(
                             onPressed: () {
                               Navigator.pop(
@@ -278,7 +279,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                                 "cancel",
                               );
                             },
-                            child: Text(TIM_t("取消")),
+                            child: Text(TDesk_t("取消")),
                             isDefaultAction: false,
                           ),
                           actions: [
@@ -292,7 +293,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                                 );
                               },
                               child: Text(
-                                TIM_t("删除"),
+                                TDesk_t("删除"),
                                 style: TextStyle(color: theme.cautionColor),
                               ),
                               isDefaultAction: false,
@@ -303,7 +304,7 @@ class MultiSelectPanel extends TIMUIKitStatelessWidget {
                     );
                   },
                 ),
-                Text(TIM_t("删除"),
+                Text(TDesk_t("删除"),
                     style: TextStyle(color: theme.selectPanelTextIconColor, fontSize: 12))
               ],
             )

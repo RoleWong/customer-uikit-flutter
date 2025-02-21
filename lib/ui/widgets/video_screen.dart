@@ -9,14 +9,14 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/permission.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/widgets/video_custom_control.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/permission.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/video_custom_control.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:video_player/video_player.dart';
 
@@ -120,35 +120,35 @@ class _VideoScreenState extends TIMUIKitState<VideoScreen> {
           var result = await ImageGallerySaverPlus.saveFile(savePath);
           if (PlatformUtils().isIOS) {
             if (result['isSuccess']) {
-              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存成功"), infoCode: 6660402));
+              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存成功"), infoCode: 6660402));
             } else {
-              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存失败"), infoCode: 6660403));
+              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存失败"), infoCode: 6660403));
             }
           } else {
             if (result != null) {
-              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存成功"), infoCode: 6660402));
+              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存成功"), infoCode: 6660402));
             } else {
-              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存失败"), infoCode: 6660403));
+              onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存失败"), infoCode: 6660403));
             }
           }
         }
       } else {
-        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("the message is downloading"), infoCode: -1));
+        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("the message is downloading"), infoCode: -1));
       }
       return;
     }
     var result = await ImageGallerySaverPlus.saveFile(savePath);
     if (PlatformUtils().isIOS) {
       if (result['isSuccess']) {
-        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存成功"), infoCode: 6660402));
+        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存成功"), infoCode: 6660402));
       } else {
-        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存失败"), infoCode: 6660403));
+        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存失败"), infoCode: 6660403));
       }
     } else {
       if (result != null) {
-        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存成功"), infoCode: 6660402));
+        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存成功"), infoCode: 6660402));
       } else {
-        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频保存失败"), infoCode: 6660403));
+        onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频保存失败"), infoCode: 6660403));
       }
     }
     return;

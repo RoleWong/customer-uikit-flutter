@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
 
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
 
 class TIMUIKitTongueItem extends TIMUIKitStatelessWidget {
   /// the callback after clicking
@@ -35,17 +36,17 @@ class TIMUIKitTongueItem extends TIMUIKitStatelessWidget {
     final option2 = atNum.toString();
     // final option3 = previousCount.toString();
     final String atMeString = option2 != ""
-        ? TIM_t_para("有{{option2}}条@我消息", "有$option2条@我消息")(option2: option2)
-        : TIM_t("有人@我");
+        ? TDesk_t_para("有{{option2}}条@我消息", "有$option2条@我消息")(option2: option2)
+        : TDesk_t("有人@我");
 
     return {
       // MessageListTongueType.showPrevious:
-      //     TIM_t_para("{{option3}}条未读消息", "$option3条未读消息")(option3: option3),
-      MessageListTongueType.toLatest: TIM_t("回到最新位置"),
+      //     TDesk_t_para("{{option3}}条未读消息", "$option3条未读消息")(option3: option3),
+      MessageListTongueType.toLatest: TDesk_t("回到最新位置"),
       MessageListTongueType.showUnread:
-          TIM_t_para("{{option1}}条新消息", "$option1条新消息")(option1: option1),
+          TDesk_t_para("{{option1}}条新消息", "$option1条新消息")(option1: option1),
       MessageListTongueType.atMe: atMeString,
-      MessageListTongueType.atAll: TIM_t("@所有人"),
+      MessageListTongueType.atAll: TDesk_t("@所有人"),
     };
   }
 

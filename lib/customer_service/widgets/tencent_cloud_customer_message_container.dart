@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-customer-service.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/tencent_cloud_chat_customer_service_plugin.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/life_cycle/chat_life_cycle.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_conversation_view_model.dart';
-import 'package:tencent_cloud_customer/customer_service/model/tencent_cloud_customer_qucik_message.dart';
-import 'package:tencent_cloud_customer/customer_service/widgets/tencent_cloud_customer_message_header.dart';
-import 'package:tencent_cloud_customer/customer_service/widgets/tencent_cloud_customer_message_quick_message.dart';
-import 'package:tencent_cloud_customer/customer_service/widgets/tencent_cloud_customer_message_tongue_item.dart';
-import 'package:tencent_cloud_customer/data_services/conversation/conversation_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/controller/tim_uikit_chat_controller.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/data/tencent_cloud_customer_data.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-customer-service.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/tencent_cloud_chat_customer_service_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/life_cycle/chat_life_cycle.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_conversation_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/model/tencent_cloud_customer_qucik_message.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/widgets/tencent_cloud_customer_message_header.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/widgets/tencent_cloud_customer_message_quick_message.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/widgets/tencent_cloud_customer_message_tongue_item.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/conversation/conversation_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/controller/tim_uikit_chat_controller.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
+import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
 
 class TencentCloudCustomerMessageContainer extends StatefulWidget {
   final String customerServiceUserID;
@@ -34,6 +37,8 @@ class TencentCloudCustomerMessageContainer extends StatefulWidget {
 class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCloudCustomerMessageContainer> {
   final TCustomerConversationViewModel _conversationViewModel = serviceLocator<TCustomerConversationViewModel>();
   final TCustomerConversationService _conversationService = serviceLocator<TCustomerConversationService>();
+  final TencentCloudCustomerData _tencentCloudCustomerData = serviceLocator<TencentCloudCustomerData>();
+
   final TIMUIKitChatController _chatController = TIMUIKitChatController();
 
   V2TimConversation? _customerServiceConversation;
@@ -56,9 +61,13 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
   }
 
   _sendStartMessage(int times) {
+    final TDeskAppLocale language = widget.config.language ??
+        TDesk_getCurrentDeviceLocaleInLocale(_tencentCloudCustomerData.tDeskDataCenter == TDeskDataCenter.mainlandChina
+            ? TDeskAppLocale.zhHans
+            : TDeskAppLocale.en);
     Future.delayed(const Duration(milliseconds: 50), () {
       try {
-        TencentCloudChatCustomerServicePlugin.sendCustomerServiceStartMessage(_chatController.sendMessage);
+        TencentCloudChatCustomerServicePlugin.sendCustomerServiceStartMessage(_chatController.sendMessage, languageLocaleToDeskString[language] ?? "en");
       } catch (e) {
         if (times < 4) {
           Future.delayed(const Duration(milliseconds: 200), () {
@@ -74,16 +83,16 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
     if (config.showTransferToHumanButton ?? true) {
       _quickMessages.add(
         TencentCloudCustomerQuickMessage(
-          label: TIM_t("人工服务"),
+          label: TDesk_t("人工服务"),
           icon: SvgPicture.asset(
             "lib/customer_service/assets/human_service.svg",
-            package: 'tencent_cloud_customer',
+            package: 'tencentcloud_ai_desk_customer',
             height: 13,
             width: 13,
           ),
           onTap: () async {
             final textMessage =
-                await TencentImSDKPlugin.v2TIMManager.getMessageManager().createTextMessage(text: TIM_t("人工服务"));
+                await TencentImSDKPlugin.v2TIMManager.getMessageManager().createTextMessage(text: TDesk_t("人工服务"));
             if (textMessage.data?.messageInfo != null) {
               _chatController.sendMessage(messageInfo: textMessage.data!.messageInfo!);
             }
@@ -116,7 +125,7 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
         showName: TencentDeskUtils.checkString(userProfile?.nickName) ??
             TencentDeskUtils.checkString(userProfile?.userID) ??
             TencentDeskUtils.checkString(widget.customerServiceUserID) ??
-            TIM_t("智能客服"),
+            TDesk_t("智能客服"),
         type: 1,
       );
     }
@@ -177,7 +186,7 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
                     if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
                       if (TencentCloudChatCustomerServicePlugin.isTypingCustomerServiceMessage(message)) {
                         setState(() {
-                          _customerServiceTyping = TIM_t("对方正在输入中...");
+                          _customerServiceTyping = TDesk_t("对方正在输入中...");
                         });
                       }
                     } else {

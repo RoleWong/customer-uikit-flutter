@@ -1,18 +1,18 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:intl/intl.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 class TimeAgo {
   List<String> dayMap() {
     return [
-      TIM_t("昨天"),
-      TIM_t("前天"),
+      TDesk_t("昨天"),
+      TDesk_t("前天"),
     ];
   }
 
   List<String> weekdayMap() {
-    return ['', TIM_t("星期一"), TIM_t("星期二"), TIM_t("星期三"), TIM_t("星期四"), TIM_t("星期五"), TIM_t("星期六"), TIM_t("星期天")];
+    return ['', TDesk_t("星期一"), TDesk_t("星期二"), TDesk_t("星期三"), TDesk_t("星期四"), TDesk_t("星期五"), TDesk_t("星期六"), TDesk_t("星期天")];
   }
 
   String getYearMonthDate(DateTime dateTime) {
@@ -69,13 +69,13 @@ class TimeAgo {
       if (diffMinutes > 1) {
         if (diffMinutes < 60) {
           final String option2 = diffMinutes.toString();
-          res = TIM_t_para("{{option2}} 分钟前", "$option2 分钟前")(option2: option2);
+          res = TDesk_t_para("{{option2}} 分钟前", "$option2 分钟前")(option2: option2);
         } else {
           res = "${date.hour}:${date.minute < 10 ? "0" + date.minute.toString() : date.minute}";
           // res = "$prefix $timeStr";
         }
       } else {
-        res = TIM_t("现在");
+        res = TDesk_t("现在");
       }
     }
 
@@ -86,7 +86,7 @@ class TimeAgo {
     var nowTime = DateTime.now();
     nowTime = DateTime(nowTime.year, nowTime.month, nowTime.day);
     var ftime = DateTime.fromMillisecondsSinceEpoch(timeStamp * 1000);
-    // var preFix = ftime.hour >= 12 ? TIM_t("下午") : TIM_t("上午");
+    // var preFix = ftime.hour >= 12 ? TDesk_t("下午") : TDesk_t("上午");
     final timeStr = DateFormat('HH:mm').format(ftime); // Use 'HH:mm' for 24-hour format
     // 一年外 年月日 + 时间 (24小时制)
     if (nowTime.year != ftime.year) {
@@ -103,7 +103,7 @@ class TimeAgo {
     // 昨日 昨天 + 时间 (24小时制)
     if (nowTime.day != ftime.day) {
       String option2 = timeStr;
-      return TIM_t_para("昨天 {{option2}}", "昨天 $option2")(option2: option2);
+      return TDesk_t_para("昨天 {{option2}}", "昨天 $option2")(option2: option2);
     }
     // 同年月日 时间 (24小时制)
     return timeStr;

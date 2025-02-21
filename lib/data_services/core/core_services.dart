@@ -1,34 +1,48 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_config.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_config.dart';
 
 
 enum AppStatus { foreground, background }
 
-enum LanguageEnum {
-  /// Chinese, Traditional
-  zhHant,
+// enum TDeskLanguageEnum {
+//   /// Chinese, Traditional
+//   zhHant,
+//
+//   /// Chinese, Simplified
+//   zhHans,
+//
+//   /// English
+//   en,
+//
+//   /// Korean
+//   // ko,
+//
+//   /// Japanese
+//   ja,
+//
+//   /// Indonesian
+//   id,
+// }
 
-  /// Chinese, Simplified
-  zhHans,
+const languageLocaleToString = {
+  TDeskAppLocale.zhHant: "zh-Hant",
+  TDeskAppLocale.zhHans: "zh-Hans",
+  TDeskAppLocale.en: "en",
+  TDeskAppLocale.ja: "ja",
+  // LanguageEnum.ko: "ko",
+  TDeskAppLocale.id: "id",
+};
 
-  /// English
-  en,
-
-  /// Korean
-  ko,
-
-  /// Japanese
-  ja,
-}
-
-const languageEnumToString = {
-  LanguageEnum.zhHant: "zh-Hant",
-  LanguageEnum.zhHans: "zh-Hans",
-  LanguageEnum.en: "en",
-  LanguageEnum.ja: "ja",
-  LanguageEnum.ko: "ko",
+const languageLocaleToDeskString = {
+  TDeskAppLocale.zhHant: "zh-TW",
+  TDeskAppLocale.zhHans: "zh",
+  TDeskAppLocale.en: "en",
+  TDeskAppLocale.ja: "ja",
+  // LanguageEnum.ko: "ko",
+  TDeskAppLocale.id: "id",
 };
 
 abstract class CoreServices {
@@ -42,7 +56,7 @@ abstract class CoreServices {
     TIMUIKitConfig? config,
 
     /// only support "en" and "zh" temporally
-    LanguageEnum? language,
+    TDeskAppLocale? language,
   });
 
   Future<void> setDataFromNative({
@@ -53,7 +67,7 @@ abstract class CoreServices {
     TIMUIKitConfig? config,
 
     /// only support "en" and "zh" temporally
-    LanguageEnum? language,
+    TDeskAppLocale? language,
   });
 
   Future login({

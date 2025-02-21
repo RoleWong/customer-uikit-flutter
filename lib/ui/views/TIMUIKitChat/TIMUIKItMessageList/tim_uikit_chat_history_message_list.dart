@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 // ignore: unused_import
-import 'package:tencent_cloud_customer/ui/utils/optimize_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_config.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/keepalive_wrapper.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/optimize_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_config.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/keepalive_wrapper.dart';
 
 import 'TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
 import 'TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue_container.dart';
@@ -163,7 +163,7 @@ class _TIMUIKitHistoryMessageListState extends TIMUIKitState<TIMUIKitHistoryMess
     findingMsg = null;
     findingSeq = "";
     loadingPlace = LoadingPlace.none;
-    onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("无法定位到原消息"), infoCode: 6660401));
+    onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("无法定位到原消息"), infoCode: 6660401));
   }
 
   _onScrollToIndex(V2TimMessage targetMsg) async {

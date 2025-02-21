@@ -5,12 +5,12 @@ import 'dart:io';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/widgets/drag_widget.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/drag_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class TUIKitWidePopup {
@@ -188,7 +188,7 @@ class TUIKitWidePopup {
                             onCancel();
                           },
                           child: Text(
-                            TIM_t("取消"),
+                            TDesk_t("取消"),
                             style: TextStyle(color: theme?.weakTextColor ?? Colors.black),
                           )),
                     ),
@@ -207,7 +207,7 @@ class TUIKitWidePopup {
                             onConfirm();
                           },
                           child: Text(
-                            TIM_t("确定"),
+                            TDesk_t("确定"),
                             style: TextStyle(color: theme?.primaryColor),
                           )),
                     ),
@@ -366,7 +366,7 @@ class TUIKitWidePopup {
                             ),
                             // Custom Text Widget with designer baseline
                             Text(
-                              TIM_t("在新窗口中打开"),
+                              TDesk_t("在新窗口中打开"),
                               style: TextStyle(
                                 fontSize: 13,
                                 color: Colors.grey.shade200,

@@ -3,13 +3,13 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/conversation/conversation_services.dart';
-import 'package:tencent_cloud_customer/data_services/message/message_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/conversation/conversation_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 
 List<T> removeDuplicates<T>(List<T> list, bool Function(T first, T second) isEqual) {
   List<T> output = [];

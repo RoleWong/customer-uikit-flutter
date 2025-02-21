@@ -3,23 +3,24 @@ import 'package:flutter/material.dart';
 
 // ignore: unused_import
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
 
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/time_ago.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/time_ago.dart';
 
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_face_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_file_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_image_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_sound_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_video_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_merger_message_elem.dart';
-import 'package:tencent_cloud_customer/ui/widgets/avatar.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_face_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_file_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_image_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_sound_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_video_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_merger_message_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class MessageReadReceipt extends StatefulWidget {
   final V2TimMessage messageItem;
@@ -94,7 +95,7 @@ class _MessageReadReceiptState extends TIMUIKitState<MessageReadReceipt> {
 
     switch (type) {
       case MessageElemType.V2TIM_ELEM_TYPE_CUSTOM:
-        return Text(TIM_t("[自定义]"));
+        return Text(TDesk_t("[自定义]"));
       case MessageElemType.V2TIM_ELEM_TYPE_SOUND:
         return TIMUIKitSoundElem(
             isShowMessageReaction: false,
@@ -146,7 +147,7 @@ class _MessageReadReceiptState extends TIMUIKitState<MessageReadReceipt> {
       case MessageElemType.V2TIM_ELEM_TYPE_VIDEO:
         return TIMUIKitVideoElem(message, chatModel: widget.model, isShowMessageReaction: false, isFrom: "merger");
       case MessageElemType.V2TIM_ELEM_TYPE_LOCATION:
-        return Text(TIM_t("[位置]"));
+        return Text(TDesk_t("[位置]"));
       case MessageElemType.V2TIM_ELEM_TYPE_MERGER:
         return TIMUIKitMergerElem(
             isShowMessageReaction: false,
@@ -157,7 +158,7 @@ class _MessageReadReceiptState extends TIMUIKitState<MessageReadReceipt> {
             isSelf: isFromSelf,
             messageID: message.msgID!);
       default:
-        return Text(TIM_t("未知消息"));
+        return Text(TDesk_t("未知消息"));
     }
   }
 
@@ -278,7 +279,7 @@ class _MessageReadReceiptState extends TIMUIKitState<MessageReadReceipt> {
                                     bottom: BorderSide(
                                         width: 2, color: currentIndex == 0 ? theme.primaryColor! : Colors.white))),
                             child: Text(
-                              TIM_t_para("{{option1}}人已读", "$option1人已读")(option1: option1),
+                              TDesk_t_para("{{option1}}人已读", "$option1人已读")(option1: option1),
                               style: TextStyle(
                                 color: currentIndex != 0 ? theme.weakTextColor : Colors.black,
                                 fontSize: isDesktopScreen ? 14 : 18,
@@ -304,7 +305,7 @@ class _MessageReadReceiptState extends TIMUIKitState<MessageReadReceipt> {
                                     bottom: BorderSide(
                                         width: 2, color: currentIndex == 1 ? theme.primaryColor! : Colors.white))),
                             child: Text(
-                              TIM_t_para("{{option2}}人未读", "$option2人未读")(option2: option2),
+                              TDesk_t_para("{{option2}}人未读", "$option2人未读")(option2: option2),
                               style: TextStyle(
                                 color: currentIndex != 1 ? theme.weakTextColor : Colors.black,
                                 fontSize: isDesktopScreen ? 14 : 18,
@@ -365,7 +366,7 @@ class _MessageReadReceiptState extends TIMUIKitState<MessageReadReceipt> {
           child: Scaffold(
               appBar: AppBar(
                   title: Text(
-                    TIM_t("消息详情"),
+                    TDesk_t("消息详情"),
                     style: TextStyle(color: theme.appbarTextColor, fontSize: 17),
                   ),
                   shadowColor: theme.weakDividerColor,

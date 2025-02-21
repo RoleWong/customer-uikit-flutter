@@ -1,6 +1,8 @@
+/// AI-powered customer service UIKit for Tencent Cloud Desk.
+
 import 'package:example/utils/generate_userSig.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 import 'config.dart';
 
@@ -90,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: _isLoggedIn ? null : () async {
                   final userId = _userIdController.text.trim();
                   if (userId.isNotEmpty) {
-                    final res = await TencentCloudCustomer.init(
+                    final res = await TencentCloudAIDeskCustomer.init(
                       sdkAppID: TencentCloudDeskCustomerDemoConfig.sdkAppID,
                       userID: userId,
                       userSig: GenerateDevUsersigForTest(
@@ -140,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ElevatedButton(
                 onPressed: _isLoggedIn
                     ? () {
-                  TencentCloudCustomer.navigate(
+                  TencentCloudAIDeskCustomer.navigate(
                     customerServiceID: TencentCloudDeskCustomerDemoConfig.customerServiceID,
                     context: context,
                   );

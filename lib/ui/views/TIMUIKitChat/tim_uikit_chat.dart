@@ -6,24 +6,24 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/life_cycle/chat_life_cycle.dart';
-import 'package:tencent_cloud_customer/business_logic/listener_model/tui_group_listener_model.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_conversation_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/constants/history_message_constant.dart';
-import 'package:tencent_cloud_customer/ui/controller/tim_uikit_chat_controller.dart';
-import 'package:tencent_cloud_customer/ui/utils/frame.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/at_member_panel.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/tim_uikit_multi_select_panel.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/tim_uikit_send_file.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/life_cycle/chat_life_cycle.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/listener_model/tui_group_listener_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_conversation_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/controller/tim_uikit_chat_controller.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/frame.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/at_member_panel.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_multi_select_panel.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_send_file.dart';
 
 import 'TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
 import 'TIMUIKItMessageList/tim_uikit_chat_history_message_list_config.dart';
@@ -34,10 +34,10 @@ class TencentCloudCustomerMessage extends StatefulWidget {
   int endTime = 0;
 
   /// The chat controller you tend to used.
-  /// You have to provide this before using it since tencent_cloud_customer 0.1.4.
+  /// You have to provide this before using it since tencentcloud_ai_desk_customer 0.1.4.
   final TIMUIKitChatController? controller;
 
-  /// [Update] It is suggested to provide the `V2TimConversation` once directly, since tencent_cloud_customer 1.5.0.
+  /// [Update] It is suggested to provide the `V2TimConversation` once directly, since tencentcloud_ai_desk_customer 1.5.0.
   /// `conversationID` / `conversationType` / `groupAtInfoList` / `conversationShowName` are not necessary to be provided, unless you want to cover these fields manually.
   final V2TimConversation conversation;
 
@@ -317,7 +317,7 @@ class _TUIChatState extends TIMUIKitState<TencentCloudCustomerMessage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              TIM_t_para("{{option1}} 条入群请求", "$option1 条入群请求")(option1: option1),
+              TDesk_t_para("{{option1}} 条入群请求", "$option1 条入群请求")(option1: option1),
               style: const TextStyle(
                 fontSize: 12,
               ),
@@ -325,7 +325,7 @@ class _TUIChatState extends TIMUIKitState<TencentCloudCustomerMessage> {
             Container(
               margin: const EdgeInsets.only(left: 12),
               child: Text(
-                TIM_t("去处理"),
+                TDesk_t("去处理"),
                 style: TextStyle(fontSize: 12, color: theme.primaryColor),
               ),
             )
@@ -462,7 +462,7 @@ class _TUIChatState extends TIMUIKitState<TencentCloudCustomerMessage> {
                       image: DecorationImage(
                         image: AssetImage(
                           'lib/customer_service/assets/customer_background.png',
-                          package: 'tencent_cloud_customer',
+                          package: 'tencentcloud_ai_desk_customer',
                         ),
                         fit: BoxFit.fill,
                       ),

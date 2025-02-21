@@ -1,8 +1,8 @@
-import 'package:tencent_cloud_customer/data_services/core/core_services_implements.dart';
-import 'package:tencent_cloud_customer/data_services/group/group_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/utils/error_message_converter.dart';
-import 'package:tencent_cloud_customer/ui/utils/optimize_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/error_message_converter.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/optimize_utils.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class TCustomerGroupServicesImpl extends TCustomerGroupServices {

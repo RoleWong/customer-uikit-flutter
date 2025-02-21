@@ -3,17 +3,17 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/message/message_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/extended_wrap/extended_wrap.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/extended_wrap/extended_wrap.dart';
 
 class TIMUIKitMessageReactionShowItem extends TIMUIKitStatelessWidget {
   /// the unicode of the emoji
@@ -130,7 +130,7 @@ class TIMUIKitMessageReactionShowItem extends TIMUIKitStatelessWidget {
                     onShowDetail(sticker);
                   },
                   child: Text(
-                    TIM_t_para("...共{{option1}}人", "...共$option1人")(
+                    TDesk_t_para("...共{{option1}}人", "...共$option1人")(
                         option1: option1),
                     style: TextStyle(fontSize: 12, color: hexToColor("616669")),
                   ),

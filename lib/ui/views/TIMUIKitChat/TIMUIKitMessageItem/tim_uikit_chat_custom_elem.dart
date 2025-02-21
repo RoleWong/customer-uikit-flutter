@@ -2,9 +2,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
 
 
 class TIMUIKitCustomElem extends TIMUIKitStatelessWidget {
@@ -55,7 +56,7 @@ class TIMUIKitCustomElem extends TIMUIKitStatelessWidget {
         constraints: const BoxConstraints(maxWidth: 240),
         child: Column(
           children: [
-            Text(TIM_t("自定义消息"))
+            Text(TDesk_t("自定义消息"))
           ],
         ));
   }

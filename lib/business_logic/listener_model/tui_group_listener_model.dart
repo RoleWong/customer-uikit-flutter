@@ -3,10 +3,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/group/group_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 enum UpdateType { groupInfo, memberList, joinApplicationList, groupDismissed, kickedFromGroup }
 
@@ -25,8 +25,8 @@ class TCustomerGroupListenerModel extends ChangeNotifier {
   V2TimGroupListener? _groupListener;
   NeedUpdate? _needUpdate;
   final TCustomerChatGlobalModel chatViewModel = serviceLocator<TCustomerChatGlobalModel>();
-  late TCustomerCoreServicesImpl coreInstance = TencentCloudCustomer.getIMUIKitInstance();
-  late V2TIMManager sdkInstance = TencentCloudCustomer.getIMSDKInstance();
+  late TCustomerCoreServicesImpl coreInstance = TencentCloudAIDeskCustomer.getIMUIKitInstance();
+  late V2TIMManager sdkInstance = TencentCloudAIDeskCustomer.getIMSDKInstance();
 
   NeedUpdate? get needUpdate => _needUpdate;
 
@@ -147,7 +147,7 @@ class TCustomerGroupListenerModel extends ChangeNotifier {
 
   Future<String> _getGroupName(String groupID) async {
     final groupInfoList = await sdkInstance.getGroupManager().getGroupsInfo(groupIDList: [groupID]);
-    String groupName = TIM_t("群组");
+    String groupName = TDesk_t("群组");
     if (groupInfoList.data != null) {
       groupName = groupInfoList.data!.first!.groupInfo!.groupName!;
     }

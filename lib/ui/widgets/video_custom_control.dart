@@ -8,10 +8,10 @@ import 'package:chewie/src/helpers/utils.dart';
 import 'package:chewie/src/material/material_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:video_player/video_player.dart';
 
 import 'center_play_button.dart';
@@ -141,7 +141,7 @@ class _VideoCustomControlsState extends TIMUIKitState<VideoCustomControls> with 
               child: IconButton(
                 icon: Image.asset(
                   'images/close.png',
-                  package: 'tencent_cloud_customer',
+                  package: 'tencentcloud_ai_desk_customer',
                 ),
                 iconSize: 30,
                 onPressed: () {
@@ -159,7 +159,7 @@ class _VideoCustomControlsState extends TIMUIKitState<VideoCustomControls> with 
               child: IconButton(
                 icon: Image.asset(
                   'images/download.png',
-                  package: 'tencent_cloud_customer',
+                  package: 'tencentcloud_ai_desk_customer',
                 ),
                 iconSize: 30,
                 onPressed: () async {

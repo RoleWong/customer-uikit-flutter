@@ -4,7 +4,7 @@ import 'package:flutter_plugin_record_plus/const/play_state.dart';
 import 'package:flutter_plugin_record_plus/const/response.dart';
 import 'package:flutter_plugin_record_plus/index.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:tencent_cloud_customer/import_proxy/import_proxy.dart';
+import 'package:tencentcloud_ai_desk_customer/import_proxy/import_proxy.dart';
 
 typedef PlayStateListener = void Function(PlayState playState);
 typedef SoundInterruptListener = void Function();

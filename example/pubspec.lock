@@ -1370,13 +1370,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.3.6498+1"
-  tencent_cloud_customer:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "1.0.0"
   tencent_cloud_uikit_core:
     dependency: transitive
     description:
@@ -1385,6 +1378,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.7.3"
+  tencent_desk_i18n_tool:
+    dependency: transitive
+    description:
+      name: tencent_desk_i18n_tool
+      sha256: "7b8b37c466e692cd5e6095130a34d4047842201b3bcc542131bfeacf9cc2cbc5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
   tencent_im_base:
     dependency: transitive
     description:
@@ -1409,6 +1410,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.1"
+  tencentcloud_ai_desk_customer:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "1.1.0"
   term_glyph:
     dependency: transitive
     description:

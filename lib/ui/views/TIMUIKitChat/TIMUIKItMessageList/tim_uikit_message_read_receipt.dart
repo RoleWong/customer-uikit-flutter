@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/message_read_receipt.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/ui/widgets/wide_popup.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/message_read_receipt.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
 
 class TIMUIKitMessageReadReceipt extends TIMUIKitStatelessWidget {
   final V2TimMessage messageItem;
@@ -35,7 +35,7 @@ class TIMUIKitMessageReadReceipt extends TIMUIKitStatelessWidget {
             padding: const EdgeInsets.only(bottom: 3),
             margin: const EdgeInsets.only(right: 6),
             child: Text(
-              isPeerRead ? TIM_t("已读") : TIM_t("未读"),
+              isPeerRead ? TDesk_t("已读") : TDesk_t("未读"),
               style: TextStyle(color: theme.chatMessageItemUnreadStatusTextColor, fontSize: 12),
             ),
           );
@@ -50,7 +50,7 @@ class TIMUIKitMessageReadReceipt extends TIMUIKitStatelessWidget {
                       context: context,
                       width: MediaQuery.of(context).size.width * 0.5,
                       height: MediaQuery.of(context).size.height * 0.8,
-                      title: TIM_t("消息详情"),
+                      title: TDesk_t("消息详情"),
                       child: (onClose) => MessageReadReceipt(
                           model: model,
                           onTapAvatar: onTapAvatar,

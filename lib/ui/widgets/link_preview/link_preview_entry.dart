@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/common/utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/widgets/link_preview.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/widgets/link_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/widgets/link_preview.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/widgets/link_text.dart';
 import 'package:tim_ui_kit_sticker_plugin/utils/tim_custom_face_data.dart';
 
 import 'models/link_preview_content.dart';

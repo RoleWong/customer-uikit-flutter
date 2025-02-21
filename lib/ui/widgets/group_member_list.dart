@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable_plus_plus/flutter_slidable_plus_plus.dart';
 import 'package:lpinyin/lpinyin.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/ui/utils/optimize_utils.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/avatar.dart';
-import 'package:tencent_cloud_customer/ui/widgets/az_list_view.dart';
-import 'package:tencent_cloud_customer/ui/widgets/radio_button.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/optimize_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/az_list_view.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/radio_button.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class GroupProfileMemberList extends StatefulWidget {
@@ -94,7 +95,7 @@ class _GroupProfileMemberListState extends TIMUIKitState<GroupProfileMemberList>
     if (widget.canAtAll) {
       final canAtGroupType = ["Work", "Public", "Meeting"];
       if (canAtGroupType.contains(widget.groupType)) {
-        showList.insert(0, ISuspensionBeanImpl(memberInfo: V2TimGroupMemberFullInfo(userID: GroupProfileMemberList.AT_ALL_USER_ID, nickName: TIM_t("所有人")), tagIndex: ""));
+        showList.insert(0, ISuspensionBeanImpl(memberInfo: V2TimGroupMemberFullInfo(userID: GroupProfileMemberList.AT_ALL_USER_ID, nickName: TDesk_t("所有人")), tagIndex: ""));
       }
     }
 
@@ -119,7 +120,7 @@ class _GroupProfileMemberListState extends TIMUIKitState<GroupProfileMemberList>
                       flex: 1,
                       backgroundColor: theme.cautionColor ?? CommonColor.cautionColor,
                       autoClose: true,
-                      label: TIM_t("删除"),
+                      label: TDesk_t("删除"),
                     )
                   ])
                 : null,
@@ -164,7 +165,7 @@ class _GroupProfileMemberListState extends TIMUIKitState<GroupProfileMemberList>
                     memberInfo.role == GroupMemberRoleType.V2TIM_GROUP_MEMBER_ROLE_OWNER
                         ? Container(
                             margin: const EdgeInsets.only(left: 5),
-                            child: Text(TIM_t("群主"),
+                            child: Text(TDesk_t("群主"),
                                 style: TextStyle(
                                   color: theme.ownerColor,
                                   fontSize: isDesktopScreen ? 10 : 12,
@@ -178,7 +179,7 @@ class _GroupProfileMemberListState extends TIMUIKitState<GroupProfileMemberList>
                         : memberInfo.role == GroupMemberRoleType.V2TIM_GROUP_MEMBER_ROLE_ADMIN
                             ? Container(
                                 margin: const EdgeInsets.only(left: 5),
-                                child: Text(TIM_t("管理员"),
+                                child: Text(TDesk_t("管理员"),
                                     style: TextStyle(
                                       color: theme.adminColor,
                                       fontSize: 12,
@@ -219,7 +220,7 @@ class _GroupProfileMemberListState extends TIMUIKitState<GroupProfileMemberList>
 
   static Widget getSusItem(BuildContext context, TUITheme theme, String tag, {double susHeight = 40}) {
     if (tag == '@') {
-      tag = TIM_t("群主、管理员");
+      tag = TDesk_t("群主、管理员");
     }
     return Container(
       height: susHeight,
@@ -269,7 +270,7 @@ class _GroupProfileMemberListState extends TIMUIKitState<GroupProfileMemberList>
             },
             child: (showList.isEmpty)
                 ? Center(
-                    child: Text(TIM_t("暂无群成员")),
+                    child: Text(TDesk_t("暂无群成员")),
                   )
                 : Container(
                     padding: isDesktopScreen ? const EdgeInsets.symmetric(horizontal: 16) : null,

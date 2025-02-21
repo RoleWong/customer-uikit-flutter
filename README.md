@@ -1,86 +1,80 @@
-# Tencent Cloud Desk Customer UIKit
 
-**Tencent Cloud Desk Customer UIKit** is a Flutter library designed for seamless integration of Tencent Cloud Desk customer service features into your app. With minimal code, you can implement a professional chat interface tailored to intelligent customer service scenarios. This package eliminates the need to manage complex Chat integrations while offering a customizable and efficient solution for customer interaction.
+# **AI-powered Customer Service - Tencent Cloud Desk**
 
----
+**Tencent Cloud Desk Customer UIKit** is a UIKit for integrating AI-powered customer service chat on the customer side of Tencent Cloud Desk, 
+providing efficient and seamless communication with both AI and human agents.
 
-## Key Features
+## **Key Features**
 
-- **Purpose-built for customer service scenarios:** Focused design for UI, interactions, and functionality to enhance the smart customer service experience.
-- **Effortless integration:** Add a fully functional customer service module with just a few lines of code.
-- **Customizable configuration:** Global and session-level configurations to fit your specific needs.
+- **Built for customer service** – Optimized UI, interactions, and workflows.
+- **Quick integration** – Add a complete chat interface with just a few lines of code.
+- **Customizable** – Supports global and session-level configurations.
 
----
+## **Requirements**
 
-## Requirements
+### **Environment**
 
-### Environment
+- **Flutter version**: 3.24 or later
+- **Platform support**: Compatible with both emulators and physical devices
 
-- **Flutter version:** 3.24 or above
-- **Platform support:** Works on both simulators and physical devices.
+> **Note:** Flutter 3.24+ is recommended. If using an older version, consider integrating the IM UIKit with the customer service plugin instead.
 
-> **Note:** If your project uses a Flutter version earlier than 3.24, it is highly recommended to upgrade. For older Flutter versions, consider using the legacy IM UIKit + customer service plugin combination.
+### **Prerequisites**
 
-### Prerequisites
+Before integrating, complete the following steps:
+1. Create a **Tencent Cloud Chat** application.
+2. Enable the **Desk** feature.
+3. Obtain a **Customer Service ID**.
 
-Ensure you have completed the necessary backend setup:
-1. Added customer service agents.
-2. Configured skill groups.
-3. Created conversation service flows.
+For detailed setup instructions, refer to the [**Tencent Cloud Desk Quick Start Guide**](https://www.tencentcloud.com/document/product/1047/58964).
 
-For more information on these steps, refer to the Tencent Cloud Desk **[Quick Start Guide](https://www.tencentcloud.com/document/product/1047/58964)**.
+---  
 
----
+## **Installation**
 
-## Installation
-
-Add the `tencent_cloud_customer` package to your project:
+Install the `tencentcloud_ai_desk_customer` package via **pub**:
 
 ```bash
-flutter pub add tencent_cloud_customer
+flutter pub add tencentcloud_ai_desk_customer
 ```
 
----
+## **Usage**
 
-## How to Use
+### **1. Initialize the SDK**
 
-### 1. Initialize the Customer Service SDK
+Call `init` to initialize the SDK and configure global settings. Authentication requires [**Tencent Cloud Chat credentials (SDKAppID, userID, userSig)**](https://www.tencentcloud.com/document/product/1047/33517).
 
-Call the `init` method to initialize the SDK and configure global settings. You'll need [Tencent Cloud Chat credentials (SDKAppID, userID, userSig)](https://www.tencentcloud.com/document/product/1047/33517) for authentication.
-
-#### Example:
+#### **Example**
 
 ```dart
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
-TencentCloudCustomer.init(
-  sdkAppID: "SDKAppID", // Your SDKAppID from Tencent Cloud Chat Console
-  userID: "userID", // The UserID for authentication
-  userSig: "userSig", // The UserSig for authentication
-  config: TencentCloudCustomerConfig(), // Optional: Default global configuration for all the customer service experience
+TencentCloudAIDeskCustomer.init(
+  sdkAppID: "SDKAppID",  // Your SDKAppID from the Tencent Cloud Chat Console
+  userID: "userID",      // The authenticated user ID
+  userSig: "userSig",    // The authentication signature
+  config: TencentCloudCustomerConfig(), // Optional: Global configuration for customer service interactions
 );
 ```
 
----
+### **2. Launch the Customer Service Chat Interface**
 
-### 2. Open the Customer Service Chat Interface
+Use `navigate` to open the customer service chat screen. Session-level configurations can be applied to override global settings.
 
-Use the `navigate` method to open the customer service chat page. Session-specific configurations can override the global defaults for more granular control.
-
-#### Example:
+#### **Example**
 
 ```dart
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
-TencentCloudCustomer.navigate(
+TencentCloudAIDeskCustomer.navigate(
   context: context, // Flutter's BuildContext
-  customerServiceID: "@customer_service_account", // The customer service account ID to initiate a chat with
-  config: TencentCloudCustomerConfig(), // Optional: Additional configuration specific to this session
+  customerServiceID: "@customer_service_account", // The customer service account to connect with
+  config: TencentCloudCustomerConfig(), // Optional: Session-specific configuration
 );
-```
+```  
 
----
+---  
 
-## Learn More
+## **Learn More**
 
-Refer to the official [Tencent Cloud Desk Documentation](https://www.tencentcloud.com/document/product/1047/63268) for detailed guidance.
+For comprehensive documentation, visit the [**Tencent Cloud Desk Documentation**](https://www.tencentcloud.com/document/product/1047/63268).

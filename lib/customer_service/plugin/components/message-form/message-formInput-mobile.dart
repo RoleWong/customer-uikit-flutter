@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-form/mobile_form.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-form/mobile_form.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class MessageFormInputMobile extends StatefulWidget {
@@ -25,7 +26,7 @@ class _MessageFormInputStateMobile extends TIMState<MessageFormInputMobile> {
           image: DecorationImage(
             image: AssetImage(
               'lib/customer_service/assets/customer_background.png',
-              package: "tencent_cloud_customer",
+              package: "tencentcloud_ai_desk_customer",
             ),
             fit: BoxFit.cover,
           ),
@@ -72,7 +73,7 @@ class _MessageFormInputStateMobile extends TIMState<MessageFormInputMobile> {
                   const Image(
                       image: AssetImage(
                         "lib/customer_service/assets/formIcon.png",
-                        package: "tencent_cloud_customer",
+                        package: "tencentcloud_ai_desk_customer",
                       ),
                       height: 66,
                       width: 66),
@@ -83,7 +84,7 @@ class _MessageFormInputStateMobile extends TIMState<MessageFormInputMobile> {
                       child: Image(
                         image: AssetImage(
                           "lib/customer_service/assets/formCheckIcon.png",
-                          package: "tencent_cloud_customer",
+                          package: "tencentcloud_ai_desk_customer",
                         ),
                       ),
                       height: 26,
@@ -110,14 +111,14 @@ class _MessageFormInputStateMobile extends TIMState<MessageFormInputMobile> {
                     ),
                     child: (nodeStatus == 0 && _didSubmitted == false)
                         ? Text(
-                            TIM_t("立即填写"),
+                            TDesk_t("立即填写"),
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 13,
                             ),
                           )
                         : Text(
-                            TIM_t(nodeStatus == 1 ? "不可编辑" : "查看内容"),
+                            TDesk_t(nodeStatus == 1 ? "不可编辑" : "查看内容"),
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 13,

@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:link_preview_generator_for_us/link_preview_generator.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/common/extensions.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/link_preview_entry.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/common/extensions.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/link_preview_entry.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LinkUtils {
@@ -34,7 +34,7 @@ class LinkUtils {
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(TIM_t("无法打开URL"))), // Cannot launch the url
+        SnackBar(content: Text(TDesk_t("无法打开URL"))), // Cannot launch the url
       );
     }
   }

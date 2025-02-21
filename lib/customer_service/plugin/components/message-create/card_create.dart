@@ -3,7 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class TencentCloudChatCardCreate extends StatefulWidget {
@@ -57,7 +58,7 @@ class _TencentCloudChatCardCreateState
           children: [
             Container(
               child: Text(
-                TIM_t("名称"),
+                TDesk_t("名称"),
                 style: const TextStyle(color: Colors.grey, fontSize: 14),
               ),
               width: 40,
@@ -73,7 +74,7 @@ class _TencentCloudChatCardCreateState
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: TIM_t("请填写商品名称"),
+                  hintText: TDesk_t("请填写商品名称"),
                   hintStyle: const TextStyle(fontSize: 12),
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
                   contentPadding: const EdgeInsets.only(left: 10),
@@ -87,7 +88,7 @@ class _TencentCloudChatCardCreateState
           children: [
             Container(
               child: Text(
-                TIM_t("描述"),
+                TDesk_t("描述"),
                 style: const TextStyle(color: Colors.grey, fontSize: 14),
               ),
               width: 40,
@@ -103,7 +104,7 @@ class _TencentCloudChatCardCreateState
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: TIM_t("请填写相关描述"),
+                  hintText: TDesk_t("请填写相关描述"),
                   hintStyle: const TextStyle(fontSize: 12),
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
                   contentPadding: const EdgeInsets.only(left: 10),
@@ -117,7 +118,7 @@ class _TencentCloudChatCardCreateState
           children: [
             Container(
               child: Text(
-                TIM_t("图片"),
+                TDesk_t("图片"),
                 style: const TextStyle(color: Colors.grey, fontSize: 14),
               ),
               width: 40,
@@ -133,7 +134,7 @@ class _TencentCloudChatCardCreateState
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: TIM_t("请填写图片链接"),
+                  hintText: TDesk_t("请填写图片链接"),
                   hintStyle: const TextStyle(fontSize: 12),
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
                   contentPadding: const EdgeInsets.only(left: 10),
@@ -147,7 +148,7 @@ class _TencentCloudChatCardCreateState
           children: [
             SizedBox(
                 child: Text(
-                  TIM_t("跳转"),
+                  TDesk_t("跳转"),
                   style: const TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 width: 40),
@@ -160,7 +161,7 @@ class _TencentCloudChatCardCreateState
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: TIM_t("请填写跳转地址"),
+                  hintText: TDesk_t("请填写跳转地址"),
                   hintStyle: const TextStyle(fontSize: 12),
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
                   contentPadding: const EdgeInsets.only(left: 10),
@@ -180,7 +181,7 @@ class _TencentCloudChatCardCreateState
                 child: ElevatedButton(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Text(TIM_t("提交商品信息")),
+                    child: Text(TDesk_t("提交商品信息")),
                   ),
                   onPressed: () {
                     sendCardMessage(data: {

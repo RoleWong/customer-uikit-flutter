@@ -2,21 +2,23 @@
 
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_setting_model.dart';
-import 'package:tencent_cloud_customer/ui/utils/common_utils.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_setting_model.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
+import 'package:tencent_desk_i18n_tool/tools/i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/business_logic/listener_model/tui_group_listener_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_conversation_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/core_services.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_config.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/data_services/core/web_support/uikit_web_support.dart'
-    if (dart.library.html) 'package:tencent_cloud_customer/data_services/core/web_support/uikit_web_support_implement.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/listener_model/tui_group_listener_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_conversation_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_config.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/web_support/uikit_web_support.dart'
+    if (dart.library.html) 'package:tencentcloud_ai_desk_customer/data_services/core/web_support/uikit_web_support_implement.dart';
 
 typedef EmptyAvatarBuilder = Widget Function(BuildContext context);
 
@@ -82,7 +84,7 @@ class TCustomerCoreServicesImpl implements CoreServices {
       required int sdkAppID,
       required LogLevelEnum loglevel,
       required V2TimSDKListener listener,
-      LanguageEnum? language,
+        TDeskAppLocale? language,
       String? extraLanguage,
       TIMUIKitConfig? config,
 
@@ -97,11 +99,11 @@ class TCustomerCoreServicesImpl implements CoreServices {
     addIdentifier();
     if (extraLanguage != null) {
       Future.delayed(const Duration(milliseconds: 1), () {
-        I18nUtils(null, extraLanguage);
+        TDeskI18nUtils(null, extraLanguage);
       });
     } else if (language != null) {
       Future.delayed(const Duration(milliseconds: 1), () {
-        I18nUtils(null, languageEnumToString[language]);
+        TDeskI18nUtils(null, languageLocaleToString[language]);
       });
     }
     if (onTUIKitCallbackListener != null) {
@@ -143,7 +145,7 @@ class TCustomerCoreServicesImpl implements CoreServices {
   Future<void> setDataFromNative({
     /// Callback from TUIKit invoke, includes IM SDK API error, notify information, Flutter error.
     ValueChanged<TIMCallback>? onTUIKitCallbackListener,
-    LanguageEnum? language,
+    TDeskAppLocale? language,
     TIMUIKitConfig? config,
     String? extraLanguage,
     required String userId,
@@ -151,11 +153,11 @@ class TCustomerCoreServicesImpl implements CoreServices {
     _userID = userId;
     if (extraLanguage != null) {
       Future.delayed(const Duration(milliseconds: 1), () {
-        I18nUtils(null, extraLanguage);
+        TDeskI18nUtils(null, extraLanguage);
       });
     } else if (language != null) {
       Future.delayed(const Duration(milliseconds: 1), () {
-        I18nUtils(null, languageEnumToString[language]);
+        TDeskI18nUtils(null, languageLocaleToString[language]);
       });
     }
     if (onTUIKitCallbackListener != null) {

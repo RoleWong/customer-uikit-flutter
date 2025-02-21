@@ -17,22 +17,22 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/message/message_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/constants/history_message_constant.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/permission.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_wrapper.dart';
-import 'package:tencent_cloud_customer/ui/widgets/image_screen.dart';
-import 'package:tencent_cloud_customer/ui/widgets/wide_popup.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/permission.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_wrapper.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/image_screen.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
@@ -185,24 +185,24 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
             if (result['isSuccess']) {
               onTIMCallback(TIMCallback(
                   type: TIMCallbackType.INFO,
-                  infoRecommendText: TIM_t("图片保存成功"),
+                  infoRecommendText: TDesk_t("图片保存成功"),
                   infoCode: 6660406));
             } else {
               onTIMCallback(TIMCallback(
                   type: TIMCallbackType.INFO,
-                  infoRecommendText: TIM_t("图片保存失败"),
+                  infoRecommendText: TDesk_t("图片保存失败"),
                   infoCode: 6660407));
             }
           } else {
             if (result != null) {
               onTIMCallback(TIMCallback(
                   type: TIMCallbackType.INFO,
-                  infoRecommendText: TIM_t("图片保存成功"),
+                  infoRecommendText: TDesk_t("图片保存成功"),
                   infoCode: 6660406));
             } else {
               onTIMCallback(TIMCallback(
                   type: TIMCallbackType.INFO,
-                  infoRecommendText: TIM_t("图片保存失败"),
+                  infoRecommendText: TDesk_t("图片保存失败"),
                   infoCode: 6660407));
             }
           }
@@ -211,7 +211,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
       } else {
         onTIMCallback(TIMCallback(
             type: TIMCallbackType.INFO,
-            infoRecommendText: TIM_t("the message is downloading"),
+            infoRecommendText: TDesk_t("the message is downloading"),
             infoCode: -1));
       }
       return;
@@ -223,24 +223,24 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
       if (result['isSuccess']) {
         onTIMCallback(TIMCallback(
             type: TIMCallbackType.INFO,
-            infoRecommendText: TIM_t("图片保存成功"),
+            infoRecommendText: TDesk_t("图片保存成功"),
             infoCode: 6660406));
       } else {
         onTIMCallback(TIMCallback(
             type: TIMCallbackType.INFO,
-            infoRecommendText: TIM_t("图片保存失败"),
+            infoRecommendText: TDesk_t("图片保存失败"),
             infoCode: 6660407));
       }
     } else {
       if (result != null) {
         onTIMCallback(TIMCallback(
             type: TIMCallbackType.INFO,
-            infoRecommendText: TIM_t("图片保存成功"),
+            infoRecommendText: TDesk_t("图片保存成功"),
             infoCode: 6660406));
       } else {
         onTIMCallback(TIMCallback(
             type: TIMCallbackType.INFO,
-            infoRecommendText: TIM_t("图片保存失败"),
+            infoRecommendText: TDesk_t("图片保存失败"),
             infoCode: 6660407));
       }
     }
@@ -283,7 +283,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
     } catch (e) {
       onTIMCallback(TIMCallback(
           infoCode: 6660414,
-          infoRecommendText: TIM_t("正在下载中"),
+          infoRecommendText: TDesk_t("正在下载中"),
           type: TIMCallbackType.INFO));
       return;
     }
@@ -335,7 +335,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
       } else {
         onTIMCallback(TIMCallback(
             infoCode: 6660414,
-            infoRecommendText: TIM_t("正在下载原始资源，请稍候..."),
+            infoRecommendText: TDesk_t("正在下载原始资源，请稍候..."),
             type: TIMCallbackType.INFO));
       }
     });
@@ -364,7 +364,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
       } else {
         onTIMCallback(TIMCallback(
             infoCode: 6660414,
-            infoRecommendText: TIM_t("正在下载中"),
+            infoRecommendText: TDesk_t("正在下载中"),
             type: TIMCallbackType.INFO));
       }
     }

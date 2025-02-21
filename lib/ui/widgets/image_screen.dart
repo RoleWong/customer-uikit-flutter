@@ -4,10 +4,10 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/ui/widgets/gestured_image.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/ui/widgets/image_hero.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/gestured_image.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/image_hero.dart';
 
 typedef DoubleClickAnimationListener = void Function();
 
@@ -246,7 +246,7 @@ class _ImageScreenState extends TIMUIKitState<ImageScreen>
                     child: IconButton(
                       icon: Image.asset(
                         'images/close.png',
-                        package: 'tencent_cloud_customer',
+                        package: 'tencentcloud_ai_desk_customer',
                       ),
                       iconSize: 30,
                       onPressed: close,
@@ -262,7 +262,7 @@ class _ImageScreenState extends TIMUIKitState<ImageScreen>
                     child: IconButton(
                       icon: Image.asset(
                         'images/download.png',
-                        package: 'tencent_cloud_customer',
+                        package: 'tencentcloud_ai_desk_customer',
                       ),
                       iconSize: 30,
                       onPressed: () async {

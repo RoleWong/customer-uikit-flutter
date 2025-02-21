@@ -3,12 +3,12 @@
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_conversation_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/core_services_implements.dart';
-import 'package:tencent_cloud_customer/data_services/message/message_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/utils/error_message_converter.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_conversation_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/error_message_converter.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class TCustomerMessageServiceImpl extends TCustomerMessageService {

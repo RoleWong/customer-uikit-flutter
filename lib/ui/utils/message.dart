@@ -2,12 +2,13 @@
 
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/ui/constants/history_message_constant.dart';
-import 'package:tencent_cloud_customer/ui/constants/time.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/constants/time.dart';
 import 'package:collection/collection.dart';
-import 'package:tencent_cloud_customer/ui/utils/common_utils.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 
 class MessageUtils {
   // 判断CallingData的方式和Trtc的方法一致
@@ -61,25 +62,25 @@ class MessageUtils {
       List<V2TimGroupMemberFullInfo?> groupMemberList) async {
     int? type = info.type;
     var value = info.value;
-    String s = TIM_t('群资料信息');
+    String s = TDesk_t('群资料信息');
     switch (type) {
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_CUSTOM:
-        s = TIM_t("自定义字段");
+        s = TDesk_t("自定义字段");
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_FACE_URL:
-        s = TIM_t("群头像");
+        s = TDesk_t("群头像");
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_INTRODUCTION:
-        s = TIM_t("群简介");
+        s = TDesk_t("群简介");
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_NAME:
-        s = TIM_t("群名称");
+        s = TDesk_t("群名称");
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_NOTIFICATION:
-        s = TIM_t("群公告");
+        s = TDesk_t("群公告");
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_OWNER:
-        s = TIM_t("群主");
+        s = TDesk_t("群主");
         final V2TimGroupMemberFullInfo? groupMemberInfo = groupMemberList
             .firstWhereOrNull((element) => element?.userID == value);
         if (groupMemberInfo != null) {
@@ -101,19 +102,19 @@ class MessageUtils {
         }
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_SHUT_UP_ALL:
-        s = TIM_t("全员禁言状态");
+        s = TDesk_t("全员禁言状态");
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_RECEIVE_MESSAGE_OPT:
-        s = TIM_t("消息接收方式");
+        s = TDesk_t("消息接收方式");
         break;
       case GroupChangeInfoType.V2TIM_GROUP_INFO_CHANGE_TYPE_GROUP_ADD_OPT:
-        s = TIM_t("加群方式");
+        s = TDesk_t("加群方式");
         break;
     }
 
     final String option8 = s;
     if (value != null && value.isNotEmpty) {
-      return TIM_t_para("{{option8}}为 ", "$option8为 ")(option8: option8) +
+      return TDesk_t_para("{{option8}}为 ", "$option8为 ")(option8: option8) +
           value;
     } else {
       return option8;
@@ -167,42 +168,42 @@ class MessageUtils {
           changedValue = element!.boolValue ?? false;
         }
         if (changedInfoString.isEmpty) {
-          changedInfoString = TIM_t("群资料");
+          changedInfoString = TDesk_t("群资料");
         }
-        if (changedInfoString == TIM_t("全员禁言状态")) {
-          changedInfoString = TIM_t("全员禁言");
-          displayMessage = changedValue == false ? TIM_t_para("{{option7}} 取消", "$option7 取消")(option7: option7) +
-              changedInfoString : TIM_t_para("{{option7}} 开启", "$option7 开启")(option7: option7) +
+        if (changedInfoString == TDesk_t("全员禁言状态")) {
+          changedInfoString = TDesk_t("全员禁言");
+          displayMessage = changedValue == false ? TDesk_t_para("{{option7}} 取消", "$option7 取消")(option7: option7) +
+              changedInfoString : TDesk_t_para("{{option7}} 开启", "$option7 开启")(option7: option7) +
               changedInfoString;
         } else {
           displayMessage =
-              TIM_t_para("{{option7}}修改", "$option7修改")(option7: option7) +
+              TDesk_t_para("{{option7}}修改", "$option7修改")(option7: option7) +
                   changedInfoString;
         }
         break;
       case GroupTipsElemType.V2TIM_GROUP_TIPS_TYPE_QUIT:
         final String? option6 = opUserNickName ?? "";
         displayMessage =
-            TIM_t_para("{{option6}}退出群聊", "$option6退出群聊")(option6: option6);
+            TDesk_t_para("{{option6}}退出群聊", "$option6退出群聊")(option6: option6);
         break;
       case GroupTipsElemType.V2TIM_GROUP_TIPS_TYPE_INVITE:
         final option5 =
         memberList!.map((e) => _getMemberNickName(e!).toString()).join("、");
         final inviteUser = _getOpUserNick(operationMember);
         displayMessage = '$inviteUser' +
-            TIM_t_para("邀请{{option5}}加入群组", "邀请$option5加入群组")(option5: option5);
+            TDesk_t_para("邀请{{option5}}加入群组", "邀请$option5加入群组")(option5: option5);
         break;
       case GroupTipsElemType.V2TIM_GROUP_TIPS_TYPE_KICKED:
         final option4 =
         memberList!.map((e) => _getMemberNickName(e!).toString()).join("、");
         final kickUser = _getOpUserNick(operationMember);
         displayMessage = '$kickUser' +
-            TIM_t_para("将{{option4}}踢出群组", "将$option4踢出群组")(option4: option4);
+            TDesk_t_para("将{{option4}}踢出群组", "将$option4踢出群组")(option4: option4);
         break;
       case GroupTipsElemType.V2TIM_GROUP_TIPS_TYPE_JOIN:
         final option3 =
         memberList!.map((e) => _getMemberNickName(e!).toString()).join("、");
-        displayMessage = TIM_t_para("用户{{option3}}加入了群聊", "用户$option3加入了群聊")(
+        displayMessage = TDesk_t_para("用户{{option3}}加入了群聊", "用户$option3加入了群聊")(
             option3: option3);
         break;
       case GroupTipsElemType.V2TIM_GROUP_TIPS_TYPE_MEMBER_INFO_CHANGE:
@@ -211,8 +212,8 @@ class MessageUtils {
               .firstWhere((element) => element!.userID == e!.userID);
           final isMute = changedMember!.muteTime != 0;
           final option2 = _getMemberNickName(e!);
-          final displayMessage = isMute ? TIM_t("禁言") : TIM_t("解除禁言");
-          return TIM_t_para("{{option2}} 被", "$option2 被")(option2: option2) +
+          final displayMessage = isMute ? TDesk_t("禁言") : TDesk_t("解除禁言");
+          return TDesk_t_para("{{option2}} 被", "$option2 被")(option2: option2) +
               displayMessage;
         }).join("、");
         break;
@@ -222,7 +223,7 @@ class MessageUtils {
         final opMember = _getOpUserNick(operationMember);
         final option1 = adminMember;
         displayMessage = '$opMember' +
-            TIM_t_para("将 {{option1}} 设置为管理员", "将 $option1 设置为管理员")(
+            TDesk_t_para("将 {{option1}} 设置为管理员", "将 $option1 设置为管理员")(
                 option1: option1);
         break;
       case GroupTipsElemType.V2TIM_GROUP_TIPS_TYPE_CANCEL_ADMIN:
@@ -231,13 +232,13 @@ class MessageUtils {
         final opMember = _getOpUserNick(operationMember);
         final option1 = adminMember;
         displayMessage = '$opMember' +
-            TIM_t_para("将 {{option1}} 取消管理员", "将 $option1 取消管理员")(
+            TDesk_t_para("将 {{option1}} 取消管理员", "将 $option1 取消管理员")(
                 option1: option1);
         break;
       default:
         final String option2 = operationType.toString();
         displayMessage =
-            TIM_t_para("系统消息 {{option2}}", "系统消息 $option2")(option2: option2);
+            TDesk_t_para("系统消息 {{option2}}", "系统消息 $option2")(option2: option2);
         break;
     }
     return displayMessage;
@@ -269,7 +270,7 @@ class MessageUtils {
   }
 
   static String handleCustomMessageString(V2TimMessage message) {
-    return TIM_t("消息");
+    return TDesk_t("消息");
   }
 
   static Widget wrapMessageTips(Widget child, TUITheme? theme) {
@@ -284,27 +285,27 @@ class MessageUtils {
       case MessageElemType.V2TIM_ELEM_TYPE_CUSTOM:
         return handleCustomMessageString(message);
       case MessageElemType.V2TIM_ELEM_TYPE_SOUND:
-        return TIM_t("[语音]");
+        return TDesk_t("[语音]");
       case MessageElemType.V2TIM_ELEM_TYPE_TEXT:
         return message.textElem!.text as String;
       case MessageElemType.V2TIM_ELEM_TYPE_FACE:
-        return TIM_t("[表情]");
+        return TDesk_t("[表情]");
       case MessageElemType.V2TIM_ELEM_TYPE_FILE:
         final String? option2 = message.fileElem!.fileName ?? "";
-        return TIM_t_para("[文件] {{option2}}", "[文件] $option2")(
+        return TDesk_t_para("[文件] {{option2}}", "[文件] $option2")(
             option2: option2);
       case MessageElemType.V2TIM_ELEM_TYPE_GROUP_TIPS:
-        return TIM_t("群提示");
+        return TDesk_t("群提示");
       case MessageElemType.V2TIM_ELEM_TYPE_IMAGE:
-        return TIM_t("[图片]");
+        return TDesk_t("[图片]");
       case MessageElemType.V2TIM_ELEM_TYPE_VIDEO:
-        return TIM_t("[视频]");
+        return TDesk_t("[视频]");
       case MessageElemType.V2TIM_ELEM_TYPE_LOCATION:
-        return TIM_t("[位置]");
+        return TDesk_t("[位置]");
       case MessageElemType.V2TIM_ELEM_TYPE_MERGER:
-        return TIM_t("[聊天记录]");
+        return TDesk_t("[聊天记录]");
       default:
-        return TIM_t("未知消息");
+        return TDesk_t("未知消息");
     }
   }
 

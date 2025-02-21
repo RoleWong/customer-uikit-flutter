@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_conversation_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_conversation_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 
-import 'package:tencent_cloud_customer/ui/widgets/avatar.dart';
-import 'package:tencent_cloud_customer/ui/widgets/az_list_view.dart';
-import 'package:tencent_cloud_customer/ui/widgets/radio_button.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/az_list_view.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/radio_button.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class RecentForwardList extends StatefulWidget {
   final bool isMultiSelect;
@@ -161,7 +162,7 @@ class _RecentForwardListState extends TIMUIKitState<RecentForwardList> {
               color: theme.weakDividerColor,
               alignment: Alignment.centerLeft,
               child: Text(
-                TIM_t("最近联系人"),
+                TDesk_t("最近联系人"),
                 softWrap: true,
                 style: TextStyle(
                   fontSize: 14.0,

@@ -1462,7 +1462,7 @@ packages:
     source: hosted
     version: "3.3.0+3"
   tencent_chat_i18n_tool:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: tencent_chat_i18n_tool
       sha256: e963cd88b432c18e89e1711171f1c0220d008ae66d8fc81c2cd8be17dbaa891a
@@ -1485,6 +1485,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.7.3"
+  tencent_desk_i18n_tool:
+    dependency: "direct main"
+    description:
+      name: tencent_desk_i18n_tool
+      sha256: "7b8b37c466e692cd5e6095130a34d4047842201b3bcc542131bfeacf9cc2cbc5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
   tencent_im_base:
     dependency: "direct main"
     description:

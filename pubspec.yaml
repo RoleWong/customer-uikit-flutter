@@ -1,9 +1,9 @@
-name: tencent_cloud_customer
-description: A Flutter library for seamless integration of Tencent Cloud Desk service on customer side.
-version: 1.1.0
-homepage: https://cloud.tencent.com/document/product/269/96056
-repository: https://github.com/RoleWong/customer-uikit-flutter
-documentation: https://cloud.tencent.com/document/product/269/113293
+name: tencentcloud_ai_desk_customer
+description: AI-driven customer service UIKit for Tencent Cloud Desk (customer-side).
+version: 1.2.0+1
+homepage: https://cloud.tencent.com/document/product/269/96056?from=flutter
+repository: https://github.com/RoleWong/tencentcloud_ai_desk_customer
+documentation: https://cloud.tencent.com/document/product/269/113293?from=flutter
 
 platforms:
   android:
@@ -17,6 +17,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  tencent_desk_i18n_tool: ^2.4.1
   adaptive_action_sheet: ^2.0.1
   provider: ^6.0.1
   intl: ^0.19.0
@@ -77,7 +78,6 @@ dependencies:
   dotted_line: ^3.2.2
   card_swiper: ^3.0.1
   photo_view: ^0.15.0
-  tencent_chat_i18n_tool: ^2.3.8
   fluttertoast: ^8.2.1
   opentelemetry: ^0.18.6
 

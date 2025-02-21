@@ -3,15 +3,15 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/message/message_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/constants/history_message_constant.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/utils/sound_record.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/sound_record.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 import 'TIMUIKitMessageReaction/tim_uikit_message_reaction_show_panel.dart';
@@ -234,7 +234,7 @@ class _TIMUIKitSoundElemState extends TIMUIKitState<TIMUIKitSoundElem> {
                       isPlaying
                           ? Image.asset(
                               'images/play_voice_receive.gif',
-                              package: 'tencent_cloud_customer',
+                              package: 'tencentcloud_ai_desk_customer',
                               width: 16,
                               height: 16,
                             )
@@ -242,7 +242,7 @@ class _TIMUIKitSoundElemState extends TIMUIKitState<TIMUIKitSoundElem> {
                               'images/voice_receive.png',
                               width: 16,
                               height: 16,
-                              package: 'tencent_cloud_customer',
+                              package: 'tencentcloud_ai_desk_customer',
                             ),
                       Text(
                         " ${stateElement.duration}''",
@@ -318,7 +318,7 @@ class _SenderVoiceAnimationWidgetState extends State<SenderVoiceAnimationWidget>
   Widget build(BuildContext context) {
     return Image.asset(
       _frames[_currentFrameIndex],
-      package: 'tencent_cloud_customer',
+      package: 'tencentcloud_ai_desk_customer',
       width: 16,
       height: 16,
     );

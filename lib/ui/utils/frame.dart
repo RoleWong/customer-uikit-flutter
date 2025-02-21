@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
 
 import 'dart:ui';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 
 class Frame {
   static var orginalCallback;

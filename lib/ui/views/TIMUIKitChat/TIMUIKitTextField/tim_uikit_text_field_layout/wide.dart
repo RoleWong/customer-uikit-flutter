@@ -16,23 +16,23 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pasteboard/pasteboard.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_setting_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/optimize_utils.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_shot.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/emoji_text.dart';
-import 'package:tencent_cloud_customer/ui/widgets/drag_widget.dart';
-import 'package:tencent_cloud_customer/ui/widgets/wide_popup.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_setting_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/optimize_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_shot.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/emoji_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/drag_widget.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
@@ -288,7 +288,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              TIM_t("回复 "),
+              TDesk_t("回复 "),
               style: TextStyle(color: hexToColor("8f959e"), fontSize: 14),
             ),
             Text(
@@ -519,7 +519,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
                 if (TencentDeskUtils.checkString(e.svgPath) != null) {
                   return SvgPicture.asset(
                     e.svgPath!,
-                    package: defaultItems.contains(e.item) ? 'tencent_cloud_customer' : null,
+                    package: defaultItems.contains(e.item) ? 'tencentcloud_ai_desk_customer' : null,
                     key: key,
                     width: e.size ?? 16,
                     height: e.size ?? 16,
@@ -528,7 +528,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
                 if (TencentDeskUtils.checkString(e.imgPath) != null) {
                   return Image.asset(
                     e.imgPath!,
-                    package: defaultItems.contains(e.item) ? 'tencent_cloud_customer' : null,
+                    package: defaultItems.contains(e.item) ? 'tencentcloud_ai_desk_customer' : null,
                     key: key,
                     width: e.size ?? 16,
                     height: e.size ?? 16,
@@ -580,7 +580,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
 
       if (fileName!.split(".")[fileName!.split(".").length - 1] != "mp4") {
         onTIMCallback(
-            TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频消息仅限 mp4 格式"), infoCode: 6660412));
+            TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频消息仅限 mp4 格式"), infoCode: 6660412));
         return;
       }
 
@@ -605,7 +605,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       final size = await originFile!.length();
       if (size >= 104857600) {
         onTIMCallback(
-            TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("发送失败,视频不能大于100MB"), infoCode: 6660405));
+            TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("发送失败,视频不能大于100MB"), infoCode: 6660405));
         return;
       }
 
@@ -629,7 +629,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
               videoPath: filePath, duration: duration, snapshotPath: tempPath, convID: convID, convType: convType),
           context);
     } catch (e) {
-      onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频文件异常"), infoCode: 6660415));
+      onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频文件异常"), infoCode: 6660415));
     }
   }
 
@@ -694,13 +694,13 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
     } catch (err) {
       // ignore: avoid_print
       outputLogger.i("send media err: $err");
-      onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("视频文件异常"), infoCode: 6660415));
+      onTIMCallback(TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("视频文件异常"), infoCode: 6660415));
     }
   }
 
   _sendImageWithConfirmation({String? fileName, Size? fileSize, required String filePath}) async {
     final option1 =
-        widget.currentConversation.showName ?? (widget.conversationType == ConvType.group ? TIM_t("群聊") : TIM_t("对方"));
+        widget.currentConversation.showName ?? (widget.conversationType == ConvType.group ? TDesk_t("群聊") : TDesk_t("对方"));
     final size = fileSize ?? await ScreenshotHelper.getImageSize(filePath);
 
     TUIKitWidePopup.showPopupWindow(
@@ -709,7 +709,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       isDarkBackground: false,
       width: 500,
       height: min(500, size.height / 2 + 140),
-      title: TIM_t_para("发送给{{option1}}", "发送给$option1")(option1: option1),
+      title: TDesk_t_para("发送给{{option1}}", "发送给$option1")(option1: option1),
       child: (closeFunc) => Container(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -740,7 +740,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
                     onPressed: () {
                       closeFunc();
                     },
-                    child: Text(TIM_t("取消"))),
+                    child: Text(TDesk_t("取消"))),
                 const SizedBox(
                   width: 20,
                 ),
@@ -755,7 +755,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
                           context);
                       closeFunc();
                     },
-                    child: Text(TIM_t("发送")))
+                    child: Text(TDesk_t("发送")))
               ],
             )
           ],
@@ -777,7 +777,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       if (config.showStickerPanel)
         DesktopControlBarItem(
             item: "face",
-            showName: TIM_t("表情"),
+            showName: TDesk_t("表情"),
             onClick: (offset) {
               _sendEmoji(offset, widget.theme);
             },
@@ -785,7 +785,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       if (config.showScreenshotButton && PlatformUtils().isDesktop)
         DesktopControlBarItem(
             item: "screenShot",
-            showName: TIM_t("截图"),
+            showName: TDesk_t("截图"),
             onClick: (offset) {
               _sendScreenShot();
             },
@@ -793,7 +793,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       if (config.showSendFileButton)
         DesktopControlBarItem(
             item: "file",
-            showName: TIM_t("文件"),
+            showName: TDesk_t("文件"),
             onClick: (offset) {
               _sendFile(widget.model, widget.theme);
             },
@@ -801,7 +801,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       if (config.showSendImageButton)
         DesktopControlBarItem(
             item: "photo",
-            showName: TIM_t("图片"),
+            showName: TDesk_t("图片"),
             onClick: (offset) {
               if (PlatformUtils().isWeb) {
                 _sendImageFileOnWeb(widget.model);
@@ -813,7 +813,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       if (config.showSendVideoButton)
         DesktopControlBarItem(
             item: "video",
-            showName: TIM_t("视频"),
+            showName: TDesk_t("视频"),
             onClick: (offset) {
               if (PlatformUtils().isWeb) {
                 _sendVideoFileOnWeb(widget.model);
@@ -825,7 +825,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
       // if (config.showMessageHistoryButton)
       //   DesktopControlBarItem(
       //       item: "history",
-      //       showName: TIM_t("消息历史"),
+      //       showName: TDesk_t("消息历史"),
       //       onClick: (offset) {
       //         TUIKitWidePopup.showPopupWindow(
       //             operationKey: TUIKitWideModalOperationKey.chatHistory,

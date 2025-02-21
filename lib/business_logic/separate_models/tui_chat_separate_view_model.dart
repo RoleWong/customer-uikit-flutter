@@ -7,18 +7,18 @@ import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:tencent_cloud_customer/business_logic/life_cycle/chat_life_cycle.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_model_tools.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/friendShip/friendship_services.dart';
-import 'package:tencent_cloud_customer/data_services/group/group_services.dart';
-import 'package:tencent_cloud_customer/data_services/message/message_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/constants/history_message_constant.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/life_cycle/chat_life_cycle.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_model_tools.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/friendShip/friendship_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:uuid/uuid.dart';
 
 enum LoadDirection { previous, latest }
@@ -495,7 +495,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
 
   translateText(V2TimMessage message) async {
     final String originText = message.textElem?.text ?? "";
-    final String deviceLocale = TIM_getCurrentDeviceLocale();
+    final String deviceLocale = TDesk_getCurrentDeviceLocale();
     final String targetMessage = deviceLocale.split("-")[0];
     final translatedText =
         await _messageService.translateText(originText, targetMessage);
@@ -1201,7 +1201,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
           msgIDList: msgIDList,
           title: title,
           abstractList: abstractList,
-          compatibleText: TIM_t("该版本不支持此消息"));
+          compatibleText: TDesk_t("该版本不支持此消息"));
       final messageInfo = mergerMessageInfo!.messageInfo;
       if (messageInfo != null) {
         tools.setUserInfoForMessage(messageInfo, mergerMessageInfo.id);

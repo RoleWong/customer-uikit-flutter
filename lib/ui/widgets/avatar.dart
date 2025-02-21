@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/ui/utils/common_utils.dart';
-import 'package:tencent_cloud_customer/ui/widgets/image_screen.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/image_screen.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/data_services/core/core_services_implements.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class Avatar extends TIMUIKitStatelessWidget {
   final String faceUrl;
@@ -43,7 +43,7 @@ class Avatar extends TIMUIKitStatelessWidget {
             package:
                 selfInfoViewModel.globalConfig?.defaultAvatarAssetPath != null
                     ? null
-                    : 'tencent_cloud_customer');
+                    : 'tencentcloud_ai_desk_customer');
       } else {
         return Image.asset(
             TencentDeskUtils.checkString(
@@ -53,7 +53,7 @@ class Avatar extends TIMUIKitStatelessWidget {
             package:
                 selfInfoViewModel.globalConfig?.defaultAvatarAssetPath != null
                     ? null
-                    : 'tencent_cloud_customer');
+                    : 'tencentcloud_ai_desk_customer');
       }
     }
 
@@ -89,7 +89,7 @@ class Avatar extends TIMUIKitStatelessWidget {
                     selfInfoViewModel.globalConfig?.defaultAvatarAssetPath !=
                             null
                         ? null
-                        : 'tencent_cloud_customer')
+                        : 'tencentcloud_ai_desk_customer')
             .image;
       } else {
         return Image.asset(
@@ -101,7 +101,7 @@ class Avatar extends TIMUIKitStatelessWidget {
                     selfInfoViewModel.globalConfig?.defaultAvatarAssetPath !=
                             null
                         ? null
-                        : 'tencent_cloud_customer')
+                        : 'tencentcloud_ai_desk_customer')
             .image;
       }
     }

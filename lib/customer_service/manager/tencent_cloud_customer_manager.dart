@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/customer_service/manager/tencent_cloud_customer_manager_impl.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/manager/tencent_cloud_customer_manager_impl.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 class TencentCloudCustomerManager {
   static final TencentCloudCustomerManager _instance = TencentCloudCustomerManager._internal();

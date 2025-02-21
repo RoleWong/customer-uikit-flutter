@@ -1,7 +1,8 @@
-import 'package:tencent_cloud_customer/data_services/core/core_services_implements.dart';
-import 'package:tencent_cloud_customer/data_services/friendShip/friendship_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/utils/error_message_converter.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/friendShip/friendship_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/error_message_converter.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class TCustomerFriendshipServicesImpl implements TCustomerFriendshipServices {
@@ -83,7 +84,7 @@ class TCustomerFriendshipServicesImpl implements TCustomerFriendshipServices {
         type: TIMCallbackType.API_ERROR,
         errorMsg: result.desc,
         errorCode: result.code,
-        infoRecommendText: TIM_t("好友添加失败"),
+        infoRecommendText: TDesk_t("好友添加失败"),
       ));
     } else if (result.code == 0 && result.data?.resultCode != 0) {
       String recommendText = "";
@@ -102,7 +103,7 @@ class TCustomerFriendshipServicesImpl implements TCustomerFriendshipServices {
           type: TIMCallbackType.API_ERROR,
           errorMsg: result.desc,
           errorCode: result.code,
-          infoRecommendText: TIM_t("好友添加成功"),
+          infoRecommendText: TDesk_t("好友添加成功"),
       ));
     }
 
@@ -140,14 +141,14 @@ class TCustomerFriendshipServicesImpl implements TCustomerFriendshipServices {
           type: TIMCallbackType.API_ERROR,
           errorMsg: res.desc,
           errorCode: res.code,
-          infoRecommendText: TIM_t("好友删除成功")));
+          infoRecommendText: TDesk_t("好友删除成功")));
       return res.data;
     } else {
       _coreService.callOnCallback(TIMCallback(
           type: TIMCallbackType.API_ERROR,
           errorMsg: res.desc,
           errorCode: res.code,
-          infoRecommendText: TIM_t("好友删除失败")));
+          infoRecommendText: TDesk_t("好友删除失败")));
       return null;
     }
   }

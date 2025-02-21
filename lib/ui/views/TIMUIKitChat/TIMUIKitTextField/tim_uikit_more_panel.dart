@@ -10,26 +10,26 @@ import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_call_invite_list.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_call_invite_list.dart';
 import 'package:wechat_camera_picker/wechat_camera_picker.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
 import 'package:path/path.dart' as p;
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/permission.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/intl_camer_picker.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/permission.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/intl_camer_picker.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 // ignore: unnecessary_import
 import 'dart:typed_data';
 import 'package:universal_html/html.dart' as html;
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 
 class MorePanelConfig {
   static final int FILE_MAX_SIZE = 100 * 1024 * 1024;
@@ -120,7 +120,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (PlatformUtils().isMobile)
         MorePanelItem(
             id: "screen",
-            title: TIM_t("拍摄"),
+            title: TDesk_t("拍摄"),
             onTap: (c) {
               _onFeatureTap("screen", c, model, theme);
             },
@@ -133,7 +133,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               child: SvgPicture.asset(
                 "images/screen.svg",
-                package: 'tencent_cloud_customer',
+                package: 'tencentcloud_ai_desk_customer',
                 height: 64,
                 width: 64,
               ),
@@ -141,7 +141,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (!PlatformUtils().isWeb)
         MorePanelItem(
             id: "photo",
-            title: TIM_t("照片"),
+            title: TDesk_t("照片"),
             onTap: (c) {
               _onFeatureTap(
                 "photo",
@@ -159,7 +159,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               child: SvgPicture.asset(
                 "images/photo.svg",
-                package: 'tencent_cloud_customer',
+                package: 'tencentcloud_ai_desk_customer',
                 height: 64,
                 width: 64,
               ),
@@ -167,7 +167,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (PlatformUtils().isWeb)
         MorePanelItem(
             id: "image",
-            title: TIM_t("图片"),
+            title: TDesk_t("图片"),
             onTap: (c) {
               _onFeatureTap(
                 "image",
@@ -185,7 +185,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               child: SvgPicture.asset(
                 "images/photo.svg",
-                package: 'tencent_cloud_customer',
+                package: 'tencentcloud_ai_desk_customer',
                 height: 64,
                 width: 64,
               ),
@@ -193,7 +193,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (PlatformUtils().isWeb)
         MorePanelItem(
             id: "video",
-            title: TIM_t("视频"),
+            title: TDesk_t("视频"),
             onTap: (c) {
               _onFeatureTap(
                 "video",
@@ -214,7 +214,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
             )),
       MorePanelItem(
           id: "file",
-          title: TIM_t("文件"),
+          title: TDesk_t("文件"),
           onTap: (c) {
             _onFeatureTap(
               "file",
@@ -232,7 +232,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
                 borderRadius: BorderRadius.all(Radius.circular(5))),
             child: SvgPicture.asset(
               "images/file.svg",
-              package: 'tencent_cloud_customer',
+              package: 'tencentcloud_ai_desk_customer',
               height: 64,
               width: 64,
             ),
@@ -240,7 +240,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (isInstallCallkit && PlatformUtils().isMobile)
         MorePanelItem(
             id: "videoCall",
-            title: TIM_t("视频通话"),
+            title: TDesk_t("视频通话"),
             onTap: (c) {
               _onFeatureTap(
                 "videoCall",
@@ -258,7 +258,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               child: SvgPicture.asset(
                 "images/video-call.svg",
-                package: 'tencent_cloud_customer',
+                package: 'tencentcloud_ai_desk_customer',
                 height: 64,
                 width: 64,
               ),
@@ -266,7 +266,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (isInstallCallkit && PlatformUtils().isMobile)
         MorePanelItem(
             id: "voiceCall",
-            title: TIM_t("语音通话"),
+            title: TDesk_t("语音通话"),
             onTap: (c) {
               _onFeatureTap(
                 "voiceCall",
@@ -284,7 +284,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               child: SvgPicture.asset(
                 "images/voice-call.svg",
-                package: 'tencent_cloud_customer',
+                package: 'tencentcloud_ai_desk_customer',
                 height: 64,
                 width: 64,
               ),
@@ -324,7 +324,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
     if (size >= MorePanelConfig.VIDEO_MAX_SIZE) {
       onTIMCallback(TIMCallback(
           type: TIMCallbackType.INFO,
-          infoRecommendText: TIM_t("文件大小超出了限制")));
+          infoRecommendText: TDesk_t("文件大小超出了限制")));
       return;
     }
 
@@ -416,7 +416,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
                 if (size >= MorePanelConfig.IMAGE_MAX_SIZE) {
                   onTIMCallback(TIMCallback(
                       type: TIMCallbackType.INFO,
-                      infoRecommendText: TIM_t("文件大小超出了限制")));
+                      infoRecommendText: TDesk_t("文件大小超出了限制")));
                   return;
                 }
 
@@ -496,7 +496,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
           if (size >= MorePanelConfig.IMAGE_MAX_SIZE) {
             onTIMCallback(TIMCallback(
                 type: TIMCallbackType.INFO,
-                infoRecommendText: TIM_t("文件大小超出了限制")));
+                infoRecommendText: TDesk_t("文件大小超出了限制")));
             return;
           }
 
@@ -511,7 +511,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
           _sendVideoMessage(pickedFile, size, model);
         }
       } else {
-        // Toast.showToast(ToastType.fail, TIM_t("图片不能为空"), context);
+        // Toast.showToast(ToastType.fail, TDesk_t("图片不能为空"), context);
       }
     } catch (error) {
       outputLogger.i("err: $error");
@@ -555,7 +555,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (fileName!.split(".")[fileName!.split(".").length - 1] != "mp4") {
         onTIMCallback(TIMCallback(
             type: TIMCallbackType.INFO,
-            infoRecommendText: TIM_t("视频消息仅限 mp4 格式"),
+            infoRecommendText: TDesk_t("视频消息仅限 mp4 格式"),
             infoCode: 6660412));
         return;
       }
@@ -606,14 +606,14 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
 
         String? option2 = result.files.single.path ?? "";
         outputLogger
-            .i(TIM_t_para("选择成功{{option2}}", "选择成功$option2")(option2: option2));
+            .i(TDesk_t_para("选择成功{{option2}}", "选择成功$option2")(option2: option2));
 
         File file = File(result.files.single.path!);
         final int size = file.lengthSync();
         if (size >= MorePanelConfig.FILE_MAX_SIZE) {
           onTIMCallback(TIMCallback(
               type: TIMCallbackType.INFO,
-              infoRecommendText: TIM_t("文件大小超出了限制")));
+              infoRecommendText: TDesk_t("文件大小超出了限制")));
           return;
         }
 

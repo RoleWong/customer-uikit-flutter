@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/group/group_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 
 import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_customer/ui/widgets/group_member_list.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/group_member_list.dart';
 
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 
 class AtText extends StatefulWidget {
   final String? groupID;
@@ -159,7 +160,7 @@ class _AtTextState extends TIMUIKitState<AtText> {
                     constraints: const BoxConstraints(),
                     icon: Image.asset(
                       'images/arrow_back.png',
-                      package: 'tencent_cloud_customer',
+                      package: 'tencentcloud_ai_desk_customer',
                       height: 34,
                       width: 34,
                       color: theme.appbarTextColor,
@@ -173,7 +174,7 @@ class _AtTextState extends TIMUIKitState<AtText> {
               centerTitle: true,
               leadingWidth: 100,
               title: Text(
-                TIM_t("选择提醒人"),
+                TDesk_t("选择提醒人"),
                 style: TextStyle(
                   color: theme.appbarTextColor,
                   fontSize: 17,
@@ -185,7 +186,7 @@ class _AtTextState extends TIMUIKitState<AtText> {
                     _submitAtMemberList();
                   },
                   child: Text(
-                   TIM_t("确定"),
+                   TDesk_t("确定"),
                     style: TextStyle(
                       color: theme.appbarTextColor,
                       fontSize: 14,

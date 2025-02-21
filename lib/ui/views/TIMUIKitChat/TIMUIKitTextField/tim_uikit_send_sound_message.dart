@@ -5,17 +5,18 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/permission.dart';
-import 'package:tencent_cloud_customer/ui/utils/sound_record.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/ui/utils/logger.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/permission.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/sound_record.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 
 class SendSoundMessage extends StatefulWidget {
   /// conversation ID
@@ -137,7 +138,7 @@ class _SendSoundMessageState extends TIMUIKitState<SendSoundMessage> {
   onLongPressStart(_) {
     if (isInit) {
       setState(() {
-        soundTipsText = TIM_t("手指上滑，取消发送");
+        soundTipsText = TDesk_t("手指上滑，取消发送");
       });
       startTime = DateTime.now();
       SoundPlayer.startRecord();
@@ -150,15 +151,15 @@ class _SendSoundMessageState extends TIMUIKitState<SendSoundMessage> {
     double dy = e.localPosition.dy;
 
     if (dy.abs() > height) {
-      if (mounted && soundTipsText != TIM_t("松开取消")) {
+      if (mounted && soundTipsText != TDesk_t("松开取消")) {
         setState(() {
-          soundTipsText = TIM_t("松开取消");
+          soundTipsText = TDesk_t("松开取消");
         });
       }
     } else {
-      if (mounted && soundTipsText == TIM_t("松开取消")) {
+      if (mounted && soundTipsText == TDesk_t("松开取消")) {
         setState(() {
-          soundTipsText = TIM_t("手指上滑，取消发送");
+          soundTipsText = TDesk_t("手指上滑，取消发送");
         });
       }
     }
@@ -182,7 +183,7 @@ class _SendSoundMessageState extends TIMUIKitState<SendSoundMessage> {
       isCancelSend = true;
       onTIMCallback(TIMCallback(
           type: TIMCallbackType.INFO,
-          infoRecommendText: TIM_t("说话时间太短"),
+          infoRecommendText: TDesk_t("说话时间太短"),
           infoCode: 6660404));
     }
     stop();
@@ -205,7 +206,7 @@ class _SendSoundMessageState extends TIMUIKitState<SendSoundMessage> {
     });
     SoundPlayer.stopRecord();
     setState(() {
-      soundTipsText = TIM_t("手指上滑，取消发送");
+      soundTipsText = TDesk_t("手指上滑，取消发送");
     });
   }
 
@@ -232,7 +233,7 @@ class _SendSoundMessageState extends TIMUIKitState<SendSoundMessage> {
     } else {
       onTIMCallback(TIMCallback(
           type: TIMCallbackType.INFO,
-          infoRecommendText: TIM_t("说话时间太短"),
+          infoRecommendText: TDesk_t("说话时间太短"),
           infoCode: 6660404));
     }
   }
@@ -306,7 +307,7 @@ class _SendSoundMessageState extends TIMUIKitState<SendSoundMessage> {
         color: isRecording ? theme.weakBackgroundColor : Colors.white,
         alignment: Alignment.center,
         child: Text(
-          TIM_t("按住说话"),
+          TDesk_t("按住说话"),
           textAlign: TextAlign.center,
           style: TextStyle(
             // fontWeight: FontWeight.bold,

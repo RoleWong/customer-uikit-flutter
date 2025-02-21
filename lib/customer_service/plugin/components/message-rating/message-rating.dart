@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/common/utils.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-rating/rating-number.dart';
-import 'package:tencent_cloud_customer/customer_service/plugin/components/message-rating/rating-star.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-rating/rating-number.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-rating/rating-star.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 
 class MessageRating extends StatefulWidget {

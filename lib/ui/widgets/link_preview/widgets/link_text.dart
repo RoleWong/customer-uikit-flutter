@@ -1,15 +1,15 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/http_text.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/compiler/md_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/http_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/compiler/md_text.dart';
 import 'package:tencent_im_base/base_widgets/tim_stateless_widget.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
-import 'package:tencent_cloud_customer/ui/widgets/link_preview/common/utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/common/utils.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:tim_ui_kit_sticker_plugin/utils/tim_custom_face_data.dart';
 

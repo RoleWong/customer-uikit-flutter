@@ -2,10 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 class TIMUIKitChatController {
   late TUIChatSeparateViewModel? model;
@@ -39,7 +39,7 @@ class TIMUIKitChatController {
   }
 
   /// Clear the current conversation;
-  @Deprecated("No need to dispose after tencent_cloud_customer 0.1.4")
+  @Deprecated("No need to dispose after tencentcloud_ai_desk_customer 0.1.4")
   dispose() {}
 
   /// Clear the history of current conversation;

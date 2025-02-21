@@ -2,8 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
 
 class TIMUIKitFileIcon extends TIMUIKitStatelessWidget {
   final String? fileFormat;
@@ -45,7 +45,7 @@ class TIMUIKitFileIcon extends TIMUIKitStatelessWidget {
   Widget _getFileIcon() {
     return Image.asset(
       fileMap[fileFormat?.toLowerCase()] ?? "images/unknown.png",
-      package: 'tencent_cloud_customer',
+      package: 'tencentcloud_ai_desk_customer',
     );
   }
 

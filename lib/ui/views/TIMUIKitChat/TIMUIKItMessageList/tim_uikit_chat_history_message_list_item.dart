@@ -6,33 +6,33 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
-import 'package:tencent_cloud_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_cloud_customer/data_services/message/message_services.dart';
-import 'package:tencent_cloud_customer/data_services/services_locatar.dart';
-import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
-import 'package:tencent_cloud_customer/ui/constants/history_message_constant.dart';
-import 'package:tencent_cloud_customer/ui/utils/message.dart';
-import 'package:tencent_cloud_customer/ui/utils/platform.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/utils/time_ago.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_message_tooltip.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_message_read_receipt.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/main.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_custom_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_face_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_text_translate_elem.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/tim_uikit_cloud_custom_data.dart';
-import 'package:tencent_cloud_customer/ui/widgets/avatar.dart';
-import 'package:tencent_cloud_customer/ui/widgets/forward_message_screen.dart';
-import 'package:tencent_cloud_customer/ui/widgets/radio_button.dart';
-import 'package:tencent_cloud_customer/ui/widgets/wide_popup.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_statelesswidget.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/time_ago.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_message_tooltip.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_message_read_receipt.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/main.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_custom_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_face_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_text_translate_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_cloud_custom_data.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/forward_message_screen.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/radio_button.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
 import 'package:tencent_super_tooltip/tencent_super_tooltip.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -533,7 +533,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
                 () => model.jumpMsgID = "",
               )
             : null;
-        return customWidget ?? Text(TIM_t("[群系统消息]"));
+        return customWidget ?? Text(TDesk_t("[群系统消息]"));
       case MessageElemType.V2TIM_ELEM_TYPE_IMAGE:
         final customWidget = messageItemBuilder?.imageMessageItemBuilder != null
             ? messageItemBuilder!.imageMessageItemBuilder!(
@@ -575,7 +575,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
                 () => model.jumpMsgID = "",
               )
             : null;
-        return customWidget ?? Text(TIM_t("[位置]"));
+        return customWidget ?? Text(TDesk_t("[位置]"));
       case MessageElemType.V2TIM_ELEM_TYPE_MERGER:
         final customWidget = messageItemBuilder?.mergerMessageItemBuilder != null
             ? messageItemBuilder!.mergerMessageItemBuilder!(
@@ -596,7 +596,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
                 messageID: messageItem.msgID ?? "",
                 isSelf: messageItem.isSelf ?? true);
       default:
-        return Text(TIM_t("[未知消息]"));
+        return Text(TDesk_t("[未知消息]"));
     }
   }
 
@@ -611,11 +611,11 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
         alignment: Alignment.center,
         child: Text.rich(TextSpan(children: [
           TextSpan(
-            text: TIM_t("您撤回了一条消息，"),
+            text: TDesk_t("您撤回了一条消息，"),
             style: TextStyle(color: theme.weakTextColor),
           ),
           TextSpan(
-            text: TIM_t("重新编辑"),
+            text: TDesk_t("重新编辑"),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 widget.textFieldController?.setTextField(widget.message.textElem?.text ?? "");
@@ -630,7 +630,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
         margin: const EdgeInsets.symmetric(vertical: 20),
         alignment: Alignment.center,
         child: Text(
-          TIM_t_para("{{option2}}撤回了一条消息", "$option2撤回了一条消息")(option2: option2),
+          TDesk_t_para("{{option2}}撤回了一条消息", "$option2撤回了一条消息")(option2: option2),
           style: TextStyle(color: theme.weakTextColor, fontSize: 12),
         ));
   }
@@ -669,7 +669,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
             ),
           ),
           Text(
-            TIM_t("以下为未读消息"),
+            TDesk_t("以下为未读消息"),
             style: widget.themeData?.timelineTextStyle ??
                 TextStyle(
                   fontSize: 12,
@@ -867,16 +867,16 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Text(TIM_t("您确定要重发这条消息么？")),
+          title: Text(TDesk_t("您确定要重发这条消息么？")),
           actions: [
             CupertinoDialogAction(
-              child: Text(TIM_t("确定")),
+              child: Text(TDesk_t("确定")),
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
             ),
             CupertinoDialogAction(
-              child: Text(TIM_t("取消")),
+              child: Text(TDesk_t("取消")),
               isDestructiveAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
@@ -901,7 +901,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
     return [
       if (widget.isUseMessageReaction ?? false)
         MessageHoverControlItem(
-          name: TIM_t("表情回应"),
+          name: TDesk_t("表情回应"),
           icon: Icon(
             Icons.emoji_emotions,
             size: 13,
@@ -913,7 +913,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
         ),
       if (widget.toolTipsConfig?.showReplyMessage ?? true)
         MessageHoverControlItem(
-          name: TIM_t("回复"),
+          name: TDesk_t("回复"),
           icon: Icon(
             Icons.message,
             size: 13,
@@ -931,7 +931,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
         ),
       if ((widget.toolTipsConfig?.showForwardMessage ?? true) && !model.isVoteMessage(widget.message))
         MessageHoverControlItem(
-          name: TIM_t("转发"),
+          name: TDesk_t("转发"),
           icon: Icon(
             Icons.send,
             size: 13,
@@ -942,8 +942,8 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
             TUIKitWidePopup.showPopupWindow(
                 operationKey: TUIKitWideModalOperationKey.forward,
                 context: context,
-                title: TIM_t("转发"),
-                submitWidget: Text(TIM_t("发送")),
+                title: TDesk_t("转发"),
+                submitWidget: Text(TDesk_t("发送")),
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.height * 0.8,
                 onSubmit: () {
@@ -962,7 +962,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
           },
         ),
       MessageHoverControlItem(
-        name: TIM_t("更多"),
+        name: TDesk_t("更多"),
         icon: Icon(
           Icons.more_horiz,
           size: 13,
@@ -1129,7 +1129,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
     }
 
     if (isRevokedMsg) {
-      final displayName = isAdminRevoke ? TIM_t("管理员") : (isSelf ? TIM_t("您") : TencentDeskUtils.checkString(message.nickName) ?? TencentDeskUtils.checkString(message.sender) ?? message.userID);
+      final displayName = isAdminRevoke ? TDesk_t("管理员") : (isSelf ? TDesk_t("您") : TencentDeskUtils.checkString(message.nickName) ?? TencentDeskUtils.checkString(message.sender) ?? message.userID);
       return isSelf && isRevokeEditable && isRevocable(message.timestamp!) ? _selfRevokeEditMessageBuilder(theme, model) : _revokedMessageBuilder(theme, displayName ?? "");
     }
 

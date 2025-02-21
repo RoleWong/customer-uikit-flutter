@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
-import 'package:tencent_cloud_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
-import 'package:tencent_cloud_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_cloud_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_cloud_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_item.dart';
-import 'package:tencent_cloud_customer/ui/widgets/merger_message_screen.dart';
-import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencent_cloud_customer/ui/widgets/wide_popup.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_item.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/merger_message_screen.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 import 'TIMUIKitMessageReaction/tim_uikit_message_reaction_show_panel.dart';
 
@@ -84,7 +85,7 @@ class TIMUIKitMergerElemState extends TIMUIKitState<TIMUIKitMergerElem> {
             operationKey: TUIKitWideModalOperationKey.mergerMessageList,
             context: context,
             width: MediaQuery.of(context).size.width * 0.7,
-            title: TIM_t("聊天记录"),
+            title: TDesk_t("聊天记录"),
             height: MediaQuery.of(context).size.height * 0.7,
             child: (onClose) => Scrollbar(
               controller: _scrollController,
@@ -108,7 +109,7 @@ class TIMUIKitMergerElemState extends TIMUIKitState<TIMUIKitMergerElem> {
     } catch (e) {
       onTIMCallback(TIMCallback(
           type: TIMCallbackType.INFO,
-          infoRecommendText: TIM_t("无法定位到原消息"),
+          infoRecommendText: TDesk_t("无法定位到原消息"),
           infoCode: 6660401));
     }
   }
@@ -210,7 +211,7 @@ class TIMUIKitMergerElemState extends TIMUIKitState<TIMUIKitMergerElem> {
               ),
               const Divider(),
               Text(
-                TIM_t("聊天记录"),
+                TDesk_t("聊天记录"),
                 style: TextStyle(
                   color: theme.weakTextColor,
                   fontSize: 10,

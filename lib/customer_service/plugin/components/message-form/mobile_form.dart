@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 import 'package:tencent_im_base/tencent_im_base.dart';
 import 'package:tencent_keyboard_visibility/tencent_keyboard_visibility.dart';
 
@@ -223,7 +224,7 @@ class _TencentCloudCustomerMobileFormState extends State<TencentCloudCustomerMob
           ),
         ),
         child: Text(
-          TIM_t('提交'),
+          TDesk_t('提交'),
           style: const TextStyle(color: Colors.white, fontSize: 16,),
         ),
       ),
@@ -281,7 +282,7 @@ class CustomerFormSelectionField extends StatelessWidget {
       initialValue: value,
       validator: (value) {
         if (isRequired && (value == null || value.isEmpty)) {
-          return TIM_t("请选择一项");
+          return TDesk_t("请选择一项");
         }
         return null;
       },
@@ -397,7 +398,7 @@ class CustomerFormInputField extends StatelessWidget {
         onChanged: (newValue) => onValueChanged(name, newValue),
         validator: (String? newValue) {
           if (isRequired && (newValue == null || newValue.isEmpty)) {
-            return TIM_t('请填写必填项');
+            return TDesk_t('请填写必填项');
           }
           onValueChanged(name, newValue ?? '');
           return null;
