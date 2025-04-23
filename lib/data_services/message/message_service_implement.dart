@@ -349,6 +349,7 @@ class TCustomerMessageServiceImpl extends TCustomerMessageService {
     OfflinePushInfo? offlinePushInfo,
     String? cloudCustomData,
     String? localCustomData,
+    bool isExcludedFromContentModeration = false,
   }) async {
     final result =
         await TencentImSDKPlugin.v2TIMManager.getMessageManager().sendMessage(
@@ -361,6 +362,7 @@ class TCustomerMessageServiceImpl extends TCustomerMessageService {
               needReadReceipt: needReadReceipt,
               localCustomData: localCustomData,
               cloudCustomData: cloudCustomData,
+              isExcludedFromContentModeration: isExcludedFromContentModeration,
             );
     if (result.code != 0) {
       String recommendText = ErrorMessageConverter.getErrorMessage(result.code);

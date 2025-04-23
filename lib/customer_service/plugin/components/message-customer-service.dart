@@ -6,6 +6,7 @@ import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-branchMessage.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-form/message-form.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-formSave/message-formSave.dart';
+import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-loading.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-productCard.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-rating/message-rating.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-richText.dart';
@@ -219,6 +220,21 @@ class _MessageCustomerServiceState extends State<MessageCustomerService> {
               payload: mapData,
               onClickItem: ({V2TimMessage? messageInfo}) => widget.sendMessage(messageInfo: messageInfo),
             ));
+      case CUSTOM_MESSAGE_SRC.MODEL_THINKING:
+        return Align(
+          alignment: Alignment.centerLeft,
+          child: Container(
+            padding: widget.textPadding ?? const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: widget.messageBackgroundColor ?? backgroundColor,
+              borderRadius: widget.messageBorderRadius ?? borderRadius,
+            ),
+            child: MessageLoading(
+              payload: mapData,
+              message: widget.message,
+            ),
+          ),
+        );
     }
 
     return Container();

@@ -147,13 +147,13 @@ class TCustomerChatModelTools {
 
   String getMessageAbstract(V2TimMessage message,
       String? Function(V2TimMessage message)? abstractMessageBuilder) {
-    final messageAbstract = RepliedMessageAbstract(
-        summary: TDesk_t(getMessageSummary(message, abstractMessageBuilder)),
-        elemType: message.elemType,
-        msgID: message.msgID,
-        timestamp: message.timestamp,
-        seq: message.seq);
-    return jsonEncode(messageAbstract.toJson());
+    // final messageAbstract = RepliedMessageAbstract(
+    //     summary: TDesk_t(getMessageSummary(message, abstractMessageBuilder)),
+    //     elemType: message.elemType,
+    //     msgID: message.msgID,
+    //     timestamp: message.timestamp,
+    //     seq: message.seq);
+    return TDesk_t(getMessageSummary(message, abstractMessageBuilder));
   }
 
   Future<V2TimMessage?> getExistingMessageByID(

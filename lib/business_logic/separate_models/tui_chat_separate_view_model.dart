@@ -678,6 +678,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
     String? cloudCustomData,
     String? localCustomData,
     bool? isEditStatusMessage = false,
+    bool? isExcludedFromContentModeration,
   }) async {
     String receiver = convType == ConvType.c2c ? convID : '';
     String groupID = convType == ConvType.group ? convID : '';
@@ -697,6 +698,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
       groupID: groupID,
       offlinePushInfo: offlinePushInfo,
       onlineUserOnly: onlineUserOnly ?? false,
+      isExcludedFromContentModeration: isExcludedFromContentModeration ?? false,
       cloudCustomData: cloudCustomData ??
           (showC2cMessageEditStatus == true
               ? json.encode({
@@ -1309,7 +1311,6 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
 
   Future<V2TimValueCallback<V2TimMessage>?>? sendMessageFromController({
     required V2TimMessage? messageInfo,
-
     /// Offline push info
     OfflinePushInfo? offlinePushInfo,
     MessagePriorityEnum priority = MessagePriorityEnum.V2TIM_PRIORITY_NORMAL,
@@ -1348,6 +1349,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
         offlinePushInfo: offlinePushInfo ??
             tools.buildMessagePushInfo(
                 messageInfo, conversationID, conversationType ?? ConvType.c2c),
+        isExcludedFromContentModeration: messageInfo.isExcludedFromContentModeration,
       );
     }
     return null;

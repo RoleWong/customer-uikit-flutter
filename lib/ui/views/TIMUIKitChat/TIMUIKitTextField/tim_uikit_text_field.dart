@@ -325,16 +325,26 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
     // This part of the code is written to adapt to the Native side requirements.
     // It extracts the substring needed to interact with Native side by splitting
     // and parsing the given data value.
+    int groupID = 1;
+    if (data.contains("yz")) {
+      groupID = 1;
+    }
+    if (data.contains("ys")) {
+      groupID = 2;
+    }
+    if (data.contains("gcs")) {
+      groupID = 3;
+    }
+
     RegExp regex = RegExp(r'assets\/custom_face_resource\/(4350|4351|4352)');
     if (regex.hasMatch(data)) {
-      index += 1;
       data = (data.split("/")[3]).split("@")[0];
     }
 
     if (widget.model.repliedMessage != null) {
-      MessageUtils.handleMessageError(widget.model.sendFaceMessage(index: index, data: data, convID: widget.conversationID, convType: convType), context);
+      MessageUtils.handleMessageError(widget.model.sendFaceMessage(index: groupID, data: data, convID: widget.conversationID, convType: convType), context);
     } else {
-      MessageUtils.handleMessageError(widget.model.sendFaceMessage(index: index, data: data, convID: widget.conversationID, convType: convType), context);
+      MessageUtils.handleMessageError(widget.model.sendFaceMessage(index: groupID, data: data, convID: widget.conversationID, convType: convType), context);
     }
   }
 

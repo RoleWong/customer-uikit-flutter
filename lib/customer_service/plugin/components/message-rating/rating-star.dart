@@ -118,7 +118,7 @@ class _RatingStarState extends TIMState<RatingStar> {
                     });
               }).toList()),
           const Padding(padding: EdgeInsets.only(top: 10)),
-          selectIndex != -1 ? Text(menu[selectIndex]['content']) : Text(header),
+          if(selectIndex != -1) Text(menu[selectIndex]['content']),
           Container(
             child: ElevatedButton(
               style: (hasReply || isExpired)

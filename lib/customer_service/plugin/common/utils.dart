@@ -60,6 +60,8 @@ class CUSTOM_MESSAGE_SRC {
   static const String BRANCH_MESSAGE = '32';
   // 表单收集
   static const String FORM_SAVE = '33';
+  // 大模型思考中
+  static const String MODEL_THINKING = '35';
 }
 
 class RATING_TEMPLATE_TYPE {

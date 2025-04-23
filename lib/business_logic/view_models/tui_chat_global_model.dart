@@ -773,6 +773,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
         needReadReceipt: needReadReceipt,
         cloudCustomData: cloudCustomData,
         localCustomData: localCustomData,
+        isExcludedFromContentModeration: messageInfo.isExcludedFromContentModeration ?? false,
         convID: convID,
         setInputField: setInputField,
         id: messageInfo.id as String,
@@ -892,6 +893,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
     bool? needReadReceipt,
     String? cloudCustomData,
     String? localCustomData,
+    bool isExcludedFromContentModeration = false,
   }) async {
     String receiver = convType == ConvType.c2c ? convID : '';
     String groupID = convType == ConvType.group ? convID : '';
@@ -904,6 +906,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
         localCustomData: localCustomData,
         isExcludedFromUnreadCount: isExcludedFromUnreadCount ?? false,
         offlinePushInfo: offlinePushInfo,
+        isExcludedFromContentModeration: isExcludedFromContentModeration,
         onlineUserOnly: onlineUserOnly ?? false,
         cloudCustomData: cloudCustomData ??
             json.encode({

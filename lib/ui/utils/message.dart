@@ -275,7 +275,7 @@ class MessageUtils {
 
   static Widget wrapMessageTips(Widget child, TUITheme? theme) {
     return Container(
-        margin: const EdgeInsets.symmetric(vertical: 10), child: child);
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 30), child: child);
   }
 
   static String getAbstractMessageAsync(V2TimMessage message,

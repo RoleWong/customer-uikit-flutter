@@ -49,6 +49,7 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
   void initState() {
     super.initState();
     _loadQuickMessages();
+    _loadConversation();
   }
 
   @override
@@ -56,7 +57,7 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
     super.didUpdateWidget(oldWidget);
     if (oldWidget.customerServiceUserID != widget.customerServiceUserID &&
         TencentDeskUtils.checkString(widget.customerServiceUserID) != null) {
-      _sendStartMessage(0);
+      _loadConversation();
     }
   }
 
@@ -67,7 +68,8 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
             : TDeskAppLocale.en);
     Future.delayed(const Duration(milliseconds: 50), () {
       try {
-        TencentCloudChatCustomerServicePlugin.sendCustomerServiceStartMessage(_chatController.sendMessage, languageLocaleToDeskString[language] ?? "en");
+        TencentCloudChatCustomerServicePlugin.sendCustomerServiceStartMessage(
+            _chatController.sendMessage, languageLocaleToDeskString[language] ?? "en");
       } catch (e) {
         if (times < 4) {
           Future.delayed(const Duration(milliseconds: 200), () {
@@ -129,7 +131,9 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
         type: 1,
       );
     }
-    _customerServiceConversation = targetConversation;
+    setState(() {
+      _customerServiceConversation = targetConversation;
+    });
     _sendStartMessage(0);
     return targetConversation;
   }
@@ -160,124 +164,122 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
   @override
   Widget tuiBuild(BuildContext context, TUIKitBuildValue value) {
     final theme = value.theme;
-    return FutureBuilder<V2TimConversation>(
-      future: _loadConversation(),
-      builder: (BuildContext context, AsyncSnapshot<V2TimConversation> snapshot) {
-        final targetConversation = snapshot.data ?? _customerServiceConversation;
-        return targetConversation != null
-            ? TencentCloudCustomerMessage(
-                conversation: targetConversation,
-                customAppBar: TencentCloudCustomerMessageHeader(
-                  conversation: targetConversation,
-                  headerLabel: _customerServiceTyping,
-                ),
-                inputTopBuilder: _quickMessagesWidget(),
-                tongueItemBuilder: (VoidCallback onClick, MessageListTongueType valueType, int unreadCount) =>
-                    TencentCloudCustomerTongueItem(
-                  onClick: onClick,
-                  valueType: valueType,
-                  previousCount: 0,
-                  unreadCount: unreadCount,
-                  atNum: "",
-                ),
-                conversationShowName: _customerServiceTyping ?? targetConversation.showName,
-                lifeCycle: ChatLifeCycle(
-                  newMessageWillMount: (V2TimMessage message) async {
-                    if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
-                      if (TencentCloudChatCustomerServicePlugin.isTypingCustomerServiceMessage(message)) {
-                        setState(() {
-                          _customerServiceTyping = TDesk_t("对方正在输入中...");
-                        });
-                      }
-                    } else {
-                      setState(() {
-                        _customerServiceTyping = null;
-                      });
-                    }
-                    return message;
-                  },
-                  messageShouldMount: (V2TimMessage message) {
-                    if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
-                      return !TencentCloudChatCustomerServicePlugin.isCustomerServiceMessageInvisible(message) &&
-                          !(message.isSelf ?? true);
-                    }
-                    return true;
-                  },
-                ),
-                morePanelConfig: MorePanelConfig(
-                  showVideoCall: false,
-                  showVoiceCall: false,
-                ),
-                toolTipsConfig: ToolTipsConfig(
-                  showForwardMessage: false,
-                  showMultipleChoiceMessage: false,
-                  showTranslation: false,
-                ),
-                config: TIMUIKitChatConfig(
-                  isUseMessageReaction: false,
-                  isShowAvatar: false,
-                  textHeight: kTextHeightNone,
-                  isShowReadingStatus: widget.config.useMessageReadReceipt ?? false,
-                  stickerPanelConfig: StickerPanelConfig(
-                    useTencentCloudChatStickerPackage: true,
-                    customStickerPackages: [],
+    final targetConversation = _customerServiceConversation;
+    return targetConversation != null
+        ? TencentCloudCustomerMessage(
+            conversation: targetConversation,
+            customAppBar: TencentCloudCustomerMessageHeader(
+              conversation: targetConversation,
+              headerLabel: _customerServiceTyping,
+            ),
+            inputTopBuilder: _quickMessagesWidget(),
+            tongueItemBuilder: (VoidCallback onClick, MessageListTongueType valueType, int unreadCount) =>
+                TencentCloudCustomerTongueItem(
+              onClick: onClick,
+              valueType: valueType,
+              previousCount: 0,
+              unreadCount: unreadCount,
+              atNum: "",
+            ),
+            conversationShowName: _customerServiceTyping ?? targetConversation.showName,
+            lifeCycle: ChatLifeCycle(
+              newMessageWillMount: (V2TimMessage message) async {
+                if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
+                  if (TencentCloudChatCustomerServicePlugin.isTypingCustomerServiceMessage(message)) {
+                    setState(() {
+                      _customerServiceTyping = TDesk_t("对方正在输入中...");
+                    });
+                  }
+                } else {
+                  setState(() {
+                    _customerServiceTyping = null;
+                  });
+                }
+                return message;
+              },
+              messageShouldMount: (V2TimMessage message) {
+                if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
+                  return !TencentCloudChatCustomerServicePlugin.isCustomerServiceMessageInvisible(message) &&
+                      !(message.isSelf ?? true);
+                }
+                return true;
+              },
+            ),
+            morePanelConfig: MorePanelConfig(
+              showVideoCall: false,
+              showVoiceCall: false,
+            ),
+            toolTipsConfig: ToolTipsConfig(
+              showForwardMessage: false,
+              showMultipleChoiceMessage: false,
+              showTranslation: false,
+            ),
+            config: TIMUIKitChatConfig(
+              isUseMessageReaction: false,
+              isShowAvatar: false,
+              textHeight: kTextHeightNone,
+              isShowReadingStatus: widget.config.useMessageReadReceipt ?? false,
+              stickerPanelConfig: StickerPanelConfig(
+                useTencentCloudChatStickerPackage: true,
+                useQQStickerPackage: false,
+                useTencentCloudChatStickerPackageOldKeys: false,
+                unicodeEmojiList: [],
+                customStickerPackages: [],
+              ),
+            ),
+            messageItemBuilder: MessageItemBuilder(
+              messageRowBuilder: (
+                V2TimMessage message,
+                Widget messageWidget,
+                Function onScrollToIndex,
+                bool isNeedShowJumpStatus,
+                VoidCallback clearJumpStatus,
+                Function onScrollToIndexBegin,
+              ) {
+                if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    margin: const EdgeInsets.only(
+                      bottom: 16,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: messageWidget,
+                        )
+                      ],
+                    ),
+                  );
+                }
+                return null;
+              },
+              customMessageItemBuilder: (message, isShowJump, clearJump) {
+                if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
+                  return MessageCustomerService(
+                    message: message,
+                    textPadding: const EdgeInsets.all(16),
+                    messageBackgroundColor: Colors.white,
+                    theme: theme,
+                    isShowJumpState: isShowJump,
+                    sendMessage: _chatController.sendMessage,
+                  );
+                }
+                return null;
+              },
+            ),
+            controller: _chatController,
+          )
+        : Column(
+            children: [
+              Expanded(
+                child: Center(
+                  child: LoadingAnimationWidget.staggeredDotsWave(
+                    color: theme.weakTextColor ?? Colors.grey,
+                    size: 28,
                   ),
                 ),
-                messageItemBuilder: MessageItemBuilder(
-                  messageRowBuilder: (
-                    V2TimMessage message,
-                    Widget messageWidget,
-                    Function onScrollToIndex,
-                    bool isNeedShowJumpStatus,
-                    VoidCallback clearJumpStatus,
-                    Function onScrollToIndexBegin,
-                  ) {
-                    if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
-                      return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        margin: const EdgeInsets.only(
-                          bottom: 16,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: messageWidget,
-                            )
-                          ],
-                        ),
-                      );
-                    }
-                    return null;
-                  },
-                  customMessageItemBuilder: (message, isShowJump, clearJump) {
-                    if (TencentCloudChatCustomerServicePlugin.isCustomerServiceMessage(message)) {
-                      return MessageCustomerService(
-                        message: message,
-                        textPadding: const EdgeInsets.all(16),
-                        messageBackgroundColor: Colors.white,
-                        theme: theme,
-                        isShowJumpState: isShowJump,
-                        sendMessage: _chatController.sendMessage,
-                      );
-                    }
-                    return null;
-                  },
-                ),
-                controller: _chatController,
               )
-            : Column(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: LoadingAnimationWidget.staggeredDotsWave(
-                        color: theme.weakTextColor ?? Colors.grey,
-                        size: 28,
-                      ),
-                    ),
-                  )
-                ],
-              );
-      },
-    );
+            ],
+          );
   }
 }

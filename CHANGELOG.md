@@ -1,4 +1,40 @@
-## 1.2.0 & 1.2.0+1
+# 1.2.4
+
+## Fixed
+
+- Fixed some bugs.
+
+# 1.2.3
+
+## Fixed
+
+- Resolved an issue where a new conversation would automatically start after the previous session ended.
+
+## Optimized
+
+- Improved the layout of evaluation messages.
+- Improved the layout for quoted messages within the Workspace display.
+
+# 1.2.2
+
+## Added
+
+- Added a new animated loading indicator for the bot’s "thinking" state.
+
+# 1.2.1
+
+## Fixed
+
+- Addressed build failures on Flutter 3.27.1.
+- Resolved video playback and recording issues on Huawei P30.
+
+## Optimized
+
+- Refined the UI for group notification display.
+- Improved the layout of the read receipt page.
+- Enhanced text wrapping and truncation for lengthy tip messages.
+
+# 1.2.0
 
 ## Breaking Changes
 

@@ -1,8 +1,8 @@
 name: tencentcloud_ai_desk_customer
 description: AI-driven customer service UIKit for Tencent Cloud Desk (customer-side).
-version: 1.2.0+1
+version: 1.2.4
 homepage: https://cloud.tencent.com/document/product/269/96056?from=flutter
-repository: https://github.com/RoleWong/tencentcloud_ai_desk_customer
+repository: https://github.com/RoleWong/tencentcloud_ai_desk_customer_flutter
 documentation: https://cloud.tencent.com/document/product/269/113293?from=flutter
 
 platforms:
@@ -24,11 +24,12 @@ dependencies:
   get_it: ^7.2.0
   dotted_border: ^2.0.0+2
   flutter_svg: ^2.0.6
-  image_picker: ^0.8.5+3
+  image_picker: ^0.8.9
   file_picker: ^5.3.0
   tencent_super_tooltip: ^0.0.1
-  video_player: ^2.9.0
-  chewie: ^1.8.5
+  better_player_plus: '>=1.0.4 <=1.0.5'
+  video_player: ^2.9.2
+  chewie: '>=1.8.4 <=1.8.5'
   flutter_slidable_plus_plus: ^0.1.0
   flutter_plugin_record_plus: ^0.0.19
   azlistview_all_platforms: ^2.1.2
@@ -40,10 +41,9 @@ dependencies:
   shared_preferences: ^2.0.13
   scroll_to_index: ^2.1.1
   wechat_assets_picker: ^9.3.3
-  wechat_camera_picker: ^4.3.4
   flutter_easyrefresh: ^2.2.1
-  extended_image: ^9.0.0
-  extended_text_field: ^16.0.0
+  extended_image: ^9.1.0
+  extended_text_field: ^16.0.2
   extended_text: ^14.0.0
   package_info_plus: ^8.0.0
   loading_animation_widget: ^1.1.0+3
@@ -80,6 +80,7 @@ dependencies:
   photo_view: ^0.15.0
   fluttertoast: ^8.2.1
   opentelemetry: ^0.18.6
+  tencent_cloud_chat_sdk: 8.3.6498+1
 
 dev_dependencies:
   flutter_lints: ^1.0.0

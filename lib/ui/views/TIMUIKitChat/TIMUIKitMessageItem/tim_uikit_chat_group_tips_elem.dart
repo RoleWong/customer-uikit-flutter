@@ -39,7 +39,8 @@ class _TIMUIKitGroupTipsElemState extends TIMUIKitState<TIMUIKitGroupTipsElem> {
     return MessageUtils.wrapMessageTips(
         Text(
           groupTipsAbstractText,
-          softWrap: true,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 12,

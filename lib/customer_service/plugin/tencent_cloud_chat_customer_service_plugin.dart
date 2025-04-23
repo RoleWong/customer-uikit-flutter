@@ -23,6 +23,7 @@ class TencentCloudChatCustomerServicePlugin {
     CUSTOM_MESSAGE_SRC.STREAM_TEXT,
     CUSTOM_MESSAGE_SRC.BRANCH_MESSAGE,
     CUSTOM_MESSAGE_SRC.FORM_SAVE,
+    CUSTOM_MESSAGE_SRC.MODEL_THINKING,
   ];
   static List<String> rowWhiteList = [
     CUSTOM_MESSAGE_SRC.MENU,
@@ -81,7 +82,6 @@ class TencentCloudChatCustomerServicePlugin {
   }
 
   static bool isCustomerServiceMessageInvisible(V2TimMessage message) {
-    bool invisible = false;
     V2TimCustomElem? custom = message.customElem;
 
     if (custom != null) {
@@ -89,15 +89,23 @@ class TencentCloudChatCustomerServicePlugin {
       if (data != null && data.isNotEmpty) {
         try {
           Map<String, dynamic> mapData = json.decode(data);
+
           if (!srcWhiteList.contains(mapData["src"])) {
-            invisible = true;
+            return true;
+          }
+
+          if (mapData["src"] == CUSTOM_MESSAGE_SRC.MODEL_THINKING) {
+            int currentTime = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+            if (mapData["thinkingStatus"] == 1 || (currentTime - message.timestamp! > 60)) {
+              return true;
+            }
           }
         } catch (err) {
-          // err
+          return false;
         }
       }
     }
-    return invisible;
+    return false;
   }
 
   static bool isCanSendEvaluate(V2TimMessage message) {
