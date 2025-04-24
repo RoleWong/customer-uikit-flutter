@@ -21,9 +21,16 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/emoji_text.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_at_text.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_more_panel.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_controller.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_layout/narrow.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_layout/wide.dart';
 import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_member_role.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
 
 enum MuteStatus { none, me, all }
 
@@ -645,13 +652,11 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
       for (int i = 0; i < selectedAtMemberList.length; ++i) {
         V2TimGroupMemberFullInfo memberInfo = selectedAtMemberList[i];
         final showName = _getShowName(memberInfo);
-        if (memberInfo != null) {
-          mentionedMembersMap["@$showName"] = memberInfo;
-          String addAtCharacter = i == 0 ? "" : "@";
-          textEditingController.text = "${textEditingController.text}$addAtCharacter$showName ";
-          lastText = "${textEditingController.text}$addAtCharacter$showName ";
-        }
-      }
+        mentionedMembersMap["@$showName"] = memberInfo;
+        String addAtCharacter = i == 0 ? "" : "@";
+        textEditingController.text = "${textEditingController.text}$addAtCharacter$showName ";
+        lastText = "${textEditingController.text}$addAtCharacter$showName ";
+            }
     }
 
     lastText = textEditingController.text;
@@ -882,7 +887,7 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
             return null;
           }
 
-          final forbiddenText = getForbiddenText();
+          getForbiddenText();
           return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
             inputWidth = constraints.maxWidth;
             return TUIKitScreenUtils.getDeviceWidget(

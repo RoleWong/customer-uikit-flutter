@@ -9,11 +9,14 @@ import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/sound_record.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
 
+
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_sound_elem.dart';
 import 'TIMUIKitMessageReaction/tim_uikit_message_reaction_show_panel.dart';
 
 class TIMUIKitSoundElem extends StatefulWidget {

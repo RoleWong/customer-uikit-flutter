@@ -1,4 +1,4 @@
-import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
 
 class TIMUIKitChatUtils {
   static String? getMessageIDWithinIndex(

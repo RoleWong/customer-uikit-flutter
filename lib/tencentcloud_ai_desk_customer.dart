@@ -1,37 +1,36 @@
 library tencentcloud_ai_desk_customer;
 
+import 'package:tencent_cloud_chat_sdk/manager/v2_tim_manager.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/manager/tencent_cloud_customer_manager.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/manager/tencent_cloud_customer_manager_impl.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
 
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'data_services/core/core_services_implements.dart';
-export 'data_services/core/core_services_implements.dart';
-export 'package:tencent_im_base/theme/tui_theme.dart';
-export 'package:tencent_im_base/theme/color.dart';
+// export 'data_services/core/core_services_implements.dart';
 
 // Sticker
 export 'package:tim_ui_kit_sticker_plugin/tim_ui_kit_sticker_plugin.dart';
 
 // Widgets
 export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_item.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/widgets/unread_message.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_more_panel.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_controller.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitAppBar/tim_uikit_appbar.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field.dart';
-export 'package:tencent_im_base/tencent_im_base.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/models/link_preview_content.dart';
-export 'package:tencentcloud_ai_desk_customer/ui/widgets/column_menu.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_item.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/widgets/unread_message.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_more_panel.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_controller.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitAppBar/tim_uikit_appbar.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/models/link_preview_content.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/widgets/column_menu.dart';
+
 
 // Enum
-export 'package:tencentcloud_ai_desk_customer/ui/theme/tim_uikit_message_theme.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/theme/tim_uikit_message_theme.dart';
 
 // Config
-export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
-export 'package:permission_handler/permission_handler.dart';
+// export 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
+// export 'package:permission_handler/permission_handler.dart';
 
 // Utils
 export 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';

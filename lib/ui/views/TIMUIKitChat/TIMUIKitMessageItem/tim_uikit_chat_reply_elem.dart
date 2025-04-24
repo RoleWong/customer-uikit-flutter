@@ -4,13 +4,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_model_tools.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/special_text/DefaultSpecialTextSpanBuilder.dart';
 import 'package:extended_text/extended_text.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
@@ -25,6 +26,11 @@ import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/link_previ
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/models/link_preview_content.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/widgets/link_preview.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_elem_type.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_status.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 import 'package:tim_ui_kit_sticker_plugin/utils/tim_custom_face_data.dart';
 
 class TIMUIKitReplyElem extends StatefulWidget {
@@ -327,7 +333,7 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
         : (Colors.white);
 
     final backgroundColor =
-        isShowJumpState ? const Color.fromRGBO(245, 166, 35, 1) : (defaultStyle ?? widget.backgroundColor);
+        isShowJumpState ? const Color.fromRGBO(245, 166, 35, 1) : (defaultStyle);
 
     final borderRadius = isFromSelf
         ? const BorderRadius.only(

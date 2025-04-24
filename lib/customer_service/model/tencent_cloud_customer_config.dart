@@ -1,5 +1,4 @@
 import 'package:tencentcloud_ai_desk_customer/customer_service/model/tencent_cloud_customer_qucik_message.dart';
-import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services.dart';
 import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
 
 class TencentCloudCustomerConfig {

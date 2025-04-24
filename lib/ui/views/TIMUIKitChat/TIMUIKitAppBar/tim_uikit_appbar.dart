@@ -13,6 +13,11 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitAppBar/tim_uikit_appbar_title.dart';
 import 'package:tuple/tuple.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencent_cloud_chat_sdk/enum/V2TimFriendshipListener.dart';
+import 'package:tencent_cloud_chat_sdk/enum/V2TimGroupListener.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_change_info_type.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class TIMUIKitAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// Appbar config

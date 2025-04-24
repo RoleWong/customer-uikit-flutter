@@ -6,6 +6,14 @@ import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencent_cloud_chat_sdk/enum/history_msg_get_type_enum.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_priority_enum.dart';
+import 'package:tencent_cloud_chat_sdk/enum/offlinePushInfo.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_controller.dart';
 
 class TIMUIKitChatController {
   late TUIChatSeparateViewModel? model;

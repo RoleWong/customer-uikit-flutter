@@ -3,12 +3,24 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/constants/time.dart';
 import 'package:collection/collection.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_change_info_type.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_tips_elem_type.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_elem_type.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_change_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_tips_elem.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_image.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_user_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class MessageUtils {
   // 判断CallingData的方式和Trtc的方法一致
@@ -165,7 +177,7 @@ class MessageUtils {
           final newText = await _getGroupChangeType(element!, groupMemberList);
           changedInfoString +=
               (changedInfoString.isEmpty ? "" : " / ") + newText;
-          changedValue = element!.boolValue ?? false;
+          changedValue = element.boolValue ?? false;
         }
         if (changedInfoString.isEmpty) {
           changedInfoString = TDesk_t("群资料");

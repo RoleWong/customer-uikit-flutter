@@ -7,10 +7,17 @@ import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dar
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
 
-import 'package:tencent_im_base/tencent_im_base.dart';
+
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/group_member_list.dart';
 
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_search_param.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_search_result.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_user_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class AtText extends StatefulWidget {
   final String? groupID;
@@ -69,40 +76,6 @@ class _AtTextState extends TIMUIKitState<AtText> {
     } else {
       Navigator.pop(context, selectedGroupMemberList);
     }
-  }
-
-  Future<V2TimValueCallback<V2GroupMemberInfoSearchResult>> searchGroupMember(
-      V2TimGroupMemberSearchParam searchParam) async {
-    final res =
-        await _groupServices.searchGroupMembers(searchParam: searchParam);
-
-    if (res.code == 0) {}
-    return res;
-  }
-
-  handleSearchGroupMembers(String searchText, context) async {
-    final res = await searchGroupMember(V2TimGroupMemberSearchParam(
-      keywordList: [searchText],
-      groupIDList: [widget.groupID!],
-    ));
-
-    if (res.code == 0) {
-      List<V2TimGroupMemberFullInfo?> list = [];
-      final searchResult = res.data!.groupMemberSearchResultItems!;
-      searchResult.forEach((key, value) {
-        if (value is List) {
-          for (V2TimGroupMemberFullInfo item in value) {
-            list.add(item);
-          }
-        }
-      });
-      searchMemberList = list;
-    }
-
-    setState(() {
-      searchMemberList =
-          isSearchTextExist(searchText) ? searchMemberList : groupMemberList;
-    });
   }
 
   bool isSearchTextExist(String? searchText) {

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:open_file/open_file.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
@@ -19,6 +20,14 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_wrapper.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_file_icon.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/textSize.dart';
+import 'package:tencent_cloud_chat_sdk/enum/V2TimAdvancedMsgListener.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_file_elem.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_download_progress.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -56,7 +65,6 @@ class _TIMUIKitFileElemState extends TIMUIKitState<TIMUIKitFileElem> {
   V2TimAdvancedMsgListener? advancedMsgListener;
   final GlobalKey containerKey = GlobalKey();
   double? containerHeight;
-  bool? _downloadFailed = false;
 
   @override
   void dispose() {
@@ -89,7 +97,6 @@ class _TIMUIKitFileElemState extends TIMUIKitState<TIMUIKitFileElem> {
         if (messageProgress.msgID == widget.message.msgID) {
           if (messageProgress.isError || messageProgress.errorCode != 0) {
             setState(() {
-              _downloadFailed = true;
             });
             return;
           }

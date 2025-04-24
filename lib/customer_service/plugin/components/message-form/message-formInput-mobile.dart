@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-form/mobile_form.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_state.dart';
+
 
 class MessageFormInputMobile extends StatefulWidget {
   final dynamic payload;

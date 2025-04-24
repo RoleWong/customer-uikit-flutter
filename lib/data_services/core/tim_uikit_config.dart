@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/core/tim_uikit_wide_modal_operation_key.dart';
-import 'package:tencent_im_base/theme/tui_theme.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class TIMUIKitConfig {
   /// Control if show online status of friends or contacts.

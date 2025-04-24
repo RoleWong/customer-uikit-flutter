@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
-import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme_view_model.dart';
 
 class AZListViewContainer extends StatefulWidget {
   final List<ISuspensionBeanImpl>? memberList;

@@ -6,6 +6,7 @@ import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart
 import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
 
 class AtMemberPanel extends StatefulWidget {
   /// messageList widget scroll controller

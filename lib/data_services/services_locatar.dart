@@ -15,7 +15,7 @@ import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services
 import 'package:tencentcloud_ai_desk_customer/data_services/message/message_service_implement.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
-import 'package:tencent_im_base/theme/tui_theme_view_model.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme_view_model.dart';
 
 final serviceLocator = GetIt.instance;
 bool boolIsInitailized = false;

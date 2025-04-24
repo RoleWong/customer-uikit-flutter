@@ -1,8 +1,13 @@
 PODS:
   - audio_session (0.0.1):
     - Flutter
-  - camera_avfoundation (0.0.1):
+  - better_player_plus (1.0.0):
+    - Cache (~> 6.0.0)
     - Flutter
+    - GCDWebServer
+    - HLSCachingReverseProxyServer
+    - PINCache
+  - Cache (6.0.0)
   - device_info_plus (0.0.1):
     - Flutter
   - DKImagePickerController/Core (4.3.9):
@@ -53,6 +58,12 @@ PODS:
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
+  - GCDWebServer (3.5.4):
+    - GCDWebServer/Core (= 3.5.4)
+  - GCDWebServer/Core (3.5.4)
+  - HLSCachingReverseProxyServer (0.1.0):
+    - GCDWebServer (~> 3.5)
+    - PINCache (>= 3.0.1-beta.3)
   - HydraAsync (2.0.6)
   - image_gallery_saver_plus (0.0.1):
     - Flutter
@@ -60,17 +71,17 @@ PODS:
     - Flutter
   - just_audio (0.0.1):
     - Flutter
-  - libwebp (1.3.2):
-    - libwebp/demux (= 1.3.2)
-    - libwebp/mux (= 1.3.2)
-    - libwebp/sharpyuv (= 1.3.2)
-    - libwebp/webp (= 1.3.2)
-  - libwebp/demux (1.3.2):
+  - libwebp (1.5.0):
+    - libwebp/demux (= 1.5.0)
+    - libwebp/mux (= 1.5.0)
+    - libwebp/sharpyuv (= 1.5.0)
+    - libwebp/webp (= 1.5.0)
+  - libwebp/demux (1.5.0):
     - libwebp/webp
-  - libwebp/mux (1.3.2):
+  - libwebp/mux (1.5.0):
     - libwebp/demux
-  - libwebp/sharpyuv (1.3.2)
-  - libwebp/webp (1.3.2):
+  - libwebp/sharpyuv (1.5.0)
+  - libwebp/webp (1.5.0):
     - libwebp/sharpyuv
   - Mantle (2.2.0):
     - Mantle/extobjc (= 2.2.0)
@@ -89,14 +100,20 @@ PODS:
   - photo_manager (2.0.0):
     - Flutter
     - FlutterMacOS
-  - SDWebImage (5.20.0):
-    - SDWebImage/Core (= 5.20.0)
-  - SDWebImage/Core (5.20.0)
+  - PINCache (3.0.4):
+    - PINCache/Arc-exception-safe (= 3.0.4)
+    - PINCache/Core (= 3.0.4)
+  - PINCache/Arc-exception-safe (3.0.4):
+    - PINCache/Core
+  - PINCache/Core (3.0.4):
+    - PINOperation (~> 1.2.3)
+  - PINOperation (1.2.3)
+  - SDWebImage (5.21.0):
+    - SDWebImage/Core (= 5.21.0)
+  - SDWebImage/Core (5.21.0)
   - SDWebImageWebPCoder (0.14.6):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.17)
-  - sensors_plus (0.0.1):
-    - Flutter
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -107,11 +124,11 @@ PODS:
   - tencent_cloud_chat_sdk (8.0.0):
     - Flutter
     - HydraAsync
-    - TXIMSDK_Plus_iOS_XCFramework (= 8.3.6498)
+    - TXIMSDK_Plus_iOS_XCFramework (= 8.5.6864)
   - tencent_cloud_uikit_core (0.0.1):
     - Flutter
   - Toast (4.1.1)
-  - TXIMSDK_Plus_iOS_XCFramework (8.3.6498)
+  - TXIMSDK_Plus_iOS_XCFramework (8.5.6864)
   - url_launcher_ios (0.0.1):
     - Flutter
   - video_player_avfoundation (0.0.1):
@@ -122,7 +139,7 @@ PODS:
 
 DEPENDENCIES:
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
-  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - better_player_plus (from `.symlinks/plugins/better_player_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - fc_native_video_thumbnail (from `.symlinks/plugins/fc_native_video_thumbnail/darwin`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
@@ -139,7 +156,6 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
-  - sensors_plus (from `.symlinks/plugins/sensors_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
   - tencent_cloud_chat_sdk (from `.symlinks/plugins/tencent_cloud_chat_sdk/ios`)
@@ -150,11 +166,16 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Cache
     - DKImagePickerController
     - DKPhotoGallery
+    - GCDWebServer
+    - HLSCachingReverseProxyServer
     - HydraAsync
     - libwebp
     - Mantle
+    - PINCache
+    - PINOperation
     - SDWebImage
     - SDWebImageWebPCoder
     - SwiftyGif
@@ -164,8 +185,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
-  camera_avfoundation:
-    :path: ".symlinks/plugins/camera_avfoundation/ios"
+  better_player_plus:
+    :path: ".symlinks/plugins/better_player_plus/ios"
   device_info_plus:
     :path: ".symlinks/plugins/device_info_plus/ios"
   fc_native_video_thumbnail:
@@ -198,8 +219,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   photo_manager:
     :path: ".symlinks/plugins/photo_manager/ios"
-  sensors_plus:
-    :path: ".symlinks/plugins/sensors_plus/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqflite_darwin:
@@ -217,7 +236,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
-  camera_avfoundation: dd002b0330f4981e1bbcb46ae9b62829237459a4
+  better_player_plus: 89f911bd69171edfe6d2ee689014355036bffdb0
+  Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d
   DKImagePickerController: 946cec48c7873164274ecc4624d19e3da4c1ef3c
   DKPhotoGallery: b3834fecb755ee09a593d7c9e389d8b5d6deed60
@@ -227,11 +247,13 @@ SPEC CHECKSUMS:
   flutter_image_compress_common: ec1d45c362c9d30a3f6a0426c297f47c52007e3e
   flutter_plugin_record_plus: 79b8e13ee7ed9a94f6c067018653599528cee1fc
   fluttertoast: e9a18c7be5413da53898f660530c56f35edfba9c
+  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
+  HLSCachingReverseProxyServer: 59935e1e0244ad7f3375d75b5ef46e8eb26ab181
   HydraAsync: 8d589bd725b0224f899afafc9a396327405f8063
   image_gallery_saver_plus: 782ade975fe6a4600b53e7c1983e3a2979d1e9e5
   image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
-  libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
+  libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
   Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
   open_file_ios: 461db5853723763573e140de3193656f91990d9e
   package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
@@ -239,20 +261,21 @@ SPEC CHECKSUMS:
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
   photo_manager: ff695c7a1dd5bc379974953a2b5c0a293f7c4c8a
-  SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
+  PINCache: d9a87a0ff397acffe9e2f0db972ac14680441158
+  PINOperation: fb563bcc9c32c26d6c78aaff967d405aa2ee74a7
+  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
-  sensors_plus: 7229095999f30740798f0eeef5cd120357a8f4f2
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
   SwiftyGif: 706c60cf65fa2bc5ee0313beece843c8eb8194d4
-  tencent_cloud_chat_sdk: 546bb906bbe585814e3d2d33afdb91f09c0eac44
+  tencent_cloud_chat_sdk: 2be7f6c43cc423e39bc9b114726727ff35d7ea88
   tencent_cloud_uikit_core: c0140985a33df7b3948d2ebe0a0d7eeb780447f2
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
-  TXIMSDK_Plus_iOS_XCFramework: 5d1933192fb3b7ef2fe933f1623de4a0486a7fe2
+  TXIMSDK_Plus_iOS_XCFramework: 0353712b504d2206ce0f4d94b0eb3357673e1cfe
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
   video_player_avfoundation: 7c6c11d8470e1675df7397027218274b6d2360b3
   wakelock_plus: 373cfe59b235a6dd5837d0fb88791d2f13a90d56
 
 PODFILE CHECKSUM: 0d909e7c01bfeb179b6ddef85ddc06c55e27bc15
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

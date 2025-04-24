@@ -3,9 +3,13 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_msg_create_info_result.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_state.dart';
+
 
 class RatingStar extends StatefulWidget {
   final dynamic payload;

@@ -17,6 +17,7 @@ import 'package:tencentcloud_ai_desk_customer/data_services/message/message_serv
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/theme/tim_uikit_message_theme.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
@@ -28,14 +29,23 @@ import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMess
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_custom_elem.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_face_elem.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/tim_uikit_chat_text_translate_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_text_field_controller.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_cloud_custom_data.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/forward_message_screen.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/radio_button.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_elem_type.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_status.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_change_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
 import 'package:tencent_super_tooltip/tencent_super_tooltip.dart';
 import 'package:visibility_detector/visibility_detector.dart';
-
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme_view_model.dart';
 import '../TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_select_emoji.dart';
 
 typedef MessageRowBuilder = Widget? Function(
@@ -1063,7 +1073,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
                   margin: const EdgeInsets.only(right: 6),
                   width: 12.0,
                   height: 15.0,
-                  child: CircularProgressIndicator(strokeWidth: 1.0),
+                  child: const CircularProgressIndicator(strokeWidth: 1.0),
                 );
               } else {
                 return Container();

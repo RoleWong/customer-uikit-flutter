@@ -1438,10 +1438,10 @@ packages:
     dependency: "direct main"
     description:
       name: tencent_cloud_chat_sdk
-      sha256: "0fb757f440a455be2d4bb706451a5b8efd2e6298abba88e109bff2097c98802a"
+      sha256: b66692a2d077f1d5a3b42cf6a2643538254c051c4972e3d1e7d5cfacc581d3b6
       url: "https://pub.dev"
     source: hosted
-    version: "8.3.6498+1"
+    version: "8.5.6864+6"
   tencent_cloud_uikit_core:
     dependency: "direct main"
     description:
@@ -1454,18 +1454,10 @@ packages:
     dependency: "direct main"
     description:
       name: tencent_desk_i18n_tool
-      sha256: "7b8b37c466e692cd5e6095130a34d4047842201b3bcc542131bfeacf9cc2cbc5"
+      sha256: a83d6b44993feef329054d216a9640e8c255cb5ccf27122542b5944801173ab4
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.1"
-  tencent_im_base:
-    dependency: "direct main"
-    description:
-      name: tencent_im_base
-      sha256: "08790ad86bc780f071975d62aadf1d9b853a7a84d5e2dfb37fceb6977856fbdc"
-      url: "https://pub.dev"
-    source: hosted
-    version: "8.0.0"
+    version: "2.5.0"
   tencent_keyboard_visibility:
     dependency: "direct main"
     description:
@@ -1502,10 +1494,10 @@ packages:
     dependency: "direct main"
     description:
       name: tim_ui_kit_sticker_plugin
-      sha256: "4e5524956159a7a93154797d57dbb18dc5bca416b829e8f9ac0d3569117c63e8"
+      sha256: "58d602ad1b65a0ebc11988c323f1a64f75e7b2a2cef0963b1d74b4cdf5e33f4c"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.1"
+    version: "4.0.2"
   timing:
     dependency: transitive
     description:

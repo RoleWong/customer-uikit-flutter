@@ -16,6 +16,7 @@ import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
@@ -33,6 +34,10 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_wrapper.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/image_screen.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_image.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
@@ -526,7 +531,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
         children: [
           if (positionRadio != null)
             AspectRatio(
-              aspectRatio: (currentPositionRadio ?? positionRadio)!,
+              aspectRatio: (currentPositionRadio ?? positionRadio),
               child: Container(
                 decoration: const BoxDecoration(color: Colors.transparent),
               ),

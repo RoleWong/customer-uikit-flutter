@@ -15,6 +15,11 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_wrapper.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/video_screen.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_status.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_video_elem.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TIMUIKitVideoElem extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:tencentcloud_ai_desk_customer/business_logic/life_cycle/base_life_cycle.dart';
-import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
 
 class ChatLifeCycle {
   /// Before a new message will be added to historical message list from long connection.

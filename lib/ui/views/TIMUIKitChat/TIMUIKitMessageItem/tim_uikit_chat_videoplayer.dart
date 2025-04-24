@@ -3,8 +3,14 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:better_player_plus/better_player_plus.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
 import 'package:tencentcloud_ai_desk_customer/ui/utils/common_utils.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_elem_type.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_online_url.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 
 class TIMUIKitVideoPlayer extends StatefulWidget {
   final V2TimMessage message;

@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_state.dart';
+
 
 class MessageOrderCard extends StatefulWidget {
   final dynamic payload;

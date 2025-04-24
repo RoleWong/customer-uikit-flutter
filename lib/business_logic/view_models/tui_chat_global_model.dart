@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print, unnecessary_getters_setters, unused_element
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -17,6 +16,22 @@ import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart
 import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
+import 'package:tencent_cloud_chat_sdk/enum/V2TimAdvancedMsgListener.dart';
+import 'package:tencent_cloud_chat_sdk/enum/history_msg_get_type_enum.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_elem_type.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_priority_enum.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_status.dart';
+import 'package:tencent_cloud_chat_sdk/enum/offlinePushInfo.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_custom_elem.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_application.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_image.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_download_progress.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_receipt.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_msg_create_info_result.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
 
 enum ConvType { none, c2c, group }
 
@@ -483,16 +498,6 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
         isEditStatusMessage: true,
       );
     }
-  }
-
-  void refreshGroupApplicationList() async {
-    final res = await _groupServices.getGroupApplicationList();
-    _groupApplicationList = res.data?.groupApplicationList?.map((item) {
-          final V2TimGroupApplication applicationItem = item!;
-          return applicationItem;
-        }).toList() ??
-        [];
-    notifyListeners();
   }
 
   cancelAllTimer() {

@@ -4,6 +4,9 @@ import 'package:link_preview_generator_for_us/link_preview_generator.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/common/extensions.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/link_preview_entry.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/models/link_preview_content.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LinkUtils {

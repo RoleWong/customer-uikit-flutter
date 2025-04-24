@@ -1,8 +1,8 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_state.dart';
+
 
 class MessageStream extends StatefulWidget {
   final dynamic payload;

@@ -2,9 +2,14 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:tencent_cloud_chat_sdk/manager/v2_tim_manager.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_custom_elem.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_user_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencentcloud_ai_desk_customer/customer_service/utils/tencent_cloud_customer_toast.dart';
+
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
 
 
 class TencentCloudChatCustomerServicePlugin {
@@ -32,10 +37,6 @@ class TencentCloudChatCustomerServicePlugin {
     CUSTOM_MESSAGE_SRC.TYPING_STATE,
   ];
 
-  static Future<String> _getCurrentLoginUser() async {
-    V2TimValueCallback<String> ruseres = await imManager.getLoginUser();
-    return ruseres.data ?? "";
-  }
 
   static initPlugin() async {
     final res = await TencentImSDKPlugin.v2TIMManager.checkAbility();

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_user_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/data/tencent_cloud_customer_data.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-customer-service.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/tencent_cloud_chat_customer_service_plugin.dart';
@@ -19,6 +23,9 @@ import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart
 import 'package:tencentcloud_ai_desk_customer/ui/controller/tim_uikit_chat_controller.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
 import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_item.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_more_panel.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
 
 class TencentCloudCustomerMessageContainer extends StatefulWidget {
   final String customerServiceUserID;

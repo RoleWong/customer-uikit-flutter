@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_member_filter_enum.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
 
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/group_member_list.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class SelectCallInviter extends StatefulWidget {
   final String? groupID;
@@ -82,48 +87,6 @@ class _SelectCallInviterState extends TIMUIKitState<SelectCallInviter> {
       _groupMemberListSeq = groupMemberListRes.nextSeq ?? "0";
     }
     return groupMemberListRes?.nextSeq;
-  }
-
-  Future<V2TimValueCallback<V2GroupMemberInfoSearchResult>> searchGroupMember(
-      V2TimGroupMemberSearchParam searchParam) async {
-    final res =
-        await _groupServices.searchGroupMembers(searchParam: searchParam);
-
-    if (res.code == 0) {}
-    return res;
-  }
-
-  handleSearchGroupMembers(String searchText, context) async {
-    loading = true;
-    if (widget.groupID == null || widget.groupID!.isEmpty) {
-      return;
-    }
-    List<V2TimGroupMemberFullInfo?> currentGroupMember = [];
-    final res = await searchGroupMember(V2TimGroupMemberSearchParam(
-      keywordList: [searchText],
-      groupIDList: [widget.groupID!],
-    ));
-
-    if (res.code == 0) {
-      List<V2TimGroupMemberFullInfo?> list = [];
-      final searchResult = res.data!.groupMemberSearchResultItems!;
-      searchResult.forEach((key, value) {
-        if (value is List) {
-          for (V2TimGroupMemberFullInfo item in value) {
-            list.add(item);
-          }
-        }
-      });
-
-      currentGroupMember = list;
-    } else {
-      currentGroupMember = [];
-    }
-    setState(() {
-      loading = false;
-      searchMemberList =
-          isSearchTextExist(searchText) ? currentGroupMember : _groupMemberList;
-    });
   }
 
   @override

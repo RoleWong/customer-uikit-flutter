@@ -9,6 +9,9 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/message_read_receipt.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_receipt.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class TIMUIKitMessageReadReceipt extends TIMUIKitStatelessWidget {
   final V2TimMessage messageItem;

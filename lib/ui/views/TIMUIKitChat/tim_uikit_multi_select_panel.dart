@@ -10,9 +10,13 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/forward_message_screen.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/wide_popup.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
 
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_status.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class MultiSelectPanel extends TIMUIKitStatelessWidget {
   final int forwardMsgNumLimit = 30;

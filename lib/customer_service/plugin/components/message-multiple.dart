@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_state.dart';
+
 
 class MessageMultiple extends StatefulWidget {
   const MessageMultiple({super.key});

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_custom_elem.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/common/utils.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-branch.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-branchMessage.dart';
@@ -13,7 +14,9 @@ import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-robot-welcome.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-stream.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/plugin/components/message-orderCard.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
+
 
 class MessageCustomerService extends StatefulWidget {
   final TUITheme theme;

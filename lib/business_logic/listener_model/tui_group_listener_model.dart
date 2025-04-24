@@ -1,12 +1,17 @@
 // ignore_for_file: unnecessary_getters_setters
 
-import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
+import 'package:tencent_cloud_chat_sdk/enum/V2TimGroupListener.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_change_info_type.dart';
+import 'package:tencent_cloud_chat_sdk/manager/v2_tim_manager.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_change_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_info.dart';
 
 enum UpdateType { groupInfo, memberList, joinApplicationList, groupDismissed, kickedFromGroup }
 
@@ -69,12 +74,6 @@ class TCustomerGroupListenerModel extends ChangeNotifier {
         }
         notifyListeners();
       },
-      onReceiveJoinApplication:
-          (String groupID, V2TimGroupMemberInfo member, String opReason) async {
-        _onReceiveJoinApplication(groupID, member, opReason);
-        chatViewModel.refreshGroupApplicationList();
-        notifyListeners();
-      },
       onGroupDismissed: (String groupID, V2TimGroupMemberInfo opUser) async {
         _deleteGroupConversation(groupID);
         final groupName = await _getGroupName(groupID);
@@ -92,64 +91,11 @@ class TCustomerGroupListenerModel extends ChangeNotifier {
     _groupServices.removeGroupListener(listener: _groupListener!);
   }
 
-  getCommunityCategoryList(String groupID) async {
-    final Map<String, String>? customInfo =
-        await getCommunityCustomInfo(groupID);
-    if (customInfo != null) {
-      final String? categoryListString = customInfo["categoryList"];
-      if (categoryListString != null && categoryListString.isNotEmpty) {
-        return jsonDecode(categoryListString);
-      }
-    }
-  }
-
-  Future<Map<String, String>?> getCommunityCustomInfo(String groupID) async {
-    V2TimValueCallback<List<V2TimGroupInfoResult>> res =
-        await TencentImSDKPlugin.v2TIMManager
-            .getGroupManager()
-            .getGroupsInfo(groupIDList: [groupID]);
-    if (res.code != 0) {
-      final V2TimGroupInfoResult? groupInfo = res.data?[0];
-      if (groupInfo != null) {
-        Map<String, String>? customInfo = groupInfo.groupInfo?.customInfo;
-        return customInfo;
-      }
-    }
-    return null;
-  }
-
-  setCommunityCategoryList(
-      String groupID, String groupType, List<String> newCategoryList) async {
-    final Map<String, String>? customInfo =
-        await getCommunityCustomInfo(groupID);
-    customInfo?["categoryList"] = jsonEncode(newCategoryList);
-    TencentImSDKPlugin.v2TIMManager.getGroupManager().setGroupInfo(
-            info: V2TimGroupInfo(
-          customInfo: customInfo,
-          groupID: groupID,
-          groupType: groupType,
-          // ...其他资料
-        ));
-  }
-
-  addCategoryForTopic(String groupID, String categoryName) {
-    TencentImSDKPlugin.v2TIMManager.getGroupManager().setTopicInfo(
-          topicInfo: V2TimTopicInfo(customString: categoryName),
-          groupID: groupID, // 话题所在的群组id
-        );
-  }
-
-  _onReceiveJoinApplication(
-      String groupID, V2TimGroupMemberInfo member, String opReason) {
-    Future.delayed(const Duration(milliseconds: 500),
-        () => chatViewModel.refreshGroupApplicationList());
-  }
-
   Future<String> _getGroupName(String groupID) async {
     final groupInfoList = await sdkInstance.getGroupManager().getGroupsInfo(groupIDList: [groupID]);
     String groupName = TDesk_t("群组");
     if (groupInfoList.data != null) {
-      groupName = groupInfoList.data!.first!.groupInfo!.groupName!;
+      groupName = groupInfoList.data!.first.groupInfo!.groupName!;
     }
     return groupName;
   }

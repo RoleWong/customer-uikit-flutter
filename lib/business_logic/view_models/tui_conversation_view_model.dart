@@ -2,14 +2,16 @@
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/conversation/conversation_services.dart';
-import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencent_cloud_chat_sdk/enum/V2TimConversationListener.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_callback.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
 
 List<T> removeDuplicates<T>(List<T> list, bool Function(T first, T second) isEqual) {
   List<T> output = [];
@@ -38,7 +40,6 @@ class TCustomerConversationViewModel extends ChangeNotifier {
   late V2TimConversationListener _conversationListener;
   List<V2TimConversation?> _conversationList = [];
   Map<String, String> webDraftMap = {};
-  bool _haveMoreData = true;
   String _nextSeq = "0";
 
   List<V2TimConversation?> get conversationList {
@@ -112,14 +113,12 @@ class TCustomerConversationViewModel extends ChangeNotifier {
   }
 
   Future<void> loadData({required int count}) async {
-    _haveMoreData = true;
     final isRefresh = _nextSeq == "0";
     final conversationResult = await _conversationService.getConversationList(nextSeq: _nextSeq, count: count);
     _nextSeq = conversationResult?.nextSeq ?? "";
     final conversationList = conversationResult?.conversationList;
     if (conversationList != null) {
       if (conversationList.isEmpty || conversationList.length < count) {
-        _haveMoreData = false;
       }
       List<V2TimConversation?> combinedConversationList = [];
       if (isRefresh) {
@@ -188,7 +187,7 @@ class TCustomerConversationViewModel extends ChangeNotifier {
         final topicInfoList = await TencentImSDKPlugin.v2TIMManager.getGroupManager().getTopicInfoList(groupID: groupID!, topicIDList: [conversationID]);
         final topicInfo = topicInfoList.data?.first.topicInfo;
         topicInfo?.draftText = draftText;
-        final res = await TencentImSDKPlugin.v2TIMManager.getGroupManager().setTopicInfo(groupID: groupID, topicInfo: topicInfo!);
+        final res = await TencentImSDKPlugin.v2TIMManager.getGroupManager().setTopicInfo(topicInfo: topicInfo!);
         return res;
       } else {
         return _conversationService.setConversationDraft(conversationID: conversationID, draftText: draftText);
@@ -211,7 +210,6 @@ class TCustomerConversationViewModel extends ChangeNotifier {
   clearData() {
     _conversationList = [];
     _nextSeq = "0";
-    _haveMoreData = true;
     notifyListeners();
   }
 

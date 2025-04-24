@@ -19,7 +19,30 @@ import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart
 import 'package:tencentcloud_ai_desk_customer/ui/constants/history_message_constant.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
+import 'package:tencent_cloud_chat_sdk/enum/get_group_message_read_member_list_filter.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_member_filter_enum.dart';
+import 'package:tencent_cloud_chat_sdk/enum/history_msg_get_type_enum.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_priority_enum.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_status.dart';
+import 'package:tencent_cloud_chat_sdk/enum/offlinePushInfo.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_custom_elem.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_friend_info_result.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_message_read_member_list.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_change_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message_receipt.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_msg_create_info_result.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_user_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/tim_uikit_chat_config.dart';
+import 'package:tencentcloud_ai_desk_customer/ui/widgets/link_preview/models/link_preview_content.dart';
 import 'package:uuid/uuid.dart';
+import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
 
 enum LoadDirection { previous, latest }
 
@@ -264,7 +287,6 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
       _groupID = groupID;
       _notify();
       Future.delayed(const Duration(milliseconds: 10), () async {
-        globalModel.refreshGroupApplicationList();
         loadGroupInfo(groupID ?? convID);
         if (preGroupMemberList != null) {
           groupMemberList = preGroupMemberList;
@@ -921,7 +943,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
         _repliedMessage = null;
         final sendMsgRes = await _messageService.sendMessage(
             cloudCustomData:
-                TencentDeskUtils.checkString(messageInfoWithSender?.cloudCustomData) ??
+                TencentDeskUtils.checkString(messageInfoWithSender.cloudCustomData) ??
                     json.encode(cloudCustomData),
             id: textMessageInfo.id as String,
             offlinePushInfo: tools.buildMessagePushInfo(
@@ -1168,7 +1190,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
               _notify();
             }
           }
-          await Future.delayed(Duration(milliseconds: 100), () {
+          await Future.delayed(const Duration(milliseconds: 100), () {
             _sendMessage(
               id: forwardMessageInfo.id!,
               convID: convID,

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_callback.dart';
 import 'package:tencentcloud_ai_desk_customer/customer_service/manager/tencent_cloud_customer_manager_impl.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 

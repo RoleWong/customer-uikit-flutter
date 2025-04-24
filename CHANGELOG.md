@@ -1,3 +1,12 @@
+
+# 1.3.0
+
+## Breaking Changes
+
+- Upgraded the underlying `tencent_cloud_chat_sdk` to version **8.5**, which is **not backward compatible** with versions 8.4 and earlier.
+- If your project also utilizes other Tencent packages such as `tencent_cloud_chat_uikit`, ensure that their underlying `tencent_cloud_chat_sdk` dependency is equaled to version **8.5** to maintain compatibility.
+- You can verify the SDK version in your project by checking the `pubspec.lock` file.
+
 # 1.2.4
 
 ## Fixed

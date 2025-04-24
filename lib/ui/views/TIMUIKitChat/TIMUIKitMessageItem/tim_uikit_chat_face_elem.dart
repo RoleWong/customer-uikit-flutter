@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitMessageItem/TIMUIKitMessageReaction/tim_uikit_message_reaction_wrapper.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
 
 class TIMUIKitFaceElem extends StatefulWidget {
   final String path;

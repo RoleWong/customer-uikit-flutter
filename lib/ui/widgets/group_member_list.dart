@@ -13,7 +13,12 @@ import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/az_list_view.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/radio_button.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
+import 'package:tencent_cloud_chat_sdk/enum/group_member_role.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme_view_model.dart';
 
 class GroupProfileMemberList extends StatefulWidget {
   static String AT_ALL_USER_ID = "__kImSDK_MesssageAtALL__";

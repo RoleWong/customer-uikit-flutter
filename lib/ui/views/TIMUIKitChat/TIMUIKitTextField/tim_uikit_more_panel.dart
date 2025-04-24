@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKitTextField/tim_uikit_call_invite_list.dart';
@@ -17,6 +18,8 @@ import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_state.dart
 import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui_chat_separate_view_model.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_self_info_view_model.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:video_player/video_player.dart';
 import 'package:path/path.dart' as p;
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/message.dart';
@@ -24,16 +27,18 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/permission.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
-
-// ignore: unnecessary_import
 import 'dart:typed_data';
 import 'package:universal_html/html.dart' as html;
 import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
+
 class MorePanelConfig {
-  static final int FILE_MAX_SIZE = 100 * 1024 * 1024;
-  static final int VIDEO_MAX_SIZE = 100 * 1024 * 1024;
-  static final int IMAGE_MAX_SIZE = 28 * 1024 * 1024;
+  static const int FILE_MAX_SIZE = 100 * 1024 * 1024;
+  static const int VIDEO_MAX_SIZE = 100 * 1024 * 1024;
+  static const int IMAGE_MAX_SIZE = 28 * 1024 * 1024;
 
   final bool showGalleryPickAction;
   final bool showCameraAction;
@@ -141,7 +146,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (PlatformUtils().isMobile)
         MorePanelItem(
             id: "take_photo",
-            title: TIM_t("拍照"),
+            title: TDesk_t("拍照"),
             onTap: (c) {
               _onFeatureTap("take_photo", c, model, theme);
             },
@@ -160,7 +165,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (PlatformUtils().isMobile)
         MorePanelItem(
             id: "take_video",
-            title: TIM_t("录像"),
+            title: TDesk_t("录像"),
             onTap: (c) {
               _onFeatureTap("take_video", c, model, theme);
             },
@@ -417,7 +422,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
               }
 
               if (type == AssetType.video) {
-                _sendVideoMessage(originFile!.path, asset.videoDuration.inSeconds, size, model);
+                _sendVideoMessage(originFile.path, asset.videoDuration.inSeconds, size, model);
               }
             }
           }
@@ -475,7 +480,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
       if (!isVideo) {
         if (size >= MorePanelConfig.IMAGE_MAX_SIZE) {
           onTIMCallback(
-              TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TIM_t("文件大小超出了限制")));
+              TIMCallback(type: TIMCallbackType.INFO, infoRecommendText: TDesk_t("文件大小超出了限制")));
           return;
         }
 
@@ -683,7 +688,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
 
   @override
   void dispose() {
-    _betterPlayerController?.dispose();
+    _betterPlayerController.dispose();
     super.dispose();
   }
 

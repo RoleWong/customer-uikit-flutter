@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_state.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class MessageProductCard extends StatefulWidget {

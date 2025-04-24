@@ -8,7 +8,7 @@ import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencent_desk_i18n_tool/language_json/strings.g.dart';
 import 'package:tencent_desk_i18n_tool/tools/i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
 import 'package:tencentcloud_ai_desk_customer/business_logic/listener_model/tui_group_listener_model.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_conversation_view_model.dart';
@@ -19,6 +19,18 @@ import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dar
 import 'package:tencentcloud_ai_desk_customer/ui/utils/platform.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/core/web_support/uikit_web_support.dart'
     if (dart.library.html) 'package:tencentcloud_ai_desk_customer/data_services/core/web_support/uikit_web_support_implement.dart';
+
+import 'package:tencent_cloud_chat_sdk/enum/V2TimSDKListener.dart';
+import 'package:tencent_cloud_chat_sdk/enum/log_level_enum.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_callback.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_user_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_user_status.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/color.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme_view_model.dart';
 
 typedef EmptyAvatarBuilder = Widget Function(BuildContext context);
 
@@ -137,7 +149,7 @@ class TCustomerCoreServicesImpl implements CoreServices {
               _loginInfo = info;
             },
             onUserSigExpired: listener.onUserSigExpired));
-    return result.data;
+    return result.code == 0;
   }
 
   /// This method is used for init the TUIKit after you initialized the IM SDK from Native SDK.

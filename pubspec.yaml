@@ -1,6 +1,6 @@
 name: tencentcloud_ai_desk_customer
 description: AI-driven customer service UIKit for Tencent Cloud Desk (customer-side).
-version: 1.2.4
+version: 1.3.0
 homepage: https://cloud.tencent.com/document/product/269/96056?from=flutter
 repository: https://github.com/RoleWong/tencentcloud_ai_desk_customer_flutter
 documentation: https://cloud.tencent.com/document/product/269/113293?from=flutter
@@ -17,7 +17,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  tencent_desk_i18n_tool: ^2.4.1
+  tencent_desk_i18n_tool: ^2.5.0
+  tencent_cloud_chat_sdk: ^8.5.6864+6
+  tim_ui_kit_sticker_plugin: ^4.0.2
   adaptive_action_sheet: ^2.0.1
   provider: ^6.0.1
   intl: ^0.19.0
@@ -60,8 +62,6 @@ dependencies:
   uuid: ^3.0.6
   open_file: ^3.3.2
   tencent_keyboard_visibility: ^1.0.1
-  tim_ui_kit_sticker_plugin: ^4.0.1
-  tencent_im_base: ^8.0.0
   fc_native_video_thumbnail: ^0.16.0
   path: ^1.8.1
   tencent_cloud_uikit_core: ^1.6.0
@@ -80,7 +80,6 @@ dependencies:
   photo_view: ^0.15.0
   fluttertoast: ^8.2.1
   opentelemetry: ^0.18.6
-  tencent_cloud_chat_sdk: 8.3.6498+1
 
 dev_dependencies:
   flutter_lints: ^1.0.0

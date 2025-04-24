@@ -1,9 +1,15 @@
 import 'package:tencentcloud_ai_desk_customer/data_services/core/core_services_implements.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/group/group_services.dart';
 import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
-import 'package:tencentcloud_ai_desk_customer/ui/utils/error_message_converter.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/optimize_utils.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+import 'package:tencent_cloud_chat_sdk/enum/V2TimGroupListener.dart';
+import 'package:tencent_cloud_chat_sdk/enum/group_member_filter_enum.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_info_result.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_full_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_member_info_result.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_value_callback.dart';
+import 'package:tencent_cloud_chat_sdk/tencent_im_sdk_plugin.dart';
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
 
 class TCustomerGroupServicesImpl extends TCustomerGroupServices {
   static List<Function?> groupInfoCallBackList = [];
@@ -29,22 +35,6 @@ class TCustomerGroupServicesImpl extends TCustomerGroupServices {
   }
 
   @override
-  Future<List<V2TimGroupInfo>?> getJoinedGroupList() async {
-    final res = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .getJoinedGroupList();
-    if (res.code == 0) {
-      return res.data;
-    } else {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: res.desc,
-          errorCode: res.code));
-      return null;
-    }
-  }
-
-  @override
   Future<List<V2TimGroupInfoResult>?> getGroupsInfo({
     required List<String> groupIDList,
   }) async {
@@ -60,33 +50,6 @@ class TCustomerGroupServicesImpl extends TCustomerGroupServices {
           errorCode: res.code));
       return null;
     }
-  }
-
-  @override
-  void getGroupMembersInfoThrottle(
-      {required String groupID,
-      required List<String> memberList,
-      Function? callBack}) async {
-    if (callBack != null) {
-      groupInfoCallBackList.add(callBack);
-      throttleGetGroupInfo({"groupID": groupID, "memberList": memberList});
-    }
-  }
-
-  @override
-  Future<V2TimValueCallback<List<V2TimGroupMemberFullInfo>>>
-      getGroupMembersInfo(
-          {required String groupID, required List<String> memberList}) async {
-    final res = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .getGroupMembersInfo(groupID: groupID, memberList: memberList);
-    if (res.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: res.desc,
-          errorCode: res.code));
-    }
-    return res;
   }
 
   @override
@@ -115,168 +78,6 @@ class TCustomerGroupServicesImpl extends TCustomerGroupServices {
   }
 
   @override
-  Future<V2TimCallback> setGroupInfo({
-    required V2TimGroupInfo info,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .setGroupInfo(info: info);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimCallback> setGroupMemberRole({
-    required String groupID,
-    required String userID,
-    required GroupMemberRoleTypeEnum role,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .setGroupMemberRole(groupID: groupID, userID: userID, role: role);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimCallback> muteGroupMember({
-    required String groupID,
-    required String userID,
-    required int seconds,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .muteGroupMember(groupID: groupID, userID: userID, seconds: seconds);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimCallback> setGroupMemberInfo({
-    required String groupID,
-    required String userID,
-    String? nameCard,
-    Map<String, String>? customInfo,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .setGroupMemberInfo(
-            groupID: groupID,
-            userID: userID,
-            nameCard: nameCard,
-            customInfo: customInfo);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimCallback> kickGroupMember({
-    required String groupID,
-    required List<String> memberList,
-    String? reason,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .kickGroupMember(
-            groupID: groupID, memberList: memberList, reason: reason);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimValueCallback<List<V2TimGroupMemberOperationResult>>>
-      inviteUserToGroup({
-    required String groupID,
-    required List<String> userList,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .inviteUserToGroup(groupID: groupID, userList: userList);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimValueCallback<List<V2TimGroupInfo>>> searchGroups({
-    required V2TimGroupSearchParam searchParam,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .searchGroups(searchParam: searchParam);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimCallback> joinGroup({
-    required String groupID,
-    required String message,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .joinGroup(groupID: groupID, message: message);
-    if (result.code != 0) {
-      String recommendText = ErrorMessageConverter.getErrorMessage(result.code);
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code,
-          infoRecommendText: recommendText));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimValueCallback<V2GroupMemberInfoSearchResult>> searchGroupMembers({
-    required V2TimGroupMemberSearchParam searchParam,
-  }) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .searchGroupMembers(param: searchParam);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
   Future<void> addGroupListener({
     required V2TimGroupListener listener,
   }) async {
@@ -291,74 +92,6 @@ class TCustomerGroupServicesImpl extends TCustomerGroupServices {
   }) async {
     final result = await TencentImSDKPlugin.v2TIMManager
         .removeGroupListener(listener: listener);
-    return result;
-  }
-
-  @override
-  Future<V2TimValueCallback<V2TimGroupApplicationResult>>
-      getGroupApplicationList() async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .getGroupApplicationList();
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimCallback> acceptGroupApplication(
-      {required String groupID,
-      required String fromUser,
-      required String toUser,
-      required int type,
-      required int addTime,
-      String? reason}) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .acceptGroupApplication(
-          groupID: groupID,
-          fromUser: fromUser,
-          toUser: toUser,
-          addTime: addTime,
-          type: GroupApplicationTypeEnum.values[type],
-          reason: reason ?? "",
-        );
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
-    return result;
-  }
-
-  @override
-  Future<V2TimCallback> refuseGroupApplication(
-      {String? reason,
-      required int addTime,
-      required String groupID,
-      required String fromUser,
-      required String toUser,
-      required GroupApplicationTypeEnum type}) async {
-    final result = await TencentImSDKPlugin.v2TIMManager
-        .getGroupManager()
-        .refuseGroupApplication(
-            groupID: groupID,
-            fromUser: fromUser,
-            toUser: toUser,
-            type: type,
-            addTime: addTime,
-            reason: reason);
-    if (result.code != 0) {
-      _coreService.callOnCallback(TIMCallback(
-          type: TIMCallbackType.API_ERROR,
-          errorMsg: result.desc,
-          errorCode: result.code));
-    }
     return result;
   }
 }

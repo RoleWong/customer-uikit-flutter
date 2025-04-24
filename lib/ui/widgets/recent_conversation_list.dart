@@ -9,9 +9,11 @@ import 'package:tencentcloud_ai_desk_customer/ui/widgets/avatar.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/az_list_view.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/radio_button.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
 
 import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_ui_kit_base.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class RecentForwardList extends StatefulWidget {
   final bool isMultiSelect;

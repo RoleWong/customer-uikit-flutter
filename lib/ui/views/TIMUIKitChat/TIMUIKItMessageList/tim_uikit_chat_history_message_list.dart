@@ -12,12 +12,17 @@ import 'package:tencentcloud_ai_desk_customer/business_logic/separate_models/tui
 import 'package:tencentcloud_ai_desk_customer/business_logic/view_models/tui_chat_global_model.dart';
 import 'package:tencentcloud_ai_desk_customer/tencentcloud_ai_desk_customer.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/logger.dart';
+import 'package:tencent_cloud_chat_sdk/enum/message_elem_type.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_conversation.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_group_at_info.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
 // ignore: unused_import
 import 'package:tencentcloud_ai_desk_customer/ui/utils/optimize_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/tim_uikit_chat_history_message_list_config.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/views/TIMUIKitChat/TIMUIKItMessageList/utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/keepalive_wrapper.dart';
 
+import 'package:tencentcloud_ai_desk_customer/base_widgets/tim_callback.dart';
 import 'TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue.dart';
 import 'TIMUIKitTongue/tim_uikit_chat_history_message_list_tongue_container.dart';
 
@@ -141,8 +146,7 @@ class _TIMUIKitHistoryMessageListState extends TIMUIKitState<TIMUIKitHistoryMess
       case ScrollType.toIndexBegin:
         _onScrollToIndexBegin(targetMessage);
         break;
-      default:
-    }
+      }
   }
 
   Widget _getMessageItemBuilder(V2TimMessage? messageItem) {

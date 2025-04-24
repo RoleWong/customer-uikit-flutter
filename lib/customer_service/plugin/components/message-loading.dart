@@ -1,14 +1,10 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:ffi';
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencentcloud_ai_desk_customer/data_services/message/message_services.dart';
-import 'package:tencentcloud_ai_desk_customer/data_services/services_locatar.dart';
+import 'package:tencent_cloud_chat_sdk/models/v2_tim_message.dart';
+
 
 class MessageLoading extends StatefulWidget{
   final dynamic payload;
@@ -20,9 +16,6 @@ class MessageLoading extends StatefulWidget{
 }
 
 class _MessageLoadingState extends State<MessageLoading> {
-  final TCustomerMessageService _messageService = serviceLocator<TCustomerMessageService>();
-  late AnimationController _controller;
-  late Animation<int> _dotAnimation;
   int dotAmounts = 1;
   Timer? _timer;
 
@@ -30,24 +23,7 @@ class _MessageLoadingState extends State<MessageLoading> {
   void initState() {
     super.initState();
 
-    // _setLoadingDisappear();
     _setupTimer();
-  }
-
-  _setLoadingDisappear() {
-    int? messageTimeStamp = widget.message.timestamp;
-    if (messageTimeStamp != null && messageTimeStamp > 0) {
-      int currentTime = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-      int diff = 60 - (currentTime - messageTimeStamp);
-
-      if (diff > 0) {
-        Future.delayed(Duration(seconds: min(0, 60)), () {
-          widget.payload["thinkingStatus"] = 1;
-          widget.message.customElem?.data = json.encode(widget.payload);
-          _messageService.modifyMessage(message: widget.message);
-        });
-      }
-    }
   }
 
   _endTimer(){
@@ -60,8 +36,7 @@ class _MessageLoadingState extends State<MessageLoading> {
   _setupTimer(){
     _timer = Timer.periodic(const Duration(milliseconds: 300), (_) {
       setState(() {
-        dotAmounts = (dotAmounts + 1) % 4; // 循环 0~3
-        print("dotAmounts - $dotAmounts");
+        dotAmounts = (dotAmounts + 1) % 4;
       });
     });
   }

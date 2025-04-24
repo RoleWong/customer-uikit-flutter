@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/utils/screen_utils.dart';
 import 'package:tencentcloud_ai_desk_customer/ui/widgets/drag_widget.dart';
 import 'package:tencent_desk_i18n_tool/tencent_desk_i18n_tool.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
+
+import 'package:tencentcloud_ai_desk_customer/theme/tui_theme.dart';
 
 class TextInputBottomSheet {
   static OverlayEntry? entry;
